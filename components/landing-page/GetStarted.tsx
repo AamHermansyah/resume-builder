@@ -1,4 +1,6 @@
 import { Poppins } from "next/font/google";
+import Button from "./Button";
+import React from "react";
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['300'] });
 
@@ -10,14 +12,11 @@ function GetStarted() {
           <p className={`${poppins.className} text-2xl text-center leading-9 text-white`}>
             Do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et dolore magna  
           </p>
-          <button
-            className="block w-max mx-auto mt-[30px] py-4 px-10 text-xl font-semibold bg-tertiary text-white rounded-[10px]"
-            style={{
-              boxShadow: '4px 4px 4px rgba(0, 0, 0, 0.25);'
-            }}
-          >
-            Create Resume
-          </button>
+          <Button
+            href="/"
+            title="Create Resume"
+            className="mt-[35px] mx-auto"
+          />
         </div>
       </div>
     </section>

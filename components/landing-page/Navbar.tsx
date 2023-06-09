@@ -12,72 +12,52 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-
-const components: { title: string; href: string }[] = [
-  {
-    title: "Home",
-    href: "/",
-  },
-  {
-    title: "About Us",
-    href: "/",
-  },
-  {
-    title: "Create Resume",
-    href: "/",
-  },
-  {
-    title: "Contribute",
-    href: "/",
-  },
-  {
-    title: "FAQs",
-    href: "/",
-  },
-]
+import { navigation } from "@/constants/data"
 
 export function Navbar() {
   return (
     <header className="w-full absolute top-0 left-0 z-50">
-      <NavigationMenu className="md:hidden flex justify-start pt-8 lg:pt-10 px-10 lg:px-20">
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>
-              Menu
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                {components.map((component) => (
-                  <ListItem
-                    key={component.title}
-                    title={component.title}
-                    href={component.href}
-                  />
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-      <nav className="hidden md:block">
-        <ul className="w-full flex gap-7 justify-end items-center py-8 lg:py-10 px-10 lg:px-20 lg:text-xl">
-          <li>
-            <Link href="/" className="text-tertiary font-semibold">Home</Link>
-          </li>
-          <li>
-            <Link href="/">About Us</Link>
-          </li>
-          <li>
-            <Link href="/">Create Resume</Link>
-          </li>
-          <li>
-            <Link href="/">Contribute</Link>
-          </li>
-          <li>
-            <Link href="/">FAQs</Link>
-          </li>
-        </ul>
-      </nav>
+      <React.Suspense>
+        <NavigationMenu className="md:hidden flex justify-start pt-8 lg:pt-10 px-10 lg:px-20">
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>
+                Menu
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <nav>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                    {navigation.map((nav, index) => (
+                      <ListItem
+                        key={nav.id}
+                        title={nav.title}
+                        href={nav.href}
+                        className={`${index === 0 ? 'text-tertiary font-semibold' : ''} hover:underline underline-offset-4`}
+                      />
+                    ))}
+                  </ul>
+                </nav>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </React.Suspense>
+      <React.Suspense>
+        <nav className="hidden md:block">
+          <ul className="w-full flex gap-7 justify-end items-center py-8 lg:py-10 px-10 lg:px-20 lg:text-xl">
+            {navigation.map((nav, index) => (
+              <li key={nav.id}>
+                <Link
+                  href={nav.href}
+                  className={`${index === 0 ? 'text-tertiary font-semibold' : ''} hover:underline underline-offset-4`}
+                >
+                  {nav.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </React.Suspense>
     </header>
   )
 }

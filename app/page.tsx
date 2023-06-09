@@ -1,3 +1,5 @@
+'use client';
+
 import Footer from '@/components/landing-page/Footer';
 import GetStarted from '@/components/landing-page/GetStarted';
 import Hero from '@/components/landing-page/Hero';
