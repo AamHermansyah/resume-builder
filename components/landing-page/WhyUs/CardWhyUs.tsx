@@ -1,4 +1,4 @@
-import { WhyUs, whyUsBlurElement } from "@/constants/data";
+import { WhyUs } from "@/constants/data";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 import BlurComponent from "./BlurComponent";
@@ -17,14 +17,7 @@ function CardWhyUs({ imageUrl, title, children, alt, reverse } : propTypes) {
         flex-col mt-[78px] flex gap-10 items-center box-border`
     }>
       <div className="relative w-full flex-[0.8] aspect-video rounded-[20px] overflow-hidden border">
-        {whyUsBlurElement.map((blurElement) => (
-          <BlurComponent
-            key={blurElement.id}
-            positionClass={blurElement.positionClass}
-            sizeClass={blurElement.sizeClass}
-            backgroundClass={blurElement.backgroundClass}
-          />
-        ))}
+        <BlurComponent />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-[35%] aspect-square">
             <Image

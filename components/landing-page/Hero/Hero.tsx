@@ -1,8 +1,7 @@
 import Image from "next/image"
-import Button from "./Button"
-import { hero } from "@/constants/data"
-import BlurComponent from "./BlurComponent"
+import Button from "../Button"
 import { motion } from "framer-motion"
+import BlurComponent from "./BlurComponent"
 
 function Hero() {
   return (
@@ -12,19 +11,17 @@ function Hero() {
       transition={{ duration: .5 }}
     >
       <section id="hero" className="relative overflow-hidden rounded-br-[50px] lg:rounded-br-[100px] py-20">
-        {hero.map((blurElement) => (
-          <BlurComponent
-            key={blurElement.id}
-            positionClass={blurElement.positionClass}
-            sizeClass={blurElement.sizeClass}
-            backgroundClass={blurElement.backgroundClass}
-          />
-        ))}
+        <BlurComponent />
         <div className="relative min-h-[710px] flex items-center rounded-br-[100px] z-10">
-          <div className="absolute w-[495px] h-[266px] bottom-4 right-4 -z-[1]">
-            <Image src="/images/paper-boat.png" alt="paper-boat" fill={true} />
+          <div className="absolute w-[350px] sm:w-[495px] aspect-[16/8] bottom-[51%] sm:bottom-4 right-4 -z-[1]">
+            <Image
+              src="/images/paper-boat.png"
+              alt="paper-boat"
+              fill={true}
+              className="object-cover"
+            />
           </div>
-          <div className="mt-20 md:mt-0 w-full flex gap-y-20 flex-col-reverse md:flex-row items-center gap-8 px-10">
+          <div className="mt-14 sm:mt-20 md:mt-0 w-full flex gap-y-20 flex-col-reverse md:flex-row items-center gap-8 px-10">
             <div className="w-full flex-1 relative flex gap-[66px]">
               <motion.div
                 initial={{ opacity: 0 }}

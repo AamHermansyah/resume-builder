@@ -2,10 +2,10 @@
 
 import Footer from '@/components/landing-page/Footer';
 import GetStarted from '@/components/landing-page/GetStarted';
-import Hero from '@/components/landing-page/Hero';
+import Hero from '@/components/landing-page/Hero/Hero';
 import { Navbar } from '@/components/landing-page/Navbar';
 import Steps from '@/components/landing-page/Steps';
-import WhyUs from '@/components/landing-page/WhyUs';
+import WhyUs from '@/components/landing-page/WhyUs/WhyUs';
 
 export default function Home() {
   return (

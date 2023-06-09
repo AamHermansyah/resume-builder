@@ -4,13 +4,6 @@ export type Navigation = {
   href: string
 }
 
-export type Hero = {
-  id: string,
-  positionClass: string,
-  sizeClass: string,
-  backgroundClass: string,
-}
-
 export type WhyUs = {
   id: string,
   imageUrl: string,
@@ -64,33 +57,6 @@ export const navigation: Navigation[] = [
     id: 'nav-5',
     title: "FAQs",
     href: "/",
-  },
-]
-
-export const whyUsBlurElement: Hero[] = [
-  {
-    id: 'blur-1',
-    positionClass: '-top-[120px] -right-[75px]',
-    sizeClass: 'w-[313px] aspect-square',
-    backgroundClass: 'linear-gradient(180deg, #F7ABA1 0%, #ED9296 100%)'
-  },
-  {
-    id: 'blur-2',
-    positionClass: '-bottom-[170px] -right-[75px]',
-    sizeClass: 'w-[313px] aspect-square',
-    backgroundClass: 'linear-gradient(180deg, #D76275 0%, #A95175 100%)'
-  },
-  {
-    id: 'blur-3',
-    positionClass: '-bottom-[100px] -left-[75px]',
-    sizeClass: 'w-[313px] aspect-square',
-    backgroundClass: 'linear-gradient(180deg, #FAA997 0%, #F7988C 100%)'
-  },
-  {
-    id: 'blur-4',
-    positionClass: '-top-[190px] -left-[55px]',
-    sizeClass: 'w-[313px] aspect-square',
-    backgroundClass: 'linear-gradient(180deg, #FAB8AF 0%, #FFD9D8 100%)'
   },
 ]
 
@@ -186,42 +152,3 @@ export const footer: Footer = {
     ]
   }
 }
-
-export const hero: Hero[] = [
-  {
-    id: 'blur-1',
-    positionClass: '-top-[100px] -right-[75px]',
-    sizeClass: 'w-[665px] aspect-square',
-    backgroundClass: 'linear-gradient(180deg, #F7ABA1 0%, #ED9296 100%)'
-  },
-  {
-    id: 'blur-2',
-    positionClass: '-bottom-[100px] -right-[75px]',
-    sizeClass: 'w-[576px] aspect-square',
-    backgroundClass: 'linear-gradient(180deg, #D76275 0%, #A95175 100%)'
-  },
-  {
-    id: 'blur-3',
-    positionClass: '-top-[169px] -left-[108px]',
-    sizeClass: 'w-[597px] aspect-square',
-    backgroundClass: 'linear-gradient(180deg, #F5C7A1 0%, #F8B193 100%)'
-  },
-  {
-    id: 'blur-4',
-    positionClass: '-top-[89px] left-[20%]',
-    sizeClass: 'w-[532px] aspect-square',
-    backgroundClass: 'linear-gradient(180deg, #FAB8AF 0%, #FFD9D8 100%)'
-  },
-  {
-    id: 'blur-5',
-    positionClass: 'top-[272px] -left-[120px]',
-    sizeClass: 'w-[586px] aspect-square',
-    backgroundClass: 'linear-gradient(180deg, #F5C7A1 0%, #F8B193 100%)'
-  },
-  {
-    id: 'blur-6',
-    positionClass: 'top-[280px] left-[20%]',
-    sizeClass: 'w-[629px] aspect-square',
-    backgroundClass: 'linear-gradient(180deg, #F7ABA1 0%, #ED9296 100%)'
-  },
-]

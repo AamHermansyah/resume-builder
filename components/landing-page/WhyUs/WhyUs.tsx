@@ -22,7 +22,7 @@ function Why() {
             title={data.title}
             imageUrl={data.imageUrl}
             alt={data.alt}
-            reverse={index + 1 % 2 === 0}
+            reverse={index % 2 === 0}
           >
             {data.description}
           </CardWhyUs>
