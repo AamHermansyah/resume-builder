@@ -4,17 +4,35 @@ import * as React from "react"
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
-import { navigation } from "@/constants/data"
+import { navigation } from "@/constants/landing-page"
+import dynamic from "next/dynamic"
 
-export function Navbar() {
+const NavigationMenu = dynamic(() =>
+  import("@/components/ui/navigation-menu")
+    .then((module) => module.NavigationMenu)
+)
+const NavigationMenuList = dynamic(() =>
+  import("@/components/ui/navigation-menu")
+    .then((module) => module.NavigationMenuList)
+)
+const NavigationMenuItem = dynamic(() =>
+  import("@/components/ui/navigation-menu")
+    .then((module) => module.NavigationMenuItem)
+)
+const NavigationMenuTrigger = dynamic(() =>
+  import("@/components/ui/navigation-menu")
+    .then((module) => module.NavigationMenuTrigger)
+)
+const NavigationMenuContent = dynamic(() =>
+  import("@/components/ui/navigation-menu")
+    .then((module) => module.NavigationMenuContent)
+)
+const NavigationMenuLink = dynamic(() =>
+  import("@/components/ui/navigation-menu")
+    .then((module) => module.NavigationMenuLink)
+)
+
+export function Navigation() {
   return (
     <header className="w-full absolute top-0 left-0 z-50">
       <React.Suspense>
@@ -42,22 +60,20 @@ export function Navbar() {
           </NavigationMenuList>
         </NavigationMenu>
       </React.Suspense>
-      <React.Suspense>
-        <nav className="hidden md:block">
-          <ul className="w-full flex gap-7 justify-end items-center py-8 lg:py-10 px-10 lg:px-20 lg:text-xl">
-            {navigation.map((nav, index) => (
-              <li key={nav.id}>
-                <Link
-                  href={nav.href}
-                  className={`${index === 0 ? 'text-tertiary font-semibold' : ''} hover:underline underline-offset-4`}
-                >
-                  {nav.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </React.Suspense>
+      <nav className="hidden md:block">
+        <ul className="w-full flex gap-7 justify-end items-center py-8 lg:py-10 px-10 lg:px-20 lg:text-xl">
+          {navigation.map((nav, index) => (
+            <li key={nav.id}>
+              <Link
+                href={nav.href}
+                className={`${index === 0 ? 'text-tertiary font-semibold' : ''} hover:underline underline-offset-4`}
+              >
+                {nav.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   )
 }

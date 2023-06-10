@@ -1,7 +1,7 @@
 import Image from "next/image"
-import Button from "../Button"
+import Button from "./Button"
 import { motion } from "framer-motion"
-import BlurComponent from "./BlurComponent"
+import BlurComponent from "../BlurComponent"
 
 function Hero() {
   return (
@@ -71,7 +71,7 @@ function Hero() {
                 With this free resume builder, applying for your dream job is easy and fast. Choose from hundreds of free, designer-made templates and customize them within a few clicks.
               </p>
               <Button
-                href="/"
+                href="/builder"
                 title="Create Resume"
                 className="mt-[35px]"
               />

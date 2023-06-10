@@ -64,28 +64,28 @@ export const whyUs: WhyUs[] = [
   {
     id: 'feature-1',
     title: 'Customize with templates & Themes',
-    imageUrl: '/icons/grid-icon.svg',
+    imageUrl: '/icons/landing-page/grid-icon.svg',
     alt: 'grid-icon',
     description: 'do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et'
   },
   {
     id: 'feature-2',
     title: 'Simple Interface that helps you build quickly',
-    imageUrl: '/icons/hand-icon.svg',
+    imageUrl: '/icons/landing-page/hand-icon.svg',
     alt: 'hand-icon',
     description: 'do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et'
   },
   {
     id: 'feature-3',
     title: 'No sign up needed - go straight to building',
-    imageUrl: '/icons/pencil-icon.svg',
+    imageUrl: '/icons/landing-page/pencil-icon.svg',
     alt: 'pencil-icon',
     description: 'do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et'
   },
   {
     id: 'feature-4',
     title: 'Your data never leaves your device',
-    imageUrl: '/icons/data-icon.svg',
+    imageUrl: '/icons/landing-page/data-icon.svg',
     alt: 'data-icon',
     description: 'do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et dolore magna aliqua do eiusmod tempor incididunt ut labore et'
   },

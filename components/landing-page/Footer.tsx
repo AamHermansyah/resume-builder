@@ -1,4 +1,4 @@
-import { Footer, footer } from "@/constants/data";
+import { Footer, footer } from "@/constants/landing-page";
 import Link from "next/link";
 
 const footerKeys: Array<keyof Footer> = ['editor', 'help'];

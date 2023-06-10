@@ -1,4 +1,4 @@
-import { whyUs } from "@/constants/data";
+import { whyUs } from "@/constants/landing-page";
 import CardWhyUs from "./CardWhyUs";
 import { motion } from "framer-motion";
 import { slideInVariants } from "@/utils/motion";

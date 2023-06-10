@@ -1,4 +1,4 @@
-import { WhyUs } from "@/constants/data";
+import { WhyUs } from "@/constants/landing-page";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 import BlurComponent from "./BlurComponent";

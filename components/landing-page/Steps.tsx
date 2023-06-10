@@ -1,4 +1,4 @@
-import { steps } from "@/constants/data"
+import { steps } from "@/constants/landing-page"
 import { childVariants, splashVariants } from "@/utils/motion"
 import { motion } from "framer-motion"
 
