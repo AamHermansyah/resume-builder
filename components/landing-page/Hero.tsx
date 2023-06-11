@@ -1,7 +1,6 @@
 import Image from "next/image"
 import Button from "./Button"
 import { motion } from "framer-motion"
-import BlurComponent from "../BlurComponent"
 
 function Hero() {
   return (
@@ -10,8 +9,10 @@ function Hero() {
       animate={{ opacity: 1 }}
       transition={{ duration: .5 }}
     >
-      <section id="hero" className="relative overflow-hidden rounded-br-[50px] lg:rounded-br-[100px] py-20">
-        <BlurComponent />
+      <section
+        id="hero"
+        className="relative bg-gradient-to-br from-tertiary-semi to-violet-300 overflow-hidden rounded-br-[50px] lg:rounded-br-[100px] py-20"
+      >
         <div className="relative min-h-[710px] flex items-center rounded-br-[100px] z-10">
           <div className="absolute w-[350px] sm:w-[495px] aspect-[16/8] bottom-[51%] sm:bottom-4 right-4 -z-[1]">
             <Image

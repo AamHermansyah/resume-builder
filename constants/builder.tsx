@@ -1,3 +1,5 @@
+import FormPersonal from "@/components/builder/Form/FormPersonal"
+
 export type NavigationChild = {
   id: string,
   iconUrl: string,
@@ -74,3 +76,67 @@ export const navigation: Navigation = {
     },
   ]
 }
+
+export type Form = {
+  id: string,
+  title: string,
+  iconUrl: string,
+  component: React.ReactNode
+}
+
+export const form: Form[] = [
+  {
+    id: 'form-header-1',
+    title: 'Professional Experience',
+    iconUrl: '/icons/builder/profile-icon.svg',
+    component: <FormPersonal />
+  },
+  {
+    id: 'form-header-2',
+    title: 'Educations',
+    iconUrl: '/icons/builder/education-outline.svg',
+    component: <div>1</div>
+  },
+  {
+    id: 'form-header-3',
+    title: 'Experiences',
+    iconUrl: '/icons/builder/briefcase.svg',
+    component: <div>1</div>
+  },
+  {
+    id: 'form-header-4',
+    title: 'Projects',
+    iconUrl: '/icons/builder/new-team-project.svg',
+    component: <div>1</div>
+  },
+  {
+    id: 'form-header-5',
+    title: 'Skills',
+    iconUrl: '/icons/builder/new-team-project.svg',
+    component: <div>1</div>
+  },
+  {
+    id: 'form-header-6',
+    title: 'Languages',
+    iconUrl: '/icons/builder/language-icon.svg',
+    component: <div>1</div>
+  },
+  {
+    id: 'form-header-7',
+    title: 'Extracurricular Activities',
+    iconUrl: '/icons/builder/mask-icon.svg',
+    component: <div>1</div>
+  },
+  {
+    id: 'form-header-8',
+    title: 'Certifications',
+    iconUrl: '/icons/builder/news-paper.svg',
+    component: <div>1</div>
+  },
+  {
+    id: 'form-header-9',
+    title: 'Links',
+    iconUrl: '/icons/builder/links-fill.svg',
+    component: <div>1</div>
+  },
+]
