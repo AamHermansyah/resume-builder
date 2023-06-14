@@ -33,12 +33,12 @@ function BuilderLayout() {
           </div>
         </div>
 
-        <div className="relative flex flex-col md:flex-row gap-10 items-start">
+        <div className="relative flex flex-col md:flex-row gap-x-10 gap-y-4 items-start">
           <div className="flex-1 w-full">
           {form.map((item) => {
             if (item.id === isActiveFormId) {
               return (
-                <div key={item.id} className="py-5 px-4 lg:px-7 my-10 bg-white rounded-[20px]">
+                <div key={item.id} className="py-5 px-4 lg:px-7 my-4 md:my-10 bg-white rounded-[20px]">
                   <div className="mt-4 flex items-center gap-5">
                     <h1 className="text-xl font-medium text-tertiary-bold">
                       {item.title}
@@ -56,7 +56,7 @@ function BuilderLayout() {
                     <Button
                       href="/"
                       title="Save"
-                      className="md:text-base py-[8px] px-10 border-[2px] border-transparent hover:border-tertiary"
+                      className="text-sm md:text-base py-[8px] px-6 rounded-sm sm:px-10 border-[2px] border-transparent hover:border-tertiary"
                     />
                   </div>
                 </div>
@@ -64,7 +64,7 @@ function BuilderLayout() {
             }
           })}
           </div>
-          <div className="mt-[42px] flex-[0.7] flex flex-col items-center w-full">
+          <div className="md:mt-[42px] flex-[0.7] flex flex-col items-center w-full">
             <ResumePreview />
           </div>
         </div>

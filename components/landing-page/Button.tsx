@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils"
 import Link from "next/link"
 
 type propTypes = {
@@ -10,7 +11,7 @@ function Button({ href, title, className = ''}: propTypes) {
   return (
     <Link
       href={href}
-      className={`block w-max py-4 px-10 text-xl font-semibold bg-tertiary text-white rounded-[10px] hover:bg-white hover:text-tertiary active:scale-95 transition-all duration-200 ${className}`}
+      className={cn('block w-max py-4 px-10 text-lg font-semibold bg-tertiary text-white rounded-[10px] hover:bg-white hover:text-tertiary active:scale-95 transition-all duration-200', className)}
       style={{
         boxShadow: '4px 4px 4px rgba(0, 0, 0, 0.25)'
       }}

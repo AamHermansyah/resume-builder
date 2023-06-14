@@ -1,4 +1,8 @@
+import FormEducations from "@/components/builder/Form/FormEducations"
+import FormExperience from "@/components/builder/Form/FormExperience"
 import FormPersonal from "@/components/builder/Form/FormPersonal"
+import FormProjects from "@/components/builder/Form/FormProjects"
+import FormSkills from "@/components/builder/Form/FormSkills"
 
 export type NavigationChild = {
   id: string,
@@ -95,25 +99,25 @@ export const form: Form[] = [
     id: 'form-header-2',
     title: 'Educations',
     iconUrl: '/icons/builder/education-outline.svg',
-    component: <div>1</div>
+    component: <FormEducations />
   },
   {
     id: 'form-header-3',
     title: 'Experiences',
     iconUrl: '/icons/builder/briefcase.svg',
-    component: <div>1</div>
+    component: <FormExperience />
   },
   {
     id: 'form-header-4',
     title: 'Projects',
     iconUrl: '/icons/builder/new-team-project.svg',
-    component: <div>1</div>
+    component: <FormProjects />
   },
   {
     id: 'form-header-5',
     title: 'Skills',
-    iconUrl: '/icons/builder/new-team-project.svg',
-    component: <div>1</div>
+    iconUrl: '/icons/builder/brain-icon.svg',
+    component: <FormSkills />
   },
   {
     id: 'form-header-6',

@@ -3,7 +3,7 @@ import InputDate from "@/components/form/InputDate"
 import InputText from "@/components/form/InputText"
 import InputTextArea from "@/components/form/InputTextArea"
 
-function FormEducations() {
+function FormProjects() {
   return (
     <form action="" className="mt-[35px]">
       <div className="grid grid-cols-3 gap-x-4 lg:gap-x-10 gap-y-4">
@@ -15,40 +15,8 @@ function FormEducations() {
         </div>
         <div className="w-full">
           <InputText
-            id="place"
-            label="Place"
-          />
-        </div>
-        <div className="w-full">
-          <InputText
-            id="degree"
-            label="Degree"
-          />
-        </div>
-        <div className="w-full">
-          <InputText
-            id="field_study"
-            label="Field Of Study"
-          />
-        </div>
-        <div className="w-full" />
-        <div className="w-full">
-          <InputText
-            id="city"
-            label="City"
-          />
-        </div>
-        <div className="w-full">
-          <InputText
-            id="state"
-            label="State"
-          />
-        </div>
-        <div className="w-full">
-          <InputText
-            id="pincode"
-            label="Pincode"
-            type="tel"
+            id="company"
+            label="Company"
           />
         </div>
         <div className="w-full">
@@ -84,4 +52,4 @@ function FormEducations() {
   )
 }
 
-export default FormEducations
+export default FormProjects
