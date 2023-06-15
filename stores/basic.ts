@@ -7,9 +7,10 @@ const onChangeText = (set: SetState<IBasicDetailsStore>) => (values: IBasicDetai
   set({ values });
 
 export const useBasicDetails = create<IBasicDetailsStore>(
+  // @ts-ignore
   persist(
     (set) => ({
-      values: JSON.parse(localStorage.getItem('basic') || '{}')?.state?.values || resumeData.basics,
+      values: resumeData.basics,
       reset: onChangeText(set),
     }),
     { name: 'basic' }

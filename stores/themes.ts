@@ -11,6 +11,7 @@ interface IThemeStore {
 }
 
 export const useThemes = create<IThemeStore>(
+  // @ts-ignore
   persist(
     (set) => ({
       selectedTheme: SYSTEM_COLORS[0],

@@ -1,6 +1,6 @@
 import create, { GetState, SetState } from 'zustand';
 import { persist } from 'zustand/middleware';
-import produce from 'immer';
+import { produce } from 'immer';
 import { ISkillItem, ISkillState } from './skill.interface';
 import resumeData from '@/helpers/constants/resume-data.json';
 
@@ -36,6 +36,7 @@ const getMethods = (set: SetState<ISkillState>, get: GetState<ISkillState>) => (
 });
 
 export const useLanguages = create<ISkillState>(
+  // @ts-ignore
   persist(
     (set, get) => ({
       title: 'Languages',
@@ -50,6 +51,7 @@ export const useLanguages = create<ISkillState>(
 );
 
 export const useFrameworks = create<ISkillState>(
+  // @ts-ignore
   persist(
     (set, get) => ({
       title: 'Frameworks',
@@ -64,6 +66,7 @@ export const useFrameworks = create<ISkillState>(
 );
 
 export const useTechnologies = create<ISkillState>(
+  // @ts-ignore
   persist(
     (set, get) => ({
       title: 'Technologies',
@@ -78,6 +81,7 @@ export const useTechnologies = create<ISkillState>(
 );
 
 export const useLibraries = create<ISkillState>(
+  // @ts-ignore
   persist(
     (set, get) => ({
       title: 'Libraries',
@@ -92,6 +96,7 @@ export const useLibraries = create<ISkillState>(
 );
 
 export const useDatabases = create<ISkillState>(
+  // @ts-ignore
   persist(
     (set, get) => ({
       title: 'Databases',
@@ -106,6 +111,7 @@ export const useDatabases = create<ISkillState>(
 );
 
 export const usePractices = create<ISkillState>(
+  // @ts-ignore
   persist(
     (set, get) => ({
       title: 'Practices',
@@ -120,6 +126,7 @@ export const usePractices = create<ISkillState>(
 );
 
 export const useTools = create<ISkillState>(
+  // @ts-ignore
   persist(
     (set, get) => ({
       title: 'Tools',

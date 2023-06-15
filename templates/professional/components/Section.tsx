@@ -1,11 +1,10 @@
-import Color from 'color';
 import { IProfiles } from '@/stores/basic.interface';
 import React from 'react';
 import { socialIcons } from '@/helpers/icons';
 import styled from '@emotion/styled';
 
 const SectionHolder = styled.div`
-  border: 1px solid ${(props) => Color(props.theme.highlighterColor).alpha(0.75).toString()};
+  border: 1px solid yellow;
   border-radius: 5px;
   padding: 15px 10px 10px 10px;
   position: relative;
@@ -17,7 +16,7 @@ const SectionHolder = styled.div`
     background: white;
     padding: 0 5px;
     font-weight: bold;
-    color: ${(props) => props.theme.titleColor};
+    color: salmon;
   }
 
   .social-icons {
@@ -25,7 +24,7 @@ const SectionHolder = styled.div`
     top: 0;
     right: 10px;
     transform: translate(0, -50%);
-    color: ${(props) => props.theme.titleColor};
+    color: green;
   }
 `;
 

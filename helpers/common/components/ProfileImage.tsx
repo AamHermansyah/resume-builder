@@ -1,4 +1,3 @@
-import styled from '@emotion/styled';
 import { SectionValidator } from './ValidSectionRenderer';
 import Image from 'next/image';
 

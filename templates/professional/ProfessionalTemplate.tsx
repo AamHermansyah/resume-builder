@@ -9,10 +9,10 @@ import { Objective } from './components/Objective';
 import RatedSkills from './components/RatedSkills';
 import { Section } from './components/Section';
 import { SectionValidator } from '@/helpers/common/components/ValidSectionRenderer';
-import { StateContext } from '@/modules/builder/resume/ResumeLayout';
 import UnratedSkills from './components/UnratedSkills';
 import Work from './components/Work';
 import styled from '@emotion/styled';
+import { StateContext } from '@/components/builder/Resume/ResumePreview';
 
 const ResumeContainer = styled.div`
   display: flex;

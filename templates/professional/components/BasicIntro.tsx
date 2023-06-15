@@ -1,17 +1,12 @@
 import { IBasics } from '@/stores/index.interface';
 import styled from '@emotion/styled';
-import Color from 'color';
 import Image from 'next/image';
-
-const Role = styled.span`
-  color: ${(props) => Color(props.theme.titleColor).alpha(0.85).toString()};
-`;
 
 export default function BasicIntro({ basics }: { basics: IBasics }) {
   return (
     <div className="flex justify-between">
       <div className="flex flex-col gap-2">
-        <Role className="text-sm">{basics.label}</Role>
+        <span className="text-sm text-gray-700">{basics.label}</span>
         <span className="text-xs">
           Relevant experience:&nbsp;
           <strong>{basics.relExp}</strong>
