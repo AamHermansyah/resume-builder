@@ -34,7 +34,7 @@ const NavigationMenuLink = dynamic(() =>
 
 function Navigation() {
   return (
-    <header id="nav-builder" className="fixed w-full top-0 z-50">
+    <header id="nav-builder" className="fixed w-full top-0 z-50 print:hidden">
       <div className="px-5 py-4 bg-tertiary-semi text-white">
         <div className="w-full flex justify-between items-center gap-2 sm:gap-10">
           <div className="flex-1 flex gap-4 items-center">
@@ -83,6 +83,11 @@ function Navigation() {
           <div className="hidden md:flex flex-1 items-center justify-end gap-[25px]">
             {navigation.navRight.map((nav) => (
               <NavigationChild
+                onClick={() => {
+                  if (nav.title === 'Print') {
+                    globalThis?.print()
+                  }
+                }}
                 key={nav.id}
                 {...nav}
               />

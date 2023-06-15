@@ -34,8 +34,8 @@ function FormEducations() {
         <div className="w-full" />
         <div className="w-full">
           <InputText
-            id="city"
-            label="City"
+            id="country"
+            label="country"
           />
         </div>
         <div className="w-full">

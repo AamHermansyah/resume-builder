@@ -71,9 +71,6 @@
 }
  
 @layer base {
-  * {
-    @apply border-border;
-  }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
@@ -90,5 +87,13 @@
   .hidden-scollbar {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Print background color */
+  .print-exact {
+    @apply border-border;
+    color-adjust: exact!important;  
+    -webkit-print-color-adjust: exact!important; 
+     print-color-adjust: exact!important;
   }
 }

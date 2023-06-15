@@ -1,11 +1,18 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { forwardRef } from 'react'
 
 type propTypes = {
-  id: string
+  id: string,
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-function InputFile({ id }: propTypes) {
+const InputFile = forwardRef<HTMLInputElement, propTypes>(({ id, onChange, ...props }, ref) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e);
+    }
+  };
+
   return (
     <div>
       <label
@@ -28,10 +35,19 @@ function InputFile({ id }: propTypes) {
             className="bg-white object-contain z-10"
           />
         </div>
-        <input id={id} name={id} type="file" className="hidden" />
+        <input 
+          id={id} 
+          name={id} 
+          accept="image/*" 
+          type="file" 
+          className="hidden" 
+          onChange={handleFileChange} 
+          ref={ref} 
+          {...props}
+        />
       </label>
     </div>
   )
-}
+});
 
-export default InputFile
+export default InputFile;

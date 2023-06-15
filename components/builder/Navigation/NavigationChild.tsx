@@ -3,11 +3,22 @@ import Image from 'next/image'
 import Link from 'next/link';
 import React from 'react'
 
-type propTypes = Pick<NavigationChild, 'title' | 'iconUrl' | 'iconSize' | 'alt' | 'href'>;
+type propTypes = Pick<NavigationChild, 'title' | 'iconUrl' | 'iconSize' | 'alt' | 'href'> & {
+  onClick?: () => void
+};
 
-function NavigationChild({ iconUrl, iconSize, title, alt, href }: propTypes) {
+function NavigationChild({ iconUrl, iconSize, title, alt, href, onClick }: propTypes) {
   return (
-    <Link href={href} className="flex items-center gap-[10px] group">
+    <Link
+      href={href}
+      onClick={(e) => {
+        e.preventDefault();
+        if (onClick) {
+          onClick();
+        }
+      }}
+      className="flex items-center gap-[10px] group"
+    >
       {title && (
         <span className="text-xs sm:text-sm md:text-[15px] font-medium">
           {title}

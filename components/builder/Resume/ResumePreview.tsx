@@ -1,17 +1,34 @@
-import Image from 'next/image'
-import React from 'react'
+import MordernTemplate from '@/templates/modern/MordernTemplate'
+// import React from 'react'
 
-function ResumePreview() {
+// function ResumePreview() {
+//   return (
+//     <div className="w-full">
+//       <MordernTemplate />
+//     </div>
+//   )
+// }
+
+// export default ResumePreview
+
+import { Context, createContext } from 'react';
+import { useResumeStore } from '@/stores/useResumeStore';
+
+// TODO: need to define types
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export let StateContext: Context<any> = createContext(null);
+
+const resumePreview = () => {
+  const resumeData = useResumeStore();
+  StateContext = createContext(resumeData);
+
   return (
-    <div className="w-full mx-auto relative aspect-[0.72/1]">
-      <Image
-        src="/images/cv-preview-3.png"
-        alt="cv-preview-3"
-        fill={true}
-        className="object-cover"
-      />
-    </div>
-  )
-}
+    <StateContext.Provider value={resumeData}>
+      <div className="w-full">
+        <MordernTemplate />
+      </div>
+    </StateContext.Provider>
+  );
+};
 
-export default ResumePreview
+export default resumePreview;

@@ -1,18 +1,25 @@
 import { Label } from '@radix-ui/react-label'
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Input } from '../ui/input'
 import { cn } from '@/lib/utils'
 
-type propTypes = {
+type InputTextProps = {
   required?: boolean,
   label: string,
   id: string,
   className?: string,
   placeholder?: string,
-  type?: string
-}
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
-function InputText({ required = true, label, id, className, placeholder, type, ...props }: propTypes) {
+const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
+  required = true, 
+  label, 
+  id, 
+  className, 
+  onChange,
+  ...props
+}, ref) => {
   return (
     <div>
       <Label
@@ -22,15 +29,16 @@ function InputText({ required = true, label, id, className, placeholder, type, .
         {label} {!required && <span className="text-xs text-slate-400 font-medium">(Optional)</span>}
       </Label>
       <Input
-        type={type || 'text'}
+        type="text"
         id={id}
         name={id}
         className={cn('py-6 rounded-[20px] bg-gray-200 border-none', className)}
-        placeholder={placeholder || ''}
+        onChange={onChange}
+        ref={ref}
         {...props}
       />
     </div>
   )
-}
+});
 
-export default InputText
+export default InputText;

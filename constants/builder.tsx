@@ -74,9 +74,9 @@ export const navigation: Navigation = {
       id: 'nav-right-3',
       iconSize: 15,
       iconUrl: '/icons/builder/download-icon.svg',
-      alt: 'download',
+      alt: 'print',
       href: '/',
-      title: 'Download'
+      title: 'Print'
     },
   ]
 }

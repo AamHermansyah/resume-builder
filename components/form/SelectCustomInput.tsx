@@ -1,12 +1,14 @@
+import { ISkillItem } from "@/stores/skill.interface";
 import { useEffect, useRef, useState } from "react";
 
 interface propTypes {
-  data: string[];
+  data: ISkillItem[];
   allow: boolean;
-  onChange: (data: string[]) => void;
+  onChange: (data: ISkillItem[]) => void,
+  id: string
 }
 
-const SelectCustomInput: React.FC<propTypes> = ({ data, allow, onChange }) => {
+const SelectCustomInput: React.FC<propTypes> = ({ data, allow, onChange, id }) => {
   const [isError, setIsError] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -19,8 +21,8 @@ const SelectCustomInput: React.FC<propTypes> = ({ data, allow, onChange }) => {
       if (/^([a-zA-Z]+.?[a-zA-Z]+)(,([a-zA-Z]+.?[a-zA-Z]+))*$/gi.test(input)) {
         setIsError(false);
         let arrayInput = input.split(",");
-        arrayInput = Array.from(new Set([...data, ...arrayInput]));
-        onChange(arrayInput);
+        const newData = arrayInput.map((item) => ({ name: item, level: 100 }));
+        onChange(Array.from(new Set([...data, ...newData])) as ISkillItem[]);
         inputRef.current.value = "";
       } else {
         setIsError(true);
@@ -39,8 +41,8 @@ const SelectCustomInput: React.FC<propTypes> = ({ data, allow, onChange }) => {
           <input
             ref={inputRef}
             type="text"
-            name="skills"
-            id="skills"
+            name={id}
+            id={id}
             placeholder="Example: react or algorithm,next,html"
             className="w-full bg-gray-100 border border-gray-200 py-2 px-4 block focus:outline-none text-gray-700 rounded-[20px]"
           />
@@ -77,7 +79,7 @@ const SelectCustomInput: React.FC<propTypes> = ({ data, allow, onChange }) => {
             key={index}
             className={`${allow ? "hover:bg-tertiary-semi hover:text-white" : ""} flex items-center gap-1 w-max bg-slate-200 border-[1px] border-slate-200 px-3 py-0.5 text-gray-700 cursor-pointer rounded-full`}
           >
-            <span>{tag}</span>
+            <span>{tag.name}</span>
             {allow && <span className="text-xl">&times;</span>}
           </div>
         ))}
