@@ -12,7 +12,7 @@ function BuilderLayout() {
   return (
     <>
       <Navigation />
-      <div className="mt-[72px] md:mt-12 relative min-h-screen bg-gradient-to-br from-tertiary-semi to-violet-300 px-4 lg:px-10 overflow-hidden print:mt-0 print:px-0 print:py-0">
+      <div className="relative mt-[72px] md:mt-12 min-h-screen bg-gradient-to-br from-tertiary-semi to-violet-300 px-4 lg:px-10 overflow-hidden print:mt-0 print:px-0 print:py-0">
         <div className="relative flex flex-col-reverse md:flex-row gap-x-10 items-stretch mt-6 print:hidden">
           <div className="flex-1">
             <div className="w-full text-center bg-white rounded-[20px] overflow-x-auto hidden-scollbar">
@@ -37,7 +37,7 @@ function BuilderLayout() {
             {form.map((item) => {
               if (item.id === isActiveFormId) {
                 return (
-                  <div key={item.id} className="py-5 px-4 lg:px-7 my-4 md:my-10 bg-white rounded-[20px]">
+                  <div key={item.id} className="px-4 py-5 lg:px-7 my-4 md:my-10 bg-white rounded-[20px]">
                     <div className="mt-4 flex items-center gap-5">
                       <h1 className="text-xl font-medium text-tertiary-bold">
                         {item.title}

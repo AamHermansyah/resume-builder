@@ -13,7 +13,7 @@ export interface IVolunteeringItem {
 export interface IVolunteeringStore {
   volunteeredExps: IVolunteeringItem[];
   add: (newVolunteering: IVolunteeringItem) => void;
-  get: (index: number) => void;
+  get: (index: number) => IVolunteeringItem;
   remove: (index: number) => void;
   reset: (values: IVolunteeringItem[]) => void;
   onmoveup: (index: number) => void;

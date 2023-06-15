@@ -4,15 +4,17 @@ import 'jodit/build/jodit.min.css';
 import { LinkPlugin } from './plugins/link';
 
 import styles from './jodit.module.css';
+import { Label } from '@/components/ui/label';
 
 interface IRichtext {
   label: string;
+  id: string,
   onChange: (htmlOutput: string) => void;
   value: string;
   name: string;
 }
 
-export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
+export const RichtextEditor = memo(({ label, onChange, value, id }: IRichtext) => {
   const editorContainerRef = useRef<HTMLTextAreaElement | null>(null);
   const editorRef = useRef<any>(null);
   const [editorInstanceCreated, setEditorInstanceCreated] = useState(false);
@@ -57,19 +59,21 @@ export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
   }, [onChange, editorInstanceCreated]);
 
   return (
-    <div className={`${styles.editor_wrapper} mb-4`}>
-      <div
-        style={{
-          padding: '8px 16px 0px',
-        }}
-        className="text-resume-800 text-xs mb-1"
+    <div>
+      <Label
+        htmlFor={id}
+        className="px-[15px] text-[15px] font-medium text-tertiary-semi"
       >
-        <span>{label}</span>
+        {label}
+      </Label>
+      <div className={`${styles.editor_wrapper} mb-4 outline outline-1 outline-gray-200 mt-1`}>
+        <textarea
+          name={id}
+          id={id}
+          ref={editorContainerRef}
+          className={`min-h-[200px] min-w-full`}
+        ></textarea>
       </div>
-      <textarea
-        ref={editorContainerRef}
-        className={`min-h-[200px] min-w-full bg-[rgba(0,0,0,0.06)]`}
-      ></textarea>
     </div>
   );
 });
