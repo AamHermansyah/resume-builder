@@ -26,16 +26,16 @@ export default function FormLanguage() {
                 isDisabled: true
               },
               {
-                value: 'basic',
-                title: 'Basic',
+                value: '1',
+                title: 'Conversation',
               },
               {
-                value: 'native',
-                title: 'Native',
+                value: '2',
+                title: 'Intermediate',
               },
               {
-                value: 'professional',
-                title: 'Professional',
+                value: '3',
+                title: 'Fluent',
               },
             ]}
           />

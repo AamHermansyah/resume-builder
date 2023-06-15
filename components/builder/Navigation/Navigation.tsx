@@ -32,16 +32,23 @@ const NavigationMenuLink = dynamic(() =>
     .then((module) => module.NavigationMenuLink)
 )
 
-function Navigation() {
+type propTypes = {
+  onClickPreview: () => void
+}
+
+function Navigation({ onClickPreview }: propTypes) {
   return (
     <header id="nav-builder" className="fixed w-full top-0 z-50 print:hidden">
       <div className="px-5 py-4 bg-tertiary-semi text-white">
         <div className="w-full flex justify-between items-center gap-2 sm:gap-10">
           <div className="flex-1 flex gap-4 items-center">
-            {navigation.navLeft.map((nav) => (
+            {navigation.navLeft.map((nav, index) => (
               <NavigationChild
                 key={nav.id}
                 {...nav}
+                onClick={(e) => {
+                  if (index !== 0) e.preventDefault();
+                }}
               />
             ))}
           </div>
@@ -63,6 +70,13 @@ function Navigation() {
                               if (nav.title === 'Print') {
                                 e.preventDefault();
                                 globalThis?.print();
+                                return
+                              }
+
+                              if (nav.title === 'Preview') {
+                                e.preventDefault();
+                                onClickPreview();
+                                return
                               }
                             }}
                             {...nav}
@@ -82,6 +96,9 @@ function Navigation() {
               <NavigationChild
                 key={nav.id}
                 {...nav}
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
               />
             ))}
           </div>
@@ -89,9 +106,16 @@ function Navigation() {
           <div className="hidden md:flex flex-1 items-center justify-end gap-[25px]">
             {navigation.navRight.map((nav) => (
               <NavigationChild
-                onClick={() => {
+                onClick={(e) => {
                   if (nav.title === 'Print') {
+                    e.preventDefault();
                     globalThis?.print();
+                  }
+
+                  if (nav.title === 'Preview') {
+                    e.preventDefault();
+                    onClickPreview();
+                    return
                   }
                 }}
                 key={nav.id}

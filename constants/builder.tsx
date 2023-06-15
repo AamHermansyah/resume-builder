@@ -37,14 +37,14 @@ export const navigation: Navigation = {
       iconSize: 20,
       iconUrl: '/icons/builder/folder-icon.svg',
       alt: 'folder',
-      href: '/',
+      href: '',
     },
     {
       id: 'nav-left-3',
       iconSize: 20,
       iconUrl: '/icons/builder/save-icon.svg',
       alt: 'save',
-      href: '/',
+      href: '',
     },
   ],
   navCenter: [
@@ -53,7 +53,7 @@ export const navigation: Navigation = {
       iconSize: 13.5,
       iconUrl: '/icons/builder/resume-edit-icon.svg',
       alt: 'resume-edit',
-      href: '/',
+      href: '',
       title: 'Resume 1'
     },
   ],

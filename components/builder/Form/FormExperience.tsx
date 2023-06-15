@@ -3,14 +3,11 @@ import InputDate from "@/components/form/InputDate"
 import InputText from "@/components/form/InputText"
 import { RichtextEditor } from "@/helpers/common/components/richtext"
 import { useVoluteeringStore } from "@/stores/volunteering"
-import { IVolunteeringItem } from "@/stores/volunteering.interface"
 
 function FormExperience() {
 
   const { get, updatedVolunteeringExp } = useVoluteeringStore();
   const project = get(0);
-
-  console.log(project);
 
   const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
     const { name, value } = e.target;

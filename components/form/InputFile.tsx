@@ -17,7 +17,7 @@ const InputFile = forwardRef<HTMLInputElement, propTypes>(({ id, onChange, ...pr
     <div>
       <label
         htmlFor={id}
-        className="relative flex flex-col items-center justify-center w-full aspect-square border-[5px] border-tertiary-semi rounded-full cursor-pointer"
+        className="relative flex flex-col items-center justify-center w-full max-w-[150px] aspect-square border-[5px] border-tertiary-semi rounded-full cursor-pointer"
       >
         <div className="absolute w-[60%] aspect-square flex flex-col items-center justify-center">
           <Image

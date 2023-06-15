@@ -19,6 +19,7 @@ export type IBasicLanguage = {
 
 export interface IBasicDetailsItem {
   name: string;
+  dob: string;
   label: string;
   image: string;
   email: string;

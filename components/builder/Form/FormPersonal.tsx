@@ -2,7 +2,6 @@ import InputDate from "@/components/form/InputDate";
 import InputFile from "@/components/form/InputFile";
 import InputText from "@/components/form/InputText";
 import InputTextArea from "@/components/form/InputTextArea";
-import SelectOption from "@/components/form/SelectOption";
 import { useBasicDetails } from "@/stores/basic";
 import { IBasicDetailsItem } from "@/stores/basic.interface";
 import React from "react";
@@ -104,7 +103,9 @@ function FormPersonal() {
         <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
           <InputDate
             id="dob"
-            label="DOB"
+            label="Date of Birth"
+            defaultValue={dataBasic.dob}
+            onChange={handleOnChangeInput}
           />
         </div>
 
@@ -117,33 +118,12 @@ function FormPersonal() {
           />
         </div>
 
-        <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
+        <div className="w-full col-span-4 lg:col-span-2">
           <InputText
-            id="marital"
-            label="Marital Status"
-          />
-        </div>
-
-        <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
-          <SelectOption
-            id="gender"
-            label="Gender"
-            options={[
-              {
-                value: '',
-                title: 'Gender',
-                isSelected: true,
-                isDisabled: true
-              },
-              {
-                value: 'male',
-                title: 'Male',
-              },
-              {
-                value: 'female',
-                title: 'Female',
-              },
-            ]}
+            id="url"
+            label="Portfolio Website"
+            onChange={handleOnChangeInput}
+            defaultValue={dataBasic.url}
           />
         </div>
 
