@@ -1,7 +1,6 @@
 import { BasicIntro } from './components/BasicIntro';
 import { EducationSection } from './components/Education';
 import { VolunteerSection } from './components/Volunteer';
-import { Objective } from './components/Objective';
 import { SkillsSection } from './components/Skills';
 import { SummarySection } from './components/Summary';
 import { WorkSection } from './components/Work';
@@ -9,9 +8,18 @@ import { AwardSection } from './components/Awards';
 import { SectionValidator } from '@/helpers/common/components/ValidSectionRenderer';
 import { StateContext } from '@/components/builder/Resume/ResumePreview';
 import { useContext } from 'react';
+import { IBasicLanguage } from '@/stores/basic.interface';
+import { SectionHeading } from './atoms/SectionHeading';
 
 export default function MordernTemplate() {
   const resumeData = useContext(StateContext);
+
+  const listFormat = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+  const basicLanguages = resumeData
+    .basics
+    .languages
+    .map((language: IBasicLanguage) => `${language.value} (${language.level})`);
+  const formattedBasicLanguages = listFormat.format(basicLanguages);
 
   return (
     <div className="p-4 print:p-0  bg-white w-[730px] print:w-[700px]">
@@ -40,9 +48,17 @@ export default function MordernTemplate() {
         </div>
 
         <div className="">
-          <SectionValidator value={resumeData.basics.objective}>
+          <SectionValidator value={resumeData.basics.languages}>
             {/* <Objective objective={resumeData.basics.objective} />*/}
-            <SkillsSection title="Languages" list={resumeData.skills.languages} />
+            <div className="my-3">
+              <SectionHeading title="Languages" />
+              <span>{formattedBasicLanguages}</span>
+              <ul className="text-xs">
+                <li>3 = <span className="italic">Fluent</span></li>
+                <li>2 = <span className="italic">Intermediate</span></li>
+                <li>1 = <span className="italic">Conversation</span></li>
+              </ul>
+            </div>
           </SectionValidator>
 
           <SectionValidator value={resumeData.skills.languages}>

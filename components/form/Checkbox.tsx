@@ -4,7 +4,7 @@ import { Checkbox } from '../ui/checkbox';
 type CustomCheckboxProps = {
   id: string;
   label: string;
-  checked: boolean;
+  checked?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const CustomCheckbox = forwardRef<HTMLButtonElement, CustomCheckboxProps>(

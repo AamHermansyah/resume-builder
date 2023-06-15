@@ -12,6 +12,11 @@ type ILocation = {
   region: string;
 };
 
+export type IBasicLanguage = {
+  value: string,
+  level: number
+}
+
 export interface IBasicDetailsItem {
   name: string;
   label: string;
@@ -24,6 +29,7 @@ export interface IBasicDetailsItem {
   relExp: string;
   totalExp: string;
   objective: string;
+  languages: IBasicLanguage[];
   profiles: IProfiles[];
 }
 
