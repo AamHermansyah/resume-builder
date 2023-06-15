@@ -1,18 +1,20 @@
-import React from 'react'
-import { Label } from '../ui/label'
+import React from 'react';
+import { Label } from '../ui/label';
 
 type propTypes = {
-  id: string,
-  label: string,
-  options: {    
-    value: string,
-    title: string,
-    isSelected?: boolean,
-    isDisabled?: boolean
-  }[]
-}
+  id: string;
+  label: string;
+  options: {
+    value: string;
+    title: string;
+    isSelected?: boolean;
+    isDisabled?: boolean;
+  }[];
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  value: string;
+};
 
-function SelectOption({ id, label, options }: propTypes) {
+function SelectOption({ id, label, options, onChange, value }: propTypes) {
   return (
     <div>
       <Label
@@ -24,24 +26,23 @@ function SelectOption({ id, label, options }: propTypes) {
       <select
         name={id}
         id={id}
+        value={value}
+        onChange={onChange}
         className="block w-full py-[13px] px-2 rounded-[20px] bg-gray-200 border-none outline-gray-400"
       >
-        {/* <option value="" selected disabled></option>
-        <option value="male">Male</option>
-        <option value="female">Female</option> */}
         {options.map((option, index) => (
           <option
             value={option.value}
             key={index}
             selected={option.isSelected || false}
-            disabled={option.isSelected || false}
+            disabled={option.isDisabled || false}
           >
             {option.title}
           </option>
         ))}
       </select>
     </div>
-  )
+  );
 }
 
-export default SelectOption
+export default SelectOption;
