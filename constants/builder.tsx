@@ -3,6 +3,10 @@ import FormExperience from "@/components/builder/Form/FormExperience"
 import FormPersonal from "@/components/builder/Form/FormPersonal"
 import FormProjects from "@/components/builder/Form/FormProjects"
 import FormSkills from "@/components/builder/Form/FormSkills"
+import FormLanguage from "@/components/builder/Form/FormLanguage"
+import FormExtracurricular from "@/components/builder/Form/FormExtracurricular"
+import FormCertificate from "@/components/builder/Form/FormCertificate"
+import FormLink from "@/components/builder/Form/FormLink"
 
 export type NavigationChild = {
   id: string,
@@ -123,24 +127,24 @@ export const form: Form[] = [
     id: 'form-header-6',
     title: 'Languages',
     iconUrl: '/icons/builder/language-icon.svg',
-    component: <div>1</div>
+    component: <FormLanguage/>
   },
   {
     id: 'form-header-7',
     title: 'Extracurricular Activities',
     iconUrl: '/icons/builder/mask-icon.svg',
-    component: <div>1</div>
+    component: <FormExtracurricular/>
   },
   {
     id: 'form-header-8',
     title: 'Certifications',
     iconUrl: '/icons/builder/news-paper.svg',
-    component: <div>1</div>
+    component: <FormCertificate/>
   },
   {
     id: 'form-header-9',
     title: 'Links',
     iconUrl: '/icons/builder/links-fill.svg',
-    component: <div>1</div>
+    component: <FormLink/>
   },
 ]
