@@ -17,6 +17,20 @@
     "relExp": "4 years",
     "totalExp": "6 Years",
     "objective": "Eager to expand my skill set through external trainings to help boost all major front desk KPIs. Hoping to leverage organizational skills to help ABC Corp introduce time-saving schemes for all executives.",
+    "languages": [
+      {
+        "value": "Indonesia",
+        "level": 3
+      },
+      {
+        "value": "English",
+        "level": 2
+      },
+      {
+        "value": "Sundanese",
+        "level": 1
+      }
+    ],
     "profiles": [
       {
         "network": "linkedin",
