@@ -6,7 +6,7 @@ import { IBasicDetailsItem, IBasicLanguage } from '@/stores/basic.interface';
 
 export default function FormLanguage() {
   const { values: dataBasic, reset } = useBasicDetails();
-  const [languages, setLanguages] = useState<IBasicLanguage[]>([{ value: '', level: 1 }]);
+  const [languages, setLanguages] = useState<IBasicLanguage[]>(dataBasic.languages);
 
   const handleLanguageChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
     const { value } = e.target;
@@ -23,25 +23,8 @@ export default function FormLanguage() {
 
   const handleLevelChange = (e: ChangeEvent<HTMLSelectElement>, index: number) => {
     const { value } = e.target;
-    let level = 0;
-
-    switch (value) {
-      case 'fluent':
-        level = 3;
-        break;
-      case 'intermediate':
-        level = 2;
-        break;
-      case 'conversation':
-        level = 1;
-        break;
-      default:
-        level = 1;
-        break;
-    }
-
     const updatedLanguages = [...languages];
-    updatedLanguages[index].level = level;
+    updatedLanguages[index].level = +value;
 
     const newData: IBasicDetailsItem = {
       ...dataBasic,
@@ -52,7 +35,7 @@ export default function FormLanguage() {
   };
 
   const addLanguage = () => {
-    setLanguages([...languages, { value: '', level: 1 }]);
+    setLanguages([...languages, { value: '', level: 0 }]);
   };
 
   const removeLanguage = () => {
@@ -71,7 +54,7 @@ export default function FormLanguage() {
   };
 
   const resetLanguages = () => {
-    setLanguages([{ value: '', level: 1 }]);
+    setLanguages([{ value: '', level: 3 }]);
   };
 
   return (
@@ -93,26 +76,23 @@ export default function FormLanguage() {
               label="Level"
               options={[
                 {
-                  value: 'fluent',
+                  value: '3',
                   title: 'Fluent',
+                  isSelected: language.level === 3
                 },
                 {
-                  value: 'intermediate',
+                  value: '2',
                   title: 'Intermediate',
+                  isSelected: language.level === 2
                 },
                 {
-                  value: 'conversation',
+                  value: '1',
                   title: 'Conversation',
+                  isSelected: language.level === 1
                 },
               ]}
+              value={language.value || ''}
               onChange={(e: ChangeEvent<HTMLSelectElement>) => handleLevelChange(e, index)}
-              value={
-                language.level === 3
-                  ? 'fluent'
-                  : language.level === 2
-                  ? 'intermediate'
-                  : 'conversation'
-              }
             />
           </div>
         </div>
@@ -121,7 +101,7 @@ export default function FormLanguage() {
         {languages.length > 1 && (
           <button
             type="button"
-            className="px-4 py-2 text-sm font-medium text-white bg-red-500 rounded hover:bg-red-600"
+            className="px-4 py-2 text-sm font-medium text-red-500 border border-tertiary rounded hover:bg-red-500 hover:text-white hover:border-red-500"
             onClick={removeLanguage}
           >
             -
@@ -129,17 +109,17 @@ export default function FormLanguage() {
         )}
         <button
           type="button"
-          className="px-4 py-2 text-sm font-medium text-white bg-tertiary rounded hover:bg-pink-600"
-          onClick={addLanguage}
-        >
-          +
-        </button>
-        <button
-          type="button"
-          className="px-4 py-2 text-sm font-medium text-white bg-sky-500 rounded hover:bg-[#D4CAFE]"
+          className="px-4 py-2 text-sm font-medium text-white bg-sky-500 rounded hover:bg-sky-600"
           onClick={resetLanguages}
         >
           Reset
+        </button>
+        <button
+          type="button"
+          className="px-4 py-2 text-sm font-medium text-red-500 border border-tertiary rounded hover:bg-red-500 hover:text-white hover:border-red-500"
+          onClick={addLanguage}
+        >
+          +
         </button>
       </div>
     </form>
