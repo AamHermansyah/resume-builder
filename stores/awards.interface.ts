@@ -16,3 +16,4 @@ export interface IAwardsStore {
   onmovedown: (index: number) => void;
   updateAward: (index: number, updatedInfo: IAwardItem) => void;
 }
+  
