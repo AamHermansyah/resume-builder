@@ -1,6 +1,7 @@
 {
   "basics": {
     "name": "Jhon/Jane Doe",
+    "dob": "2003-03-24",
     "label": "Job Title",
     "image": "https://randomuser.me/api/portraits/men/18.jpg",
     "email": "janedoe@email.com",

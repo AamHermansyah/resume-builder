@@ -10,8 +10,9 @@ import { StateContext } from '@/components/builder/Resume/ResumePreview';
 import { useContext } from 'react';
 import { IBasicLanguage } from '@/stores/basic.interface';
 import { SectionHeading } from './atoms/SectionHeading';
+import { cn } from '@/lib/utils';
 
-export default function MordernTemplate() {
+export default function MordernTemplate({ widthClassName = '' }: { widthClassName?: string }) {
   const resumeData = useContext(StateContext);
 
   const listFormat = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
@@ -22,7 +23,7 @@ export default function MordernTemplate() {
   const formattedBasicLanguages = listFormat.format(basicLanguages);
 
   return (
-    <div className="p-4 print:p-0  bg-white w-[730px] print:w-[700px]">
+    <div className={cn('p-4 print:p-0  bg-white w-[730px] print:w-[700px]', widthClassName)}>
       <BasicIntro
         name={resumeData.basics.name}
         label={resumeData.basics.label}
@@ -31,6 +32,7 @@ export default function MordernTemplate() {
         country={resumeData.basics.location.country}
         phone={resumeData.basics.phone}
         image={resumeData.basics.image}
+        dob={resumeData.basics.dob}
       />
       <div className="flex">
         <div className="basis-[60%] p-3">

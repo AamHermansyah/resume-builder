@@ -3,6 +3,7 @@ import { ProfileContact } from '../atoms/ProfileContact';
 import { ProfileImage } from '@/helpers/common/components/ProfileImage';
 import { ProfileName } from '../atoms/ProfileName';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
+import { DateOfBirth } from '../atoms/DateOfBirth';
 
 export const BasicIntro = ({
   name,
@@ -12,6 +13,7 @@ export const BasicIntro = ({
   phone,
   country,
   image,
+  dob
 }: {
   name: string;
   label: string;
@@ -20,11 +22,13 @@ export const BasicIntro = ({
   phone: string;
   country: string;
   image: string;
+  dob: string;
 }) => {
   return (
     <div className="flex justify-between items-center p-2">
       <div>
         <ProfileName name={name} />
+        <DateOfBirth dob={dob} />
         <SectionSubtitle label={label} />
         <div className="flex flex-wrap gap-x-3">
           <ProfileContact text={phone} />

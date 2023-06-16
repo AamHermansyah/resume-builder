@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react'
 
 type propTypes = Pick<NavigationChild, 'title' | 'iconUrl' | 'iconSize' | 'alt' | 'href'> & {
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 };
 
 function NavigationChild({ iconUrl, iconSize, title, alt, href, onClick }: propTypes) {
@@ -12,9 +12,8 @@ function NavigationChild({ iconUrl, iconSize, title, alt, href, onClick }: propT
     <Link
       href={href}
       onClick={(e) => {
-        e.preventDefault();
         if (onClick) {
-          onClick();
+          onClick(e);
         }
       }}
       className="flex items-center gap-[10px] group"

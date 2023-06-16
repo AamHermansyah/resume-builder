@@ -5,14 +5,58 @@ import { form } from "@/constants/builder";
 import { useState } from "react";
 import Image from "next/image";
 import Button from "../landing-page/Button";
+import ResumePreviewMode from "./Resume/ResumePreviewMode";
+import { MdCancel, MdPrint } from "react-icons/md";
 
 function BuilderLayout() {
   const [isActiveFormId, setIsActiveFormId] = useState(form[0].id);
+  const [isActivePreview, setIsActivePreview] = useState(false);
 
   return (
     <>
-      <Navigation />
-      <div className="relative mt-[72px] md:mt-12 min-h-screen bg-gradient-to-br from-tertiary-semi to-violet-300 px-4 lg:px-10 overflow-hidden print:mt-0 print:px-0 print:py-0">
+      {/* Preview Modal */}
+      {isActivePreview && (
+        <div
+        className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-70 backdrop-blur z-[999]"
+        onClick={() => {
+          setIsActivePreview(false);
+        }}
+        >
+          <ResumePreviewMode />
+          <div className="absolute bottom-5 left-3 flex gap-2 sm:gap-4">
+            <button
+              type="button"
+              className="text-white text-sm py-2 px-3 rounded-full bg-tertiary flex gap-2 items-center shadow-md"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsActivePreview(false);
+              }}
+            >
+              <MdCancel fontSize={24} />
+              Close
+            </button>
+
+            <button
+              type="button"
+              className="text-white text-sm py-2 px-3 rounded-full bg-sky-500 flex gap-2 items-center shadow-md"
+              onClick={(e) => {
+                e.stopPropagation();
+                globalThis?.print();
+              }}
+            >
+              <MdPrint fontSize={24} />
+              Print
+            </button>
+          </div>
+        </div>
+      )}
+
+      <Navigation
+        onClickPreview={() => {
+          setIsActivePreview(true);
+        }}
+      />
+      <div className="relative mt-[72px] md:mt-12 min-h-screen bg-gradient-to-tr from-tertiary-semi to-violet-300 px-4 lg:px-10 overflow-hidden print:mt-0 print:px-0 print:py-0">
         <div className="relative flex flex-col-reverse md:flex-row gap-x-10 items-stretch mt-6 print:hidden">
           <div className="flex-1">
             <div className="w-full text-center bg-white rounded-[20px] overflow-x-auto hidden-scollbar">
