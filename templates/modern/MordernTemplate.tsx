@@ -42,7 +42,11 @@ export default function MordernTemplate({ widthClassName = '' }: { widthClassNam
           </SectionValidator>
 
           <SectionValidator value={resumeData.work}>
-            <WorkSection experience={resumeData.work} />
+            <WorkSection experiences={resumeData.work} />
+          </SectionValidator>
+
+          <SectionValidator value={resumeData.volunteer}>
+            <VolunteerSection projects={resumeData.volunteer} />
           </SectionValidator>
 
           <SectionValidator value={resumeData.awards}>
@@ -82,10 +86,6 @@ export default function MordernTemplate({ widthClassName = '' }: { widthClassNam
 
           <SectionValidator value={resumeData.education}>
             <EducationSection educations={resumeData.education} />
-          </SectionValidator>
-
-          <SectionValidator value={resumeData.volunteer}>
-            <VolunteerSection projects={resumeData.volunteer} />
           </SectionValidator>
         </div>
       </div>

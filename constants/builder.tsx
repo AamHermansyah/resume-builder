@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
 const FormEducations = dynamic(() => import('@/components/builder/Form/FormEducations'));
-const FormExperience = dynamic(() => import('@/components/builder/Form/FormExperience'));
+const FormExperiences = dynamic(() => import('@/components/builder/Form/FormExperiences'));
 const FormPersonal = dynamic(() => import('@/components/builder/Form/FormPersonal'));
 const FormProjects = dynamic(() => import('@/components/builder/Form/FormProjects'));
 const FormSkills = dynamic(() => import('@/components/builder/Form/FormSkills'));
@@ -56,7 +56,7 @@ export const navigation: Navigation = {
       iconSize: 13.5,
       iconUrl: '/icons/builder/resume-edit-icon.svg',
       alt: 'resume-edit',
-      href: '',
+      href: '/builder',
       title: 'Resume 1'
     },
   ],
@@ -66,7 +66,7 @@ export const navigation: Navigation = {
       iconSize: 13.5,
       iconUrl: '/icons/builder/customize-icon.svg',
       alt: 'customize',
-      href: '/',
+      href: '/home',
       title: 'Customize'
     },
     {
@@ -122,7 +122,7 @@ export const form: Form[] = [
     iconUrl: '/icons/builder/briefcase.svg',
     component: (
       <Suspense>
-        <FormExperience />
+        <FormExperiences />
       </Suspense>
     )
   },

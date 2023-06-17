@@ -8,7 +8,7 @@ export interface IExperienceItem {
   endDate: string | null;
   years: string;
   summary: string;
-  highlights: string[];
+  highlights: string[] | null;
   isWorkingHere: boolean;
 }
 

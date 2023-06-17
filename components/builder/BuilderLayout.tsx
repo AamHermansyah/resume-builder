@@ -69,15 +69,12 @@ function BuilderLayout() {
                   onClickButton={(id) => {
                     setIsActiveFormId(id);
                   }}
+                  isActiveButton={isActiveFormId}
                 />
               </div>
             </div>
           </div>
-          <div className="hidden md:block flex-[0.7]">
-            <button className="w-max mx-auto px-9 py-4 text-lg font-medium bg-white rounded-lg sm:rounded-[20px] text-tertiary-semi flex items-center justify-center gap-10 active:scale-95 transition">
-              Change template
-            </button>
-          </div>
+          <div className="hidden md:block flex-[0.7]"></div>
         </div>
 
         <div className="mb-10 relative flex flex-col md:flex-row gap-x-10 gap-y-4 items-start">

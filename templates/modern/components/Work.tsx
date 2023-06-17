@@ -6,12 +6,12 @@ import { SectionList } from '../atoms/SectionList';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
 import { SectionTitle } from '../atoms/SectionTitle';
 
-export const WorkSection = ({ experience }: { experience: IWorkIntrf[] }) => {
+export const WorkSection = ({ experiences }: { experiences: IWorkIntrf[] }) => {
   return (
     <div className="mb-3">
-      <SectionHeading title="Experience" />
+      <SectionHeading title="Experiences" />
 
-      {experience.map((item: IWorkIntrf, index: number) => {
+      {experiences.map((item: IWorkIntrf, index: number) => {
         return (
           <div key={index} className="py-2">
             <div className="flex justify-between items-center flex-wrap">

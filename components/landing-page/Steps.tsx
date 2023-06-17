@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 function Steps() {
   return (
-    <section id="steps" className="mt-10 px-4 py-10 sm:px-10">
+    <section id="about-us" className="mt-10 px-4 py-10 sm:px-10">
       <h1 className="text-center text-tertiary-bold text-4xl font-semibold">
         Build your resume with 4 steps
       </h1>

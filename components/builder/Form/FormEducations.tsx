@@ -83,7 +83,8 @@ function FormEducations() {
           <div className="grid grid-cols-4 sm:grid-cols-3 gap-x-4 lg:gap-x-10 gap-y-4">
             <div className="w-full col-span-4 sm:col-span-2">
               <InputText
-                id="institution"
+                name="institution"
+                id={`institution-${index}`}
                 label="Name of Institute"
                 defaultValue={academic.institution}
                 onChange={(e) => handleOnChangeInput(index, e)}
@@ -91,7 +92,8 @@ function FormEducations() {
             </div>
             <div className="w-full col-span-4 sm:col-span-1">
               <InputText
-                id="studyType"
+                name="studyType"
+                id={`studyType-${index}`}
                 label="Degree"
                 defaultValue={academic.studyType}
                 onChange={(e) => handleOnChangeInput(index, e)}
@@ -99,7 +101,8 @@ function FormEducations() {
             </div>
             <div className="w-full col-span-4 sm:col-span-2">
               <InputText
-                id="area"
+                name="area"
+                id={`area-${index}`}
                 label="Field Of Study"
                 defaultValue={academic.area}
                 onChange={(e) => handleOnChangeInput(index, e)}
@@ -107,7 +110,8 @@ function FormEducations() {
             </div>
             <div className="w-full col-span-2 sm:col-span-1">
               <InputDate
-                id="startDate"
+                name="startDate"
+                id={`startDate-${index}`}
                 label="Start Date"
                 defaultValue={academic.startDate || ''}
                 onChange={(e) => handleOnChangeInput(index, e)}
@@ -115,7 +119,8 @@ function FormEducations() {
             </div>
             <div className="w-full col-span-2 sm:col-span-2">
               <InputDate
-                id="endDate"
+                name="endDate"
+                id={`endDate-${index}`}
                 label="End Date"
                 disabled={academic.isStudyingHere}
                 defaultValue={academic.endDate || ''}
@@ -125,7 +130,8 @@ function FormEducations() {
             <div className="w-full sm:self-center col-span-4 sm:col-span-1">
               <div className="w-full sm:mt-5">
                 <CustomCheckbox
-                  id="present"
+                  name="present"
+                  id={`present-${index}`}
                   label="Present"
                   checked={academic.isStudyingHere}
                   onClick={(e) => {
@@ -136,7 +142,8 @@ function FormEducations() {
             </div>
             <div className="w-full col-span-4 lg:col-span-3">
               <InputTextArea
-                id="description"
+                name="description"
+                id={`description-${index}`}
                 label="Description"
                 defaultValue={academic.description || ''}
                 onChange={(e) => handleOnChangeInput(index, e)}

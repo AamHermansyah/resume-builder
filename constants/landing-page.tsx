@@ -36,27 +36,27 @@ export const navigation: Navigation[] = [
   {
     id: 'nav-1',
     title: "Home",
-    href: "/",
+    href: "#home",
   },
   {
     id: 'nav-2',
     title: "About Us",
-    href: "/",
+    href: "#about-us",
   },
   {
     id: 'nav-3',
     title: "Create Resume",
-    href: "/",
+    href: "/builder",
   },
   {
     id: 'nav-4',
     title: "Contribute",
-    href: "/",
+    href: "#contribute",
   },
   {
     id: 'nav-5',
     title: "FAQs",
-    href: "/",
+    href: "#faqs",
   },
 ]
 

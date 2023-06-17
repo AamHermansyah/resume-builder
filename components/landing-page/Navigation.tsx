@@ -33,10 +33,28 @@ const NavigationMenuLink = dynamic(() =>
 )
 
 export function Navigation() {
+  const [isActive, setIsActive] = React.useState(navigation[0].id)
+
+  const headerRef = React.useRef<HTMLElement | null>(null);
+
+  React.useEffect(() => {
+    const listener = function() {
+      if (headerRef.current) {
+        headerRef.current.classList.toggle('nav-active', window.scrollY > 0);
+      }
+    }
+
+    window.addEventListener('scroll', listener);
+
+    return () => {
+      window.removeEventListener('scroll', listener);
+    }
+  }, []);
+
   return (
-    <header className="w-full absolute top-0 left-0 z-50">
+    <header ref={headerRef} className="w-full fixed top-0 left-0 z-50 py-4 lg:py-0 transition">
       <React.Suspense>
-        <NavigationMenu className="md:hidden flex justify-start pt-8 lg:pt-10 px-10 lg:px-20">
+        <NavigationMenu className="md:hidden flex justify-end px-10 lg:px-20">
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger>
@@ -45,12 +63,13 @@ export function Navigation() {
               <NavigationMenuContent>
                 <nav>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                    {navigation.map((nav, index) => (
+                    {navigation.map((nav) => (
                       <ListItem
                         key={nav.id}
                         title={nav.title}
                         href={nav.href}
-                        className={`${index === 0 ? 'text-tertiary font-semibold' : ''} hover:underline underline-offset-4`}
+                        className={`${isActive === nav.id ? 'text-tertiary font-semibold' : ''} hover:underline underline-offset-4`}
+                        onClick={() => setIsActive(nav.id)}
                       />
                     ))}
                   </ul>
@@ -62,11 +81,12 @@ export function Navigation() {
       </React.Suspense>
       <nav className="hidden md:block">
         <ul className="w-full flex gap-7 justify-end items-center py-8 lg:py-10 px-10 lg:px-20 lg:text-xl">
-          {navigation.map((nav, index) => (
+          {navigation.map((nav) => (
             <li key={nav.id}>
               <Link
                 href={nav.href}
-                className={`${index === 0 ? 'text-tertiary font-semibold' : ''} hover:underline underline-offset-4`}
+                className={`${isActive === nav.id ? 'text-tertiary font-semibold' : ''} hover:underline underline-offset-4`}
+                onClick={() => setIsActive(nav.id)}
               >
                 {nav.title}
               </Link>

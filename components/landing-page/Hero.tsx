@@ -10,7 +10,7 @@ function Hero() {
       transition={{ duration: .5 }}
     >
       <section
-        id="hero"
+        id="home"
         className="relative bg-gradient-to-br from-tertiary-semi to-violet-300 overflow-hidden rounded-br-[50px] lg:rounded-br-[100px] py-20"
       >
         <div className="relative min-h-[710px] flex items-center rounded-br-[100px] z-10">

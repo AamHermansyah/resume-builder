@@ -8,9 +8,23 @@ import dayjs from "dayjs"
 import { IoMdAdd } from "react-icons/io"
 import { MdDelete } from "react-icons/md"
 
-function FormExperience() {
+const initValue = {
+  id: crypto.randomUUID(),
+  name: '',
+  position: '',
+  country: '',
+  url: '',
+  startDate: null,
+  endDate: null,
+  years: '',
+  summary: '',
+  highlights: null,
+  isWorkingHere: false,
+};
 
-  const { updateExperience, experiences, remove, add } = useExperiences();
+function FormExperiences() {
+
+  const { updateExperience, experiences, remove, add, reset } = useExperiences();
 
   const handleOnChangeInput = (index: number, e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -47,11 +61,11 @@ function FormExperience() {
   }
 
   const handleAdd = () => {
-    // add(initValue);
+    add(initValue);
   }
 
   const handleReset = () => {
-    // reset([initValue]);
+    reset([initValue]);
   }
 
   return (
@@ -75,7 +89,8 @@ function FormExperience() {
           <div className="grid grid-cols-4 sm:grid-cols-3 gap-x-4 lg:gap-x-10 gap-y-4">
             <div className="w-full col-span-4 sm:col-span-2">
               <InputText
-                id="name"
+                name="name"
+                id={`name-${index}`}
                 label="Company"
                 defaultValue={experience.name}
                 onChange={(e) => handleOnChangeInput(index, e)}
@@ -83,7 +98,8 @@ function FormExperience() {
             </div>
             <div className="w-full col-span-2 sm:col-span-1">
               <InputText
-                id="position"
+                name="position"
+                id={`position-${index}`}
                 label="Position"
                 defaultValue={experience.position}
                 onChange={(e) => handleOnChangeInput(index, e)}
@@ -91,7 +107,8 @@ function FormExperience() {
             </div>
             <div className="w-full col-span-2 sm:col-span-1">
               <InputText
-                id="country"
+                name="country"
+                id={`country-${index}`}
                 label="Country"
                 defaultValue={experience.country}
                 onChange={(e) => handleOnChangeInput(index, e)}
@@ -99,7 +116,8 @@ function FormExperience() {
             </div>
             <div className="w-full col-span-2 sm:col-span-1">
               <InputDate
-                id="startDate"
+                name="startDate"
+                id={`startDate-${index}`}
                 label="Start Date"
                 defaultValue={experience.startDate || ''}
                 onChange={(e) => handleOnChangeInput(index, e)}
@@ -107,7 +125,8 @@ function FormExperience() {
             </div>
             <div className="w-full col-span-2 sm:col-span-1">
               <InputDate
-                id="endDate"
+                name="endDate"
+                id={`endDate-${index}`}
                 label="End Date"
                 disabled={experience.isWorkingHere}
                 defaultValue={experience.endDate || ''}
@@ -117,7 +136,8 @@ function FormExperience() {
             <div className="w-full self-center col-span-4 sm:col-span-1">
               <div className="w-full">
                 <CustomCheckbox
-                  id="present"
+                  name="present"
+                  id={`present-${index}`}
                   label="Present"
                   checked={experience.isWorkingHere}
                   onClick={(e) => handlePresentCheckbox(index, e)}
@@ -133,7 +153,7 @@ function FormExperience() {
                   onChange={(htmlOuput) => {
                     handleRichTextEditor(index, htmlOuput)
                   }}
-                  name="experiences"
+                  name="summary"
                 />
               </div>
             </div>
@@ -144,14 +164,14 @@ function FormExperience() {
         <button
           type="button"
           className="px-4 py-2 text-sm font-medium text-white bg-orange-400 border border-orange-400 rounded hover:bg-orange-500"
-          // onClick={handleReset}
+          onClick={handleReset}
         >
           Reset
         </button>
         <button
           type="button"
           className="w-[50px] flex justify-center py-2 text-sm font-medium text-white bg-sky-500 border border-sky-500 rounded hover:bg-sky-600"
-          // onClick={handleAdd}
+          onClick={handleAdd}
         >
           <IoMdAdd fontSize={20} />
         </button>
@@ -160,4 +180,4 @@ function FormExperience() {
   )
 }
 
-export default FormExperience 
+export default FormExperiences 

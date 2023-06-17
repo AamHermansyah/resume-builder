@@ -1,4 +1,4 @@
-import React, { forwardRef, ChangeEvent, InputHTMLAttributes } from 'react';
+import React from 'react';
 import InputDate from "@/components/form/InputDate";
 import InputText from "@/components/form/InputText";
 import { RichtextEditor } from "@/helpers/common/components/richtext";
@@ -8,6 +8,18 @@ import dayjs from "dayjs";
 import CustomCheckbox from '@/components/form/Checkbox';
 import { IoMdAdd } from 'react-icons/io';
 import { MdDelete } from 'react-icons/md';
+
+const initValue = {
+  id: crypto.randomUUID(),
+  organization: '',
+  position: '',
+  url: '',
+  startDate: null,
+  endDate: null,
+  summary: '',
+  highlights: null,
+  isVolunteeringNow: false,
+};
 
 function FormProjects() {
   const { volunteeredExps, updatedVolunteeringExp, remove, add, reset } = useVoluteeringStore();
@@ -43,11 +55,11 @@ function FormProjects() {
   }
 
   const handleAdd = () => {
-    // add(initValue);
+    add(initValue);
   }
 
   const handleReset = () => {
-    // reset([initValue]);
+    reset([initValue]);
   }
 
   return (
@@ -71,7 +83,8 @@ function FormProjects() {
           <div className="grid grid-cols-3 gap-x-4 lg:gap-x-10 gap-y-4">
             <div className="w-full col-span-2">
               <InputText
-                id="organization"                
+                name="organization"                
+                id={`organization-${index}`}
                 label="Organization"
                 defaultValue={project.organization}
                 onChange={(e) => handleOnChangeInput(index, e)}
@@ -79,7 +92,8 @@ function FormProjects() {
             </div>
             <div className="w-full">
               <InputText
-                id="position"
+                name="position"
+                id={`position-${index}`}
                 label="Position"
                 defaultValue={project.position}
                 onChange={(e) => handleOnChangeInput(index, e)}
@@ -87,7 +101,8 @@ function FormProjects() {
             </div>
             <div className="w-full">
               <InputDate
-                id="startDate"
+                name="startDate"
+                id={`startDate-${index}`}
                 label="Start Date"
                 defaultValue={project.startDate || ""}
                 onChange={(e) => handleOnChangeInput(index, e)}
@@ -95,7 +110,8 @@ function FormProjects() {
             </div>
             <div className="w-full flex items-center gap-[25px] ">
               <InputDate
-                id="endDate"
+                name="endDate"
+                id={`endDate-${index}`}
                 label="End Date"
                 disabled={project.isVolunteeringNow}
                 defaultValue={project.endDate || ""}
@@ -103,7 +119,8 @@ function FormProjects() {
               />
               <div className="flex items-center justify-center mt-[25px]">
                 <CustomCheckbox
-                  id="present"
+                  name="present"
+                  id={`present-${index}`}
                   label="Present"
                   checked={project.isVolunteeringNow}
                   onClick={(e) => handlePresentCheckbox(index, e)}
@@ -113,7 +130,8 @@ function FormProjects() {
             <div className="w-full col-span-3">
               <RichtextEditor
                 label="Summary"
-                id="project"
+                name="summary"
+                id={`project-${index}`}
                 value={project.summary}
                 onChange={(htmlOutput) => {
                   updatedVolunteeringExp(index, {
@@ -121,7 +139,6 @@ function FormProjects() {
                     summary: htmlOutput,
                   });
                 }}
-                name="project"
               />
             </div>
           </div>
@@ -131,14 +148,14 @@ function FormProjects() {
         <button
           type="button"
           className="px-4 py-2 text-sm font-medium text-white bg-orange-400 border border-orange-400 rounded hover:bg-orange-500"
-          // onClick={handleReset}
+          onClick={handleReset}
         >
           Reset
         </button>
         <button
           type="button"
           className="w-[50px] flex justify-center py-2 text-sm font-medium text-white bg-sky-500 border border-sky-500 rounded hover:bg-sky-600"
-          // onClick={handleAdd}
+          onClick={handleAdd}
         >
           <IoMdAdd fontSize={20} />
         </button>

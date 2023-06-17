@@ -3,16 +3,17 @@ import Image from 'next/image'
 import React from 'react'
 
 type propTypes = {
-  onClickButton: (id: string) => void
+  onClickButton: (id: string) => void,
+  isActiveButton: string
 }
 
-function FormHeader({ onClickButton }: propTypes) {
+function FormHeader({ onClickButton, isActiveButton }: propTypes) {
   return (
     <>
       {form.map((item) => (
         <button
           key={item.id}
-          className={`mx-2.5 sm:mx-5 py-4 cursor-pointer group active:scale-95 transition`}
+          className={`${isActiveButton === item.id ? '' : 'group active:scale-95 transition'} mx-2.5 sm:mx-5 py-4 cursor-pointer`}
           onClick={() => onClickButton(item.id)}
         >
           <Image
@@ -20,7 +21,7 @@ function FormHeader({ onClickButton }: propTypes) {
             alt={item.title}
             width={25}
             height={25}
-            className="object-cover group-hover:scale-110 transition"
+            className={`${isActiveButton === item.id ? 'scale-125' : ''} object-cover group-hover:scale-110 transition`}
           />
         </button>
       ))}

@@ -31,7 +31,6 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
       <Input
         type="text"
         id={id}
-        name={id}
         className={cn('py-6 rounded-[20px] bg-gray-200 border-none', className)}
         onChange={onChange}
         ref={ref}

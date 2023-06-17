@@ -46,9 +46,6 @@ function Navigation({ onClickPreview }: propTypes) {
               <NavigationChild
                 key={nav.id}
                 {...nav}
-                onClick={(e) => {
-                  if (index !== 0) e.preventDefault();
-                }}
               />
             ))}
           </div>
@@ -96,9 +93,6 @@ function Navigation({ onClickPreview }: propTypes) {
               <NavigationChild
                 key={nav.id}
                 {...nav}
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
               />
             ))}
           </div>
