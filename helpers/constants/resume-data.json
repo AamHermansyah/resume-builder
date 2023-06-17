@@ -114,8 +114,9 @@
       "id": "1",
       "name": "Company 1",
       "position": "Senior Software Developer",
+      "country": "Canada",
       "url": "",
-      "startDate": "Apr 2021",
+      "startDate": "2021-10-05",
       "isWorkingHere": true,
       "endDate": null,
       "highlights": [
@@ -128,10 +129,11 @@
       "id": "2",
       "name": "Company 2",
       "position": "Software Developer",
+      "country": "USA",
       "url": "",
-      "startDate": "Jun 2015",
+      "startDate": "2015-14-06",
       "isWorkingHere": false,
-      "endDate": "Dec 2017",
+      "endDate": "2023-10-01",
       "highlights": [
         "* Worked on a team of 5 developers to develop a web application for a client"
       ],

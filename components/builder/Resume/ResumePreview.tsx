@@ -12,7 +12,11 @@ const resumePreview = () => {
   const resumeData = useResumeStore();
   
   const templateId = useTemplates((state) => state.activeTemplate.id);
+<<<<<<< Updated upstream
   const Template = AVAILABLE_TEMPLATES[templateId].component;
+=======
+  const Template = AVAILABLE_TEMPLATES[templateId].component();
+>>>>>>> Stashed changes
   StateContext = createContext(resumeData);
 
   useEffect(() => {
@@ -24,7 +28,11 @@ const resumePreview = () => {
   return (
     <StateContext.Provider value={resumeData}>
       <div className="w-full">
+<<<<<<< Updated upstream
         {Template && <Template />}
+=======
+        {Template}
+>>>>>>> Stashed changes
       </div>
     </StateContext.Provider>
   );

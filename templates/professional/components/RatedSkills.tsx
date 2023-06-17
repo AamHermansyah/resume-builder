@@ -13,7 +13,7 @@ export default function RatedSkills({ items }: { items: ISkillItem[] }) {
         <div className="flex items-center" key={name}>
           <p className="min-w-[15ch]">{name}</p>
           <div className="w-full bg-gray-100 rounded-md">
-            <ProgressBar level={level} className="rounded-md bg-yellow-500" />
+            <ProgressBar level={level} className="rounded-md bg-violet-500" />
           </div>
         </div>
       ))}

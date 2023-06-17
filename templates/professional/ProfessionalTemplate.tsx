@@ -13,6 +13,7 @@ import UnratedSkills from './components/UnratedSkills';
 import Work from './components/Work';
 import styled from '@emotion/styled';
 import { StateContext } from '@/components/builder/Resume/ResumePreview';
+import { cn } from '@/lib/utils';
 
 const ResumeContainer = styled.div`
   display: flex;
@@ -42,14 +43,17 @@ const RightSection = styled.div`
   font-size: 12px;
 `;
 
-export default function ProfessionalTemplate() {
+export default function ProfessionalTemplate({ widthClassName = '' }: { widthClassName?: string }) {
   const resumeData = useContext(StateContext);
+
+  if (resumeData === null) return null;
+
   const skills = resumeData.skills;
   const involvements = resumeData.activities.involvements;
   const achievements = resumeData.activities.achievements;
 
   return (
-    <ResumeContainer>
+    <ResumeContainer className={cn('p-4 print-exact print:p-0  bg-white w-[730px] print:w-[700px]', widthClassName)}>
       <LeftSection>
         <Section
           title={resumeData.basics?.name}

@@ -14,7 +14,7 @@ export default function AboutMe({
       {profileImage.length !== 0 && (
         <ProfileImage
           src={profileImage}
-          imageWrapperClassname={`relative w-[80px] aspect-square float-left mr-3 mb-1 ${styles.imageWrapShape}`}
+          imageWrapperClassname={`relative w-[80px] overflow-hidden rounded-full border border-black aspect-square float-left mr-3 mb-1 ${styles.imageWrapShape}`}
         />
       )}
       <HTMLRenderer htmlString={summary} />

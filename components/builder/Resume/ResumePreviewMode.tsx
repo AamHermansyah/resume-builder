@@ -1,9 +1,17 @@
 import { AVAILABLE_TEMPLATES } from "@/helpers/constants";
 import { useTemplates } from "@/stores/useTemplate";
+<<<<<<< Updated upstream
 
 function ResumePreviewMode() {
   const templateId = useTemplates((state) => state.activeTemplate.id);
   const Template = AVAILABLE_TEMPLATES[templateId].component;
+=======
+import MordernTemplate from "@/templates/modern/MordernTemplate"
+
+function ResumePreviewMode() {
+  const templateId = useTemplates((state) => state.activeTemplate.id);
+  const Template = AVAILABLE_TEMPLATES[templateId].component('w-[800px]');
+>>>>>>> Stashed changes
 
   return (
     <div
@@ -12,7 +20,11 @@ function ResumePreviewMode() {
         e.stopPropagation();
       }}
     >
+<<<<<<< Updated upstream
       <Template widthClassName="w-[800px]" />
+=======
+      {Template}
+>>>>>>> Stashed changes
     </div>
   )
 }

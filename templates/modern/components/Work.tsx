@@ -14,13 +14,18 @@ export const WorkSection = ({ experience }: { experience: IWorkIntrf[] }) => {
       {experience.map((item: IWorkIntrf, index: number) => {
         return (
           <div key={index} className="py-2">
-            <SectionTitle label={item.name} />
+            <div className="flex justify-between items-center flex-wrap">
+              <SectionTitle label={item.name} />
+              <p className="text-xs w-max">{item.country}</p>
+            </div>
             <div className="flex justify-between items-center">
               <SectionSubtitle label={item.position} />
               <div>
                 <p className="text-xs">
-                  {dateParser(item.startDate)} -{' '}
-                  {item.isWorkingHere ? 'present' : dateParser(item.endDate)}
+                  {item.startDate !== '' && dateParser(item.startDate)}
+                  {item.startDate !== '' && (item.isWorkingHere || item.endDate !== '') ? ' - ' : ''}
+                  {item.isWorkingHere && 'Present'}
+                  {item.endDate !== '' && !item.isWorkingHere && dateParser(item.endDate)} 
                 </p>
               </div>
             </div>

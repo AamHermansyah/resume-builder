@@ -1,6 +1,7 @@
 import { IBasics } from '@/stores/index.interface';
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { MdEmail, MdLocalPhone, MdLocationOn } from 'react-icons/md';
 
 export default function BasicIntro({ basics }: { basics: IBasics }) {
   return (
@@ -15,21 +16,20 @@ export default function BasicIntro({ basics }: { basics: IBasics }) {
       </div>
 
       <div className="flex flex-col justify-end gap-2">
-        <div className="flex gap-2">
-          <Image src={'/icons/phone.svg'} alt="Phone" width={12} height={12} />
-          {/* <span className="text-sm">{basics.phone}</span> */}
+        <div className="flex gap-2 items-center">
+          <MdLocalPhone fontSize={12} />
           <a className="text-xs" href={`tel:${basics.phone}`}>
             {basics.phone}
           </a>
         </div>
-        <div className="flex gap-2">
-          <Image src={'/icons/mail.svg'} alt="Email" width={12} height={12} />
+        <div className="flex gap-2 items-center">
+          <MdEmail fontSize={12} />
           <a className="text-xs" href={`mailto:${basics.email}`}>
             {basics.email}
           </a>
         </div>
-        <div className="flex gap-2">
-          <Image src={'/icons/location.svg'} alt="Location" width={12} height={12} />
+        <div className="flex gap-2 items-center">
+          <MdLocationOn fontSize={12} />
           <span className="text-xs">{basics.location.country}</span>
         </div>
       </div>

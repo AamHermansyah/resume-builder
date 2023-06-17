@@ -1,6 +1,9 @@
 import dynamic from 'next/dynamic';
 import { IThemeColor, ITemplate } from './index.interface';
 
+const MordernTemplate = dynamic(() => import('@/templates/modern/MordernTemplate'));
+const ProfessionalTemplate = dynamic(() => import('@/templates/professional/ProfessionalTemplate'));
+
 export const SYSTEM_COLORS: IThemeColor[] = [
   {
     backgroundColor: 'white',
@@ -30,19 +33,27 @@ export const AVAILABLE_TEMPLATES: ITemplate = {
     id: 'modern',
     name: 'Modern Resume',
     thumbnail: '/templates/modern.png',
+<<<<<<< Updated upstream
     // @ts-ignore
     component: dynamic(() => import('@/templates/professional/ProfessionalTemplate'), {
       ssr: false,
     }),
+=======
+    component: (widthClassName = '') => <MordernTemplate widthClassName={widthClassName} />
+>>>>>>> Stashed changes
   },
   professional: {
     id: 'professional',
     name: 'Professional Resume',
     thumbnail: '/templates/professional.png',
+<<<<<<< Updated upstream
     // @ts-ignore
     component: dynamic(() => import('@/templates/professional/ProfessionalTemplate'), {
       ssr: false,
     }),
+=======
+    component: (widthClassName = '') => <ProfessionalTemplate widthClassName={widthClassName} />
+>>>>>>> Stashed changes
   },
 };
 

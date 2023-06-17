@@ -2,11 +2,13 @@ import Navigation from "@/components/builder/Navigation/Navigation"
 import FormHeader from "@/components/builder/Form/FormHeader";
 import ResumePreview from "@/components/builder/Resume/ResumePreview";
 import { form } from "@/constants/builder";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Image from "next/image";
 import Button from "../landing-page/Button";
-import ResumePreviewMode from "./Resume/ResumePreviewMode";
 import { MdCancel, MdPrint } from "react-icons/md";
+import dynamic from "next/dynamic";
+
+const ResumePreviewMode = dynamic(() => import('@/components/builder/Resume/ResumePreviewMode'));
 
 function BuilderLayout() {
   const [isActiveFormId, setIsActiveFormId] = useState(form[0].id);
@@ -17,12 +19,14 @@ function BuilderLayout() {
       {/* Preview Modal */}
       {isActivePreview && (
         <div
-        className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-70 backdrop-blur z-[999]"
+        className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-70 backdrop-blur z-[999] print:hidden"
         onClick={() => {
           setIsActivePreview(false);
         }}
         >
-          <ResumePreviewMode />
+          <Suspense>
+            <ResumePreviewMode />
+          </Suspense>
           <div className="absolute bottom-5 left-3 flex gap-2 sm:gap-4">
             <button
               type="button"
