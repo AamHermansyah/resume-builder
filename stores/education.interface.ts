@@ -7,8 +7,9 @@ export interface IEducationItem {
   isStudyingHere: boolean;
   endDate: string | null;
   score: string;
-  courses: string[];
+  courses: string[] | null;
   id: string;
+  description: string
 }
 
 export interface IEducationStore {

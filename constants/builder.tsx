@@ -1,12 +1,15 @@
-import FormEducations from "@/components/builder/Form/FormEducations"
-import FormExperience from "@/components/builder/Form/FormExperience"
-import FormPersonal from "@/components/builder/Form/FormPersonal"
-import FormProjects from "@/components/builder/Form/FormProjects"
-import FormSkills from "@/components/builder/Form/FormSkills"
-import FormLanguage from "@/components/builder/Form/FormLanguage"
-import FormExtracurricular from "@/components/builder/Form/FormExtracurricular"
-import FormCertificate from "@/components/builder/Form/FormCertificate"
-import FormLink from "@/components/builder/Form/FormLink"
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+const FormEducations = dynamic(() => import('@/components/builder/Form/FormEducations'));
+const FormExperience = dynamic(() => import('@/components/builder/Form/FormExperience'));
+const FormPersonal = dynamic(() => import('@/components/builder/Form/FormPersonal'));
+const FormProjects = dynamic(() => import('@/components/builder/Form/FormProjects'));
+const FormSkills = dynamic(() => import('@/components/builder/Form/FormSkills'));
+const FormLanguage = dynamic(() => import('@/components/builder/Form/FormLanguage'));
+const FormExtracurricular = dynamic(() => import('@/components/builder/Form/FormExtracurricular'));
+const FormCertificate = dynamic(() => import('@/components/builder/Form/FormCertificate'));
+const FormLink = dynamic(() => import('@/components/builder/Form/FormLink'));
 
 export type NavigationChild = {
   id: string,
@@ -97,54 +100,90 @@ export const form: Form[] = [
     id: 'form-header-1',
     title: 'Professional Experience',
     iconUrl: '/icons/builder/profile-icon.svg',
-    component: <FormPersonal />
+    component: (
+      <Suspense>
+        <FormPersonal />
+      </Suspense>
+    )
   },
   {
     id: 'form-header-2',
     title: 'Educations',
     iconUrl: '/icons/builder/education-outline.svg',
-    component: <FormEducations />
+    component: (
+      <Suspense>
+        <FormEducations />
+      </Suspense>
+    )
   },
   {
     id: 'form-header-3',
     title: 'Experiences',
     iconUrl: '/icons/builder/briefcase.svg',
-    component: <FormExperience />
+    component: (
+      <Suspense>
+        <FormExperience />
+      </Suspense>
+    )
   },
   {
     id: 'form-header-4',
     title: 'Projects',
     iconUrl: '/icons/builder/new-team-project.svg',
-    component: <FormProjects />
+    component: (
+      <Suspense>
+        <FormProjects />
+      </Suspense>
+    )
   },
   {
     id: 'form-header-5',
     title: 'Skills',
     iconUrl: '/icons/builder/brain-icon.svg',
-    component: <FormSkills />
+    component: (
+      <Suspense>
+        <FormSkills />
+      </Suspense>
+    )
   },
   {
     id: 'form-header-6',
     title: 'Languages',
     iconUrl: '/icons/builder/language-icon.svg',
-    component: <FormLanguage/>
+    component: (
+      <Suspense>
+        <FormLanguage />
+      </Suspense>
+    )
   },
   {
     id: 'form-header-7',
     title: 'Extracurricular Activities',
     iconUrl: '/icons/builder/mask-icon.svg',
-    component: <FormExtracurricular/>
+    component: (
+      <Suspense>
+        <FormExtracurricular />
+      </Suspense>
+    )
   },
   {
     id: 'form-header-8',
     title: 'Certifications',
     iconUrl: '/icons/builder/news-paper.svg',
-    component: <FormCertificate/>
+    component: (
+      <Suspense>
+        <FormCertificate />
+      </Suspense>
+    )
   },
   {
     id: 'form-header-9',
     title: 'Links',
     iconUrl: '/icons/builder/links-fill.svg',
-    component: <FormLink/>
+    component: (
+      <Suspense>
+        <FormLink />
+      </Suspense>
+    )
   },
-]
+];

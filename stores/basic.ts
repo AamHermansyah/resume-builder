@@ -9,7 +9,7 @@ const onChangeText = (set: SetState<IBasicDetailsStore>) => (values: IBasicDetai
 export const useBasicDetails = create<IBasicDetailsStore>(
   // @ts-ignore
   persist(
-    (set) => ({
+    (set, get) => ({
       values: resumeData.basics,
       reset: onChangeText(set),
     }),

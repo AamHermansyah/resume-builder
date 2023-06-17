@@ -142,28 +142,30 @@
 
   "education": [
     {
-      "id": "1",
-      "institution": "MIT, University",
-      "url": "https://www.mit.edu/",
-      "studyType": "MS",
-      "area": "Cloud technology",
-      "startDate": "2014",
-      "isStudyingHere": false,
-      "endDate": "2016",
-      "score": "68%",
-      "courses": []
-    },
-    {
       "id": "2",
       "institution": "NMAMIT, Nitte",
       "url": "https://www.mit.edu/",
       "studyType": "B.Tech (VTU)",
       "area": "Computer Science",
-      "startDate": "2010",
+      "startDate": "2010-10-01",
       "isStudyingHere": false,
-      "endDate": "2014",
+      "endDate": "2014-10-01",
       "score": "8.3 CGPA",
-      "courses": []
+      "courses": [],
+      "description": "This is description"
+    },
+    {
+      "id": "1",
+      "institution": "MIT, University",
+      "url": "https://www.mit.edu/",
+      "studyType": "MS",
+      "area": "Cloud technology",
+      "startDate": "2014-01-23",
+      "isStudyingHere": true,
+      "endDate": "",
+      "score": "8.3 CGPA",
+      "courses": [],
+      "description": ""
     }
   ],
 

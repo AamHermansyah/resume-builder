@@ -11,7 +11,7 @@ type propTypes = {
     isDisabled?: boolean;
   }[];
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  value: string;
+  value: string | number;
 };
 
 function SelectOption({ id, label, options, onChange, value }: propTypes) {

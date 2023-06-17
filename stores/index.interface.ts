@@ -63,12 +63,13 @@ export interface IEducation {
   url: string;
   studyType: string;
   area: string;
-  startDate: dayjs.Dayjs;
+  startDate: string;
   isStudyingHere: boolean;
-  endDate: dayjs.Dayjs;
+  endDate: string;
   score: string;
   courses: string[];
   website: string;
+  description: string
 }
 
 export interface IVolunteer {

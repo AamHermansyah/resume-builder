@@ -34,7 +34,7 @@ export const useResumeStore = () => {
       tools: useTools((state) => state.get()),
     },
     activities: useActivity((state) => state.get()),
-  };
+  }
 };
 
 /**

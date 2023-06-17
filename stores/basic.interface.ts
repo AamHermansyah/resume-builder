@@ -13,8 +13,8 @@ type ILocation = {
 };
 
 export type IBasicLanguage = {
-  value: string,
-  level: number
+  value: string;
+  level: number;
 }
 
 export interface IBasicDetailsItem {

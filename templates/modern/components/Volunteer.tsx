@@ -20,8 +20,10 @@ export const VolunteerSection = ({ projects }: { projects: IVolunteer[] }) => {
                 <SectionSubtitle label={item.position} />
                 <div className="flex gap-3">
                   <p className="text-xs">
-                    {dateParser(item.startDate)} -
-                    {item.isVolunteeringNow ? 'present' : dateParser(item.endDate)}
+                    {item.startDate !== '' && dateParser(item.startDate)}
+                    {item.startDate !== '' && (item.isVolunteeringNow || item.endDate !== '') ? ' - ' : ''}
+                    {item.isVolunteeringNow && 'Present'}
+                    {item.endDate !== '' && !item.isVolunteeringNow && dateParser(item.endDate)}
                   </p>
                 </div>
               </div>

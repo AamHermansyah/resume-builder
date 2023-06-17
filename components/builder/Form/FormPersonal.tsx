@@ -32,24 +32,13 @@ function FormPersonal() {
     }
   }
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]; // Add null check using the optional chaining operator
-  
-    if (file) {
-      const reader = new FileReader();
-  
-      reader.onloadend = () => {
-        const imageBase64 = reader.result as string;
-        const newData: IBasicDetailsItem = {
-          ...dataBasic,
-          image: imageBase64
-        }
-  
-        reset(newData);
-      };
-  
-      reader.readAsDataURL(file);
+  const handleOnImageUpload = (imageBase64: string) => {
+    const newData: IBasicDetailsItem = {
+      ...dataBasic,
+      image: imageBase64
     }
+
+    reset(newData);
   };
 
   return (
@@ -67,7 +56,10 @@ function FormPersonal() {
         <div className="w-full row-span-2">
           <InputFile
             id="dropzone-file"
-            onChange={handleImageUpload}
+            onChange={(imageBase64) => {
+              handleOnImageUpload(imageBase64);
+            }}
+            value={dataBasic.image}
           />
         </div>
 

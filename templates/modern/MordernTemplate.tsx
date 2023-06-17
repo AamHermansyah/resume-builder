@@ -19,6 +19,7 @@ export default function MordernTemplate({ widthClassName = '' }: { widthClassNam
   const basicLanguages = resumeData
     .basics
     .languages
+    .filter((language: IBasicLanguage) => language.value !== '')
     .map((language: IBasicLanguage) => `${language.value} (${language.level})`);
   const formattedBasicLanguages = listFormat.format(basicLanguages);
 
