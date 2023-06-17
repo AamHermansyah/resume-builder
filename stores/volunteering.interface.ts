@@ -20,3 +20,4 @@ export interface IVolunteeringStore {
   onmovedown: (index: number) => void;
   updatedVolunteeringExp: (index: number, updatedInfo: IVolunteeringItem) => void;
 }
+ 

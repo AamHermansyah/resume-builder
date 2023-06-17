@@ -63,8 +63,6 @@ function FormExperience() {
           <InputDate
             id="startDate"
             label="Start Date"
-            defaultValue={project.startDate as string}
-            onChange={handleOnChangeInput}
           />
         </div>
         <div className="w-full col-span-3 sm:col-span-1">
