@@ -11,7 +11,7 @@ export interface ITemplate {
     id: string;
     name: string;
     thumbnail: string;
-    component: React.ComponentType;
+    component: React.FC<{ widthClassName?: string }>;
   };
 }
 
@@ -19,5 +19,5 @@ export interface ITemplateContent {
   id: string;
   name: string;
   thumbnail: string;
-  component: React.ComponentType;
+  component: React.FC<{ widthClassName?: string }>;
 }
