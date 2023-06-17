@@ -8,6 +8,9 @@ import Image from "next/image";
 import { MdCancel, MdPrint } from "react-icons/md";
 import dynamic from "next/dynamic";
 import Button from "@/components/landing-page/Button";
+import cv1 from "../../public/images/cv-preview-1.png"
+import cv2 from "../../public/images/cv-preview-2.png"
+import cv3 from "../../public/images/cv-preview-3.png"
 
 const ResumePreviewMode = dynamic(() => import('@/components/builder/Resume/ResumePreviewMode'));
 
@@ -85,7 +88,16 @@ function HomePage() {
                   className="object-cover"
                 />
               </div>
-              Edit disini
+              {/* Edit dibawah ini*/}
+              <div className="container mx-auto flex mt-4">
+                  <div className="w-full mx-2.5 sm:mx-5 py-4 cursor-pointer group active:scale-95 transition">
+                      <div className="flex items-center overflow-auto hidden-scollbar py-4 gap-10">
+                      <Image className="w-[800px] max-w-full h-auto" src={cv1} alt="CV Preview 1" />
+                      <Image className="w-[800px] max-w-full h-auto" src={cv3} alt="CV Preview 3" />
+                      <Image className="w-[800px] max-w-full h-auto" src={cv2} alt="CV Preview 2" />
+                    </div>
+                  </div>
+              </div>
             </div>
           </div>
           <div className="md:mt-[42px] flex-[0.7] flex flex-col items-center w-full rounded-[20px] overflow-auto hidden-scollbar print:mt-0">
