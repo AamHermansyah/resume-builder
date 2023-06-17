@@ -10,3 +10,4 @@ export interface IActivityStore {
   updateInvolvements: (involvements: string) => void;
   updateAchievements: (achievements: string) => void;
 }
+ 
