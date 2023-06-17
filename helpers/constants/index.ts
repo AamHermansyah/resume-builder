@@ -1,9 +1,6 @@
 import dynamic from 'next/dynamic';
 import { IThemeColor, ITemplate } from './index.interface';
 
-const MordernTemplate = dynamic(() => import('@/templates/modern/MordernTemplate'));
-const ProfessionalTemplate = dynamic(() => import('@/templates/professional/ProfessionalTemplate'));
-
 export const SYSTEM_COLORS: IThemeColor[] = [
   {
     backgroundColor: 'white',
