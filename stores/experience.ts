@@ -9,6 +9,7 @@ const addExperience =
   ({
     name,
     position,
+    country,
     startDate,
     isWorkingHere,
     endDate,
@@ -24,6 +25,7 @@ const addExperience =
           id,
           name,
           position,
+          country,
           startDate,
           isWorkingHere,
           endDate,

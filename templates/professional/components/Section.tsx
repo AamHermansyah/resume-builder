@@ -4,7 +4,6 @@ import { socialIcons } from '@/helpers/icons';
 import styled from '@emotion/styled';
 
 const SectionHolder = styled.div`
-  border: 1px solid yellow;
   border-radius: 5px;
   padding: 15px 10px 10px 10px;
   position: relative;
@@ -16,7 +15,6 @@ const SectionHolder = styled.div`
     background: white;
     padding: 0 5px;
     font-weight: bold;
-    color: salmon;
   }
 
   .social-icons {
@@ -65,12 +63,12 @@ export function Section({
   profiles?: IProfiles[];
 }) {
   return (
-    <SectionHolder>
+    <SectionHolder className="border border-dashed border-gray-300">
       <div className="header flex justify-center items-center gap-1 max-w-[60%]" title={title}>
         <span
           className={`${
             titleClassname ? titleClassname : ''
-          } whitespace-nowrap overflow-hidden overflow-ellipsis`}
+          } text-sky-500 whitespace-nowrap overflow-hidden overflow-ellipsis`}
         >
           {title}
         </span>

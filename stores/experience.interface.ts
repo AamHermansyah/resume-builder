@@ -2,6 +2,7 @@ export interface IExperienceItem {
   id: string;
   name: string;
   position: string;
+  country: string;
   url: string;
   startDate: string | null;
   endDate: string | null;

@@ -47,9 +47,10 @@ export interface IWorkIntrf {
   id: string;
   name: string;
   position: string;
+  country: string;
   url: string;
-  startDate: dayjs.Dayjs;
-  endDate: dayjs.Dayjs;
+  startDate: string;
+  endDate: string;
   summary: string;
   years: string;
   highlights: string[];

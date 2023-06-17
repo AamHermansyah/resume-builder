@@ -4,7 +4,7 @@ export default function UnratedSkills({ items }: { items: ISkillItem[] }) {
   return (
     <div className="flex gap-3 flex-wrap">
       {items.map((value) => (
-        <span key={value.name} className="p-1 rounded-md border border-solid bg-yellow-500">
+        <span key={value.name} className="py-1 rounded-md px-2 bg-rose-500 text-white">
           {value.name}
         </span>
       ))}

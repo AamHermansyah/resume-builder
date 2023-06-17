@@ -10,7 +10,6 @@ export let StateContext: Context<any> = createContext(null);
 
 const resumePreview = () => {
   const resumeData = useResumeStore();
-  
   const templateId = useTemplates((state) => state.activeTemplate.id);
   const Template = AVAILABLE_TEMPLATES[templateId].component;
   StateContext = createContext(resumeData);

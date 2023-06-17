@@ -1,6 +1,9 @@
 import dynamic from 'next/dynamic';
 import { IThemeColor, ITemplate } from './index.interface';
 
+const MordernTemplate = dynamic(() => import('@/templates/modern/MordernTemplate'));
+const ProfessionalTemplate = dynamic(() => import('@/templates/professional/ProfessionalTemplate'));
+
 export const SYSTEM_COLORS: IThemeColor[] = [
   {
     backgroundColor: 'white',
@@ -31,7 +34,7 @@ export const AVAILABLE_TEMPLATES: ITemplate = {
     name: 'Modern Resume',
     thumbnail: '/templates/modern.png',
     // @ts-ignore
-    component: dynamic(() => import('@/templates/professional/ProfessionalTemplate'), {
+    component: dynamic(() => import('@/templates/modern/MordernTemplate'), {
       ssr: false,
     }),
   },
