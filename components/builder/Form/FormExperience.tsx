@@ -2,21 +2,10 @@ import CustomCheckbox from "@/components/form/Checkbox"
 import InputDate from "@/components/form/InputDate"
 import InputText from "@/components/form/InputText"
 import { RichtextEditor } from "@/helpers/common/components/richtext"
-import { useVoluteeringStore } from "@/stores/volunteering"
+
 
 function FormExperience() {
 
-  const { get, updatedVolunteeringExp } = useVoluteeringStore();
-  const project = get(0);
-
-  const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-
-    updatedVolunteeringExp(0, {
-      ...project,
-      [name]: value
-    })
-  }
 
   return (
     <form action="" className="mt-[35px]">
@@ -25,16 +14,14 @@ function FormExperience() {
           <InputText
             id="organization"
             label="Company"
-            defaultValue={project.organization}
-            onChange={handleOnChangeInput}
+
           />
         </div>
         <div className="w-full col-span-2 sm:col-span-1">
           <InputText
             id="position"
             label="Position"
-            defaultValue={project.position}
-            onChange={handleOnChangeInput}
+
           />
         </div>
         <div className="w-full col-span-2 sm:col-span-1">
@@ -66,8 +53,7 @@ function FormExperience() {
           <InputDate
             id="endDate"
             label="End Date"
-            defaultValue={project.endDate as string}
-            onChange={handleOnChangeInput}
+
           />
         </div>
         <div className="w-full self-center col-span-4 sm:col-span-1">
@@ -75,24 +61,15 @@ function FormExperience() {
             <CustomCheckbox
               id="present"
               label="Present"
-              checked={project.isVolunteeringNow}
+
             />
           </div>
         </div>
         <div className="w-full col-span-4 sm:col-span-3">
           <div className="w-full col-span-4 lg:col-span-3">
-            <RichtextEditor
-              label="Summary"
-              id="project-1"
-              value={project.summary}
-              onChange={(htmlOutput) => {
-                updatedVolunteeringExp(0, {
-                  ...project,
-                  summary: htmlOutput
-                });
-              }}
-              name="experiences"
-            />
+            {/* <RichtextEditor
+
+            /> */}
           </div>
         </div>
       </div>
@@ -100,4 +77,4 @@ function FormExperience() {
   )
 }
 
-export default FormExperience
+export default FormExperience 

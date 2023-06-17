@@ -20,4 +20,4 @@ export interface IExperienceStore {
   onmoveup: (index: number) => void;
   onmovedown: (index: number) => void;
   updateExperience: (index: number, updatedInfo: IExperienceItem) => void;
-}
+} 
