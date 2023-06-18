@@ -7,6 +7,7 @@ import Image from "next/image";
 import Button from "../landing-page/Button";
 import { MdCancel, MdPrint } from "react-icons/md";
 import dynamic from "next/dynamic";
+import Cookies from "js-cookie";
 
 const ResumePreviewMode = dynamic(() => import('@/components/builder/Resume/ResumePreviewMode'));
 
@@ -14,7 +15,7 @@ function BuilderLayout() {
   const [isActiveFormId, setIsActiveFormId] = useState(form[0].id);
   const [isActivePreview, setIsActivePreview] = useState(false);
 
-  const dirLayout = localStorage.getItem('layout') || 'left';
+  const dirLayout = Cookies.get('layout') || 'left';
 
   return (
     <>

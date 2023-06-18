@@ -3,6 +3,7 @@ import { Context, createContext } from 'react';
 import { useResumeStore } from '@/stores/useResumeStore';
 import { useTemplates } from '@/stores/useTemplate';
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
+import Cookies from 'js-cookie';
 
 // TODO: need to define types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -22,7 +23,7 @@ const resumePreview = ({ CustomTemplate }: { CustomTemplate?: React.FC<{ widthCl
 
   return (
     <StateContext.Provider value={resumeData}>
-      <div className={localStorage.getItem('layout') === 'top' ? 'md:flex justify-center' : 'w-full'}>
+      <div className={Cookies.get('layout') === 'top' ? 'md:flex justify-center' : 'w-full'}>
         { CustomTemplate && <CustomTemplate />}
         {!CustomTemplate && Template && <Template />}
       </div>

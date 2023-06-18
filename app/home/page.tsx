@@ -12,6 +12,7 @@ import { AVAILABLE_TEMPLATES } from "@/helpers/constants";
 import { useTemplates } from "@/stores/useTemplate";
 import { ITemplateContent } from "@/helpers/constants/index.interface";
 import { useRouter } from "next/navigation";
+import Cookies from 'js-cookie';
 
 const ResumePreviewMode = dynamic(() => import('@/components/builder/Resume/ResumePreviewMode'));
 
@@ -19,11 +20,11 @@ function HomePage() {
   const { setTemplate, activeTemplate } = useTemplates();
   const [isActivePreview, setIsActivePreview] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<ITemplateContent>(activeTemplate);
-  const [activeChangeLayout, setActiveChangeLayout] = useState(localStorage.getItem('layout') || 'left');
+  const [activeChangeLayout, setActiveChangeLayout] = useState(Cookies.get('layout') || 'left');
   const navigate = useRouter();
 
   const handleChangeLayout = (dir: string) => {
-    localStorage.setItem('layout', dir);
+    Cookies.set('layout', dir);
     setActiveChangeLayout(dir);
   }
 
