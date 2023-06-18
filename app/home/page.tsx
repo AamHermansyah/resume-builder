@@ -12,6 +12,9 @@ import { AVAILABLE_TEMPLATES } from "@/helpers/constants";
 import { useTemplates } from "@/stores/useTemplate";
 import { ITemplateContent } from "@/helpers/constants/index.interface";
 import { useRouter } from "next/navigation";
+import top from "../../public/images/top-layout.png"
+import right from "../../public/images/right-layout.png"
+import left from "../../public/images/left-layout.png"
 
 const ResumePreviewMode = dynamic(() => import('@/components/builder/Resume/ResumePreviewMode'));
 
@@ -119,6 +122,44 @@ function HomePage() {
                 </div>
               </div>
             </div>
+            <div className="px-4 py-5 lg:px-7 bg-white rounded-[20px] mt-[25px]">
+              <div className="mt-4 flex items-center gap-5 mb-[10px]">
+                <h1 className="text-xl font-medium text-tertiary-bold ">Layout</h1>
+              </div>
+              <div className="flex">
+                <div className="flex items-center flex-col mr-4 ml-3 gap-1">
+                  <Image
+                    src={top}
+                    alt="Top Layout"
+                    width={60}
+                    height={60}
+                    className="object-cover rounded"
+                  />
+                  <p>Top</p>
+                </div>
+                <div className="flex items-center flex-col mr-4 gap-1">
+                  <Image
+                    src={right}
+                    alt="Right Layout"
+                    width={60}
+                    height={60}
+                    className="object-cover rounded"
+                  />
+                  <p>Right</p>
+                </div>
+                <div className="flex items-center flex-col gap-1 ">
+                  <Image
+                    src={left}
+                    alt="Left Layout"
+                    width={60}
+                    height={60}
+                    className="object-cover rounded"
+                  />
+                  <p>Left</p>
+                </div>
+              </div>
+            
+          </div>
             <div className="md:hidden block my-6 text-center">
               <button className="text-sm sm:text-base px-6 py-3 font-medium bg-white rounded sm:rounded-md text-tertiary-semi active:scale-95 transition">
                 Change template
