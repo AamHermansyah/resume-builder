@@ -8,11 +8,18 @@ import { MdCancel, MdPrint } from "react-icons/md";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { BsArrowLeft } from "react-icons/bs";
+import { AVAILABLE_TEMPLATES } from "@/helpers/constants";
+import { useTemplates } from "@/stores/useTemplate";
+import { ITemplateContent } from "@/helpers/constants/index.interface";
+import { useRouter } from "next/navigation";
 
 const ResumePreviewMode = dynamic(() => import('@/components/builder/Resume/ResumePreviewMode'));
 
 function HomePage() {
+  const { setTemplate, activeTemplate } = useTemplates();
   const [isActivePreview, setIsActivePreview] = useState(false);
+  const [selectedTemplate, setSelectedTemplate] = useState<ITemplateContent>(activeTemplate);
+  const navigate = useRouter();
 
   return (
     <>
@@ -61,14 +68,20 @@ function HomePage() {
         }}
       />
       <div className="relative mt-[72px] md:mt-12 min-h-screen bg-gradient-to-tr from-tertiary-semi to-violet-300 px-4 lg:px-10 overflow-hidden print:mt-0 print:px-0 print:py-0">
-        <div className="mt-10 relative flex flex-col-reverse md:flex-row gap-x-10 print:hidden">
+        <div className="mt-10 relative flex md:flex-row gap-x-10 print:hidden">
           <div className="flex-1 self-end">
             <Link href="/builder" className="block text-white w-max">
               <BsArrowLeft fontSize={26} />
             </Link>
           </div>
-          <div className="hidden md:block flex-[0.7]">
-            <button className="w-max mx-auto px-6 py-3 font-medium bg-white rounded-md text-tertiary-semi flex items-center justify-center gap-10 active:scale-95 transition">
+          <div className="hidden md:block flex-[0.7] text-center">
+            <button
+              className="text-sm sm:text-base px-6 py-3 font-medium bg-white rounded sm:rounded-md text-tertiary-semi active:scale-95 transition"
+              onClick={(e) => {
+                selectedTemplate && setTemplate(selectedTemplate);
+                navigate.push('/builder');
+              }}
+            >
               Change template
             </button>
           </div>
@@ -89,27 +102,31 @@ function HomePage() {
                   className="object-cover"
                 />
               </div>
-              <div className="mt-4 w-full overflow-auto hidden-scollbar">
-                <div className="px-2 py-4 cursor-pointer flex justify-start gap-6">
-                  {Array.from({ length: 3 }).map((fill, index) => (
+              <div className="mt-4 w-full">
+                <div className="w-full overflow-auto hidden-scollbar px-2 py-4 cursor-pointer flex justify-start gap-6">
+                  {Object.keys(AVAILABLE_TEMPLATES).map((key, index, keys) => (
                     <img 
                       key={index}
-                      src={`/images/cv-preview-${index + 1}.png`}
-                      alt={`CV Preview ${index + 1}`}
-                      className="object-cover w-[300px] aspect-[0.73/1]"
+                      src={AVAILABLE_TEMPLATES[key].thumbnail}
+                      alt={`CV Preview ${AVAILABLE_TEMPLATES[key].id}`}
+                      className={`
+                        ${selectedTemplate?.id === AVAILABLE_TEMPLATES[key].id ? 'outline outline-1 outline-tertiary-semi' : ''}
+                        object-contain w-[300px] aspect-[0.73/1] border rounded`
+                      }
+                      onClick={() => setSelectedTemplate(AVAILABLE_TEMPLATES[key])}
                     />
                   ))}
                 </div>
               </div>
             </div>
-            <div className="md:hidden block mt-4">
-              <button className="w-max mx-auto px-9 py-4 text-lg font-medium bg-white rounded-lg sm:rounded-[20px] text-tertiary-semi flex items-center justify-center gap-10 active:scale-95 transition">
+            <div className="md:hidden block my-6 text-center">
+              <button className="text-sm sm:text-base px-6 py-3 font-medium bg-white rounded sm:rounded-md text-tertiary-semi active:scale-95 transition">
                 Change template
               </button>
             </div>
           </div>
           <div className="flex-[0.7] flex flex-col items-center w-full rounded-[20px] overflow-auto hidden-scollbar print:mt-0">
-            <ResumePreview />
+            <ResumePreview CustomTemplate={selectedTemplate?.component || undefined} />
           </div>
         </div>
       </div>
