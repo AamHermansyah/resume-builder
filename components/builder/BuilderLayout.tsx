@@ -14,6 +14,8 @@ function BuilderLayout() {
   const [isActiveFormId, setIsActiveFormId] = useState(form[0].id);
   const [isActivePreview, setIsActivePreview] = useState(false);
 
+  const dirLayout = localStorage.getItem('layout') || 'left';
+
   return (
     <>
       {/* Preview Modal */}
@@ -61,7 +63,13 @@ function BuilderLayout() {
         }}
       />
       <div className="relative mt-[72px] md:mt-12 min-h-screen bg-gradient-to-tr from-tertiary-semi to-violet-300 px-4 lg:px-10 overflow-hidden print:mt-0 print:px-0 print:py-0">
-        <div className="relative flex flex-col-reverse md:flex-row gap-x-10 items-stretch mt-6 print:hidden">
+        <div className={`
+            ${dirLayout === 'left' ? 'flex-col md:flex-row' 
+              : dirLayout === 'right' ? 'flex-col-reverse md:flex-row-reverse' : 'flex-col items-center'
+            }
+            relative mt-10 flex gap-x-10 items-stretch print:hidden
+          `}
+        >
           <div className="flex-1">
             <div className="w-full text-center bg-white rounded-[20px] overflow-x-auto hidden-scollbar">
               <div className="whitespace-nowrap ">
@@ -74,10 +82,16 @@ function BuilderLayout() {
               </div>
             </div>
           </div>
-          <div className="hidden md:block flex-[0.7]"></div>
+          {dirLayout !== 'top' && <div className="hidden md:block flex-[0.7]"></div>}
         </div>
 
-        <div className="mb-10 relative flex flex-col md:flex-row gap-x-10 gap-y-4 items-start">
+        <div className={`
+            ${dirLayout === 'left' ? 'flex-col md:flex-row mb-10' 
+              : dirLayout === 'right' ? 'flex-col md:flex-row-reverse mb-10' : 'flex-col items-center'
+            }
+            relative flex gap-x-10 gap-y-4 items-start`
+          }
+        >
           <div className="flex-1 w-full print:hidden">
             {form.map((item) => {
               if (item.id === isActiveFormId) {
@@ -108,7 +122,11 @@ function BuilderLayout() {
               }
             })}
           </div>
-          <div className="md:mt-[42px] flex-[0.7] flex flex-col items-center w-full rounded-[20px] overflow-auto hidden-scollbar print:mt-0">
+          <div className={`
+              ${dirLayout === 'top' ? 'mb-10 print:mb-0' : 'md:mt-[42px] flex-[0.7] flex flex-col items-center'}
+              w-full rounded-[20px] print:mt-0 overflow-auto hidden-scollbar
+            `}
+          >
             <ResumePreview />
           </div>
         </div>

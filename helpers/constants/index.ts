@@ -38,7 +38,7 @@ export const AVAILABLE_TEMPLATES: ITemplate = {
   professional: {
     id: 'professional',
     name: 'Professional Resume',
-    thumbnail: '/images/templates/modern.png',
+    thumbnail: '/images/templates/professional.png',
     // @ts-ignore
     component: dynamic(() => import('@/templates/professional/ProfessionalTemplate'), {
       ssr: false,

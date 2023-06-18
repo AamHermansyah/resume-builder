@@ -47,6 +47,7 @@ function FormPersonal() {
         <div className="w-full col-span-2">
           <InputText
             id="name"
+            name="name"
             label="Fullname"
             onChange={handleOnChangeInput}
             defaultValue={dataBasic.name}
@@ -66,6 +67,7 @@ function FormPersonal() {
         <div className="w-full col-span-2">
           <InputText
             id="label"
+            name="label"
             label="Job title"
             required={false}
             onChange={handleOnChangeInput}
@@ -77,6 +79,7 @@ function FormPersonal() {
         <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
           <InputText
             id="email"
+            name="email"
             label="Email"
             onChange={handleOnChangeInput}
             defaultValue={dataBasic.email}
@@ -86,6 +89,7 @@ function FormPersonal() {
         <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
           <InputText
             id="phone"
+            name="phone"
             label="Phone"
             onChange={handleOnChangeInput}
             defaultValue={dataBasic.phone}
@@ -95,6 +99,7 @@ function FormPersonal() {
         <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
           <InputDate
             id="dob"
+            name="dob"
             label="Date of Birth"
             defaultValue={dataBasic.dob}
             onChange={handleOnChangeInput}
@@ -104,6 +109,7 @@ function FormPersonal() {
         <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
           <InputText
             id="country"
+            name="country"
             label="Nationality"
             onChange={handleOnChangeInput}
             defaultValue={dataBasic.location.country}
@@ -113,6 +119,7 @@ function FormPersonal() {
         <div className="w-full col-span-4 lg:col-span-2">
           <InputText
             id="url"
+            name="url"
             label="Portfolio Website"
             onChange={handleOnChangeInput}
             defaultValue={dataBasic.url}
@@ -122,6 +129,7 @@ function FormPersonal() {
         <div className="w-full col-span-4 lg:col-span-3">
           <InputTextArea
             id="summary"
+            name="summary"
             label="About"
             onChange={handleOnChangeInput}
             defaultValue={dataBasic.summary}

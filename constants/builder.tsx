@@ -1,5 +1,7 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import { Suspense, ReactNode } from 'react';
+import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
+import { TbWorldWww } from 'react-icons/tb';
 
 const FormEducations = dynamic(() => import('@/components/builder/Form/FormEducations'));
 const FormExperiences = dynamic(() => import('@/components/builder/Form/FormExperiences'));
@@ -7,7 +9,7 @@ const FormPersonal = dynamic(() => import('@/components/builder/Form/FormPersona
 const FormProjects = dynamic(() => import('@/components/builder/Form/FormProjects'));
 const FormSkills = dynamic(() => import('@/components/builder/Form/FormSkills'));
 const FormLanguage = dynamic(() => import('@/components/builder/Form/FormLanguage'));
-const FormExtracurricular = dynamic(() => import('@/components/builder/Form/FormExtracurricular'));
+const FormObjectives = dynamic(() => import('@/components/builder/Form/FormObjectives'));
 const FormCertificate = dynamic(() => import('@/components/builder/Form/FormCertificate'));
 const FormLink = dynamic(() => import('@/components/builder/Form/FormLink'));
 
@@ -25,6 +27,13 @@ type Navigation = {
   navCenter: NavigationChild[],
   navRight: NavigationChild[]
 }
+
+export type IconProfiles = {
+  linkedin: ReactNode,
+  github: ReactNode,
+  instagram: ReactNode
+}
+
 
 export const navigation: Navigation = {
   navLeft: [
@@ -158,11 +167,11 @@ export const form: Form[] = [
   },
   {
     id: 'form-header-7',
-    title: 'Extracurricular Activities',
+    title: 'Objectives',
     iconUrl: '/icons/builder/mask-icon.svg',
     component: (
       <Suspense>
-        <FormExtracurricular />
+        <FormObjectives />
       </Suspense>
     )
   },
@@ -187,3 +196,9 @@ export const form: Form[] = [
     )
   },
 ];
+
+export const iconProfiles: IconProfiles = {
+  linkedin: <AiFillLinkedin fontSize={20} />,
+  github: <AiFillGithub fontSize={20} />,
+  instagram: <AiFillInstagram fontSize={20} />
+}

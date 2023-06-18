@@ -12,9 +12,6 @@ import { AVAILABLE_TEMPLATES } from "@/helpers/constants";
 import { useTemplates } from "@/stores/useTemplate";
 import { ITemplateContent } from "@/helpers/constants/index.interface";
 import { useRouter } from "next/navigation";
-import top from "../../public/images/top-layout.png"
-import right from "../../public/images/right-layout.png"
-import left from "../../public/images/left-layout.png"
 
 const ResumePreviewMode = dynamic(() => import('@/components/builder/Resume/ResumePreviewMode'));
 
@@ -22,7 +19,13 @@ function HomePage() {
   const { setTemplate, activeTemplate } = useTemplates();
   const [isActivePreview, setIsActivePreview] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<ITemplateContent>(activeTemplate);
+  const [activeChangeLayout, setActiveChangeLayout] = useState(localStorage.getItem('layout') || 'left');
   const navigate = useRouter();
+
+  const handleChangeLayout = (dir: string) => {
+    localStorage.setItem('layout', dir);
+    setActiveChangeLayout(dir);
+  }
 
   return (
     <>
@@ -71,13 +74,13 @@ function HomePage() {
         }}
       />
       <div className="relative mt-[72px] md:mt-12 min-h-screen bg-gradient-to-tr from-tertiary-semi to-violet-300 px-4 lg:px-10 overflow-hidden print:mt-0 print:px-0 print:py-0">
-        <div className="mt-10 relative flex md:flex-row gap-x-10 print:hidden">
-          <div className="flex-1 self-end">
+        <div className={`${activeChangeLayout === 'top' ? 'max-w-[700px] mx-auto' : ''} mt-10 relative flex md:flex-row gap-x-10 print:hidden`}>
+          <div className={`${activeChangeLayout !== 'left' ? 'flex-[0.7]' : 'flex-1'} flex-1 self-end`}>
             <Link href="/builder" className="block text-white w-max">
               <BsArrowLeft fontSize={26} />
             </Link>
           </div>
-          <div className="hidden md:block flex-[0.7] text-center">
+          <div className={`${activeChangeLayout !== 'left' ? 'flex-1' : 'flex-[0.7]'} hidden md:block text-center`}>
             <button
               className="text-sm sm:text-base px-6 py-3 font-medium bg-white rounded sm:rounded-md text-tertiary-semi active:scale-95 transition"
               onClick={(e) => {
@@ -90,7 +93,13 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="mb-10 mt-6 relative flex flex-col md:flex-row gap-x-10 gap-y-4 items-start">
+        <div className={`
+            ${activeChangeLayout === 'left' ? 'flex-col md:flex-row' 
+              : activeChangeLayout === 'right' ? 'flex-col md:flex-row-reverse' : 'flex-col items-center'
+            }
+            mb-10 mt-6 relative flex gap-x-10 gap-y-4 items-start
+          `}
+        >
           <div className="flex-1 print:hidden">
             <div className="px-4 py-5 lg:px-7 bg-white rounded-[20px]">
               <div className="mt-4 flex items-center gap-5">
@@ -107,7 +116,7 @@ function HomePage() {
               </div>
               <div className="mt-4 w-full">
                 <div className="w-full overflow-auto hidden-scollbar px-2 py-4 cursor-pointer flex justify-start gap-6">
-                  {Object.keys(AVAILABLE_TEMPLATES).map((key, index, keys) => (
+                  {Object.keys(AVAILABLE_TEMPLATES).map((key, index) => (
                     <img 
                       key={index}
                       src={AVAILABLE_TEMPLATES[key].thumbnail}
@@ -127,38 +136,25 @@ function HomePage() {
                 <h1 className="text-xl font-medium text-tertiary-bold ">Layout</h1>
               </div>
               <div className="flex">
-                <div className="flex items-center flex-col mr-4 ml-3 gap-1">
-                  <Image
-                    src={top}
-                    alt="Top Layout"
-                    width={60}
-                    height={60}
-                    className="object-cover rounded"
-                  />
-                  <p>Top</p>
-                </div>
-                <div className="flex items-center flex-col mr-4 gap-1">
-                  <Image
-                    src={right}
-                    alt="Right Layout"
-                    width={60}
-                    height={60}
-                    className="object-cover rounded"
-                  />
-                  <p>Right</p>
-                </div>
-                <div className="flex items-center flex-col gap-1 ">
-                  <Image
-                    src={left}
-                    alt="Left Layout"
-                    width={60}
-                    height={60}
-                    className="object-cover rounded"
-                  />
-                  <p>Left</p>
-                </div>
-              </div>
-            
+                {['top', 'right', 'left'].map((direction, index) => (
+                  <div
+                    role="button"
+                    key={index}
+                    className="flex items-center flex-col mr-4 ml-3 gap-1"
+                    onClick={() => handleChangeLayout(direction)}
+                  >
+                    <Image
+                      src={`/images/${direction}-layout.png`}
+                      alt={`${direction} layout`}
+                      width={60}
+                      height={60}
+                      className={`${activeChangeLayout === direction ? 'scale-110 grayscale' : ''} object-cover rounded transition`}
+                    />
+                    <p className="capitalize">{direction}</p>
+                  </div>
+                )
+              )}
+            </div>
           </div>
             <div className="md:hidden block my-6 text-center">
               <button className="text-sm sm:text-base px-6 py-3 font-medium bg-white rounded sm:rounded-md text-tertiary-semi active:scale-95 transition">
@@ -166,7 +162,11 @@ function HomePage() {
               </button>
             </div>
           </div>
-          <div className="flex-[0.7] flex flex-col items-center w-full rounded-[20px] overflow-auto hidden-scollbar print:mt-0">
+          <div className={`
+              ${activeChangeLayout === 'top' ? '' : 'flex-[0.7] flex flex-col items-center'}
+              w-full rounded-[20px] overflow-auto hidden-scollbar print:mt-0
+            `}
+          >
             <ResumePreview CustomTemplate={selectedTemplate?.component || undefined} />
           </div>
         </div>

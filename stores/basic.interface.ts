@@ -1,7 +1,6 @@
 export type IProfiles = {
   network: string;
-  username: string;
-  url: string;
+  value: string;
 };
 
 type ILocation = {

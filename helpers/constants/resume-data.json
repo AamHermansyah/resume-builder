@@ -35,38 +35,15 @@
     "profiles": [
       {
         "network": "linkedin",
-        "username": "sadanandpai",
-        "url": "https://www.linkedin.com/in/sadanandpai/"
-      },
-      {
-        "network": "twitter",
-        "username": "sadanandpai",
-        "url": "https://www.twitter.com/sadanandpai/"
+        "value": "jhondoe"
       },
       {
         "network": "github",
-        "username": "sadanandpai",
-        "url": "https://github.com/sadanandpai/"
+        "value": "jhondoe"
       },
       {
-        "network": "hackerrank",
-        "username": "paicube",
-        "url": "https://www.hackerrank.com/paicube/"
-      },
-      {
-        "network": "hackerearth",
-        "username": "sadanandpai",
-        "url": "https://www.hackerearth.com/sadanandpai/"
-      },
-      {
-        "network": "codechef",
-        "username": "sadanandpai",
-        "url": "https://www.codechef.com/sadanandpai/"
-      },
-      {
-        "network": "leetcode",
-        "username": "paicube",
-        "url": "https://leetcode.com/paicube/"
+        "network": "instagram",
+        "value": "jhondoe"
       }
     ]
   },
@@ -195,7 +172,7 @@
       "title": "Certificate of exceptional bug finder",
       "date": "2014-11-01",
       "awarder": "XYZ client",
-      "summary": "* Recognition zero defect delivery",
+      "summary": "Recognition zero defect delivery",
       "id": "1"
     },
     {

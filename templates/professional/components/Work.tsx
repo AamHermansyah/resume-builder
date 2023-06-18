@@ -35,12 +35,14 @@ function ExperienceHeader({ work }: { work: IExperienceItem }) {
       <div className="flex justify-between items-end">
         <div className="font-medium">{work.name}</div>
         <div className="italic text-xs">
-          {dateParser(work.startDate)} - {work.isWorkingHere ? 'present' : dateParser(work.endDate)}
+          {work.startDate !== '' && dateParser(work.startDate)}
+          {work.startDate !== '' && (work.isWorkingHere || work.endDate !== '') ? ' - ' : ''}
+          {work.isWorkingHere && 'Present'}
+          {work.endDate !== '' && !work.isWorkingHere && dateParser(work.endDate)}
         </div>
       </div>
       <div className="flex justify-between items-end">
         <div className="font-medium text-xs">{work.position}</div>
-        <div className="italic text-xs">{work.years}</div>
       </div>
     </>
   );

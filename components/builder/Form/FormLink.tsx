@@ -1,31 +1,79 @@
 import InputText from "@/components/form/InputText"
+import { useBasicDetails } from "@/stores/basic";
+import { IBasicDetailsItem } from "@/stores/basic.interface";
 
 function FormLink() {
+  const { values: dataBasic, reset } = useBasicDetails();
+  const { profiles } = dataBasic;
+
+  const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+
+    if (name !== 'portfolio') {
+      const filterProfiles = profiles.map((profile) => {
+        if (profile.network === name) {
+          return {
+            network: name,
+            value: value,          
+          }
+        }
+  
+        return profile;
+      });
+  
+      const newData: IBasicDetailsItem = {
+        ...dataBasic,
+        profiles: filterProfiles
+      }
+  
+      reset(newData);
+    } else {
+      const newData: IBasicDetailsItem = {
+        ...dataBasic,
+        url: value,
+      }
+
+      reset(newData);
+    }
+  }
+
   return (
     <form action="" className="mt-[15px]">
-      <div className="flex flex-col  gap-4">
-        <div className="lg:w-full">
+      <div className="grid grid-cols-1 gap-4">
+        <div className="w-full">
           <InputText
-            id="marital"
-            label="Linkedin URL"
+            id="linkedin"
+            name="linkedin"
+            label="Linkedin Username"
+            defaultValue={profiles[0].value}
+            onChange={handleOnChangeInput}
           />
         </div>
-        <div className="lg:w-full">
+        <div className="w-full">
           <InputText
-            id="marital"
-            label="Github URL"
+            id="github"
+            name="github"
+            label="Github Username"
+            defaultValue={profiles[1].value}
+            onChange={handleOnChangeInput}
           />
         </div>
-        <div className="lg:w-full">
+        <div className="w-full">
           <InputText
-            id="marital"
-            label="Portofolio URL"
+            id="instagram"
+            name="instagram"
+            label="Instagram Username"
+            defaultValue={profiles[2].value}
+            onChange={handleOnChangeInput}
           />
         </div>
-        <div className="lg:w-full">
+        <div className="w-full">
           <InputText
-            id="marital"
-            label="Additional Website Url"
+            id="portfolio"
+            name="portfolio"
+            label="Portfolio URL"
+            defaultValue={dataBasic.url}
+            onChange={handleOnChangeInput}
           />
         </div>
       </div>

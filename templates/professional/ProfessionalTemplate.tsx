@@ -49,34 +49,32 @@ export default function ProfessionalTemplate({ widthClassName = '' }: { widthCla
   if (resumeData === null) return null;
 
   const skills = resumeData.skills;
-  const involvements = resumeData.activities.involvements;
-  const achievements = resumeData.activities.achievements;
 
   return (
-    <ResumeContainer className={cn('p-4 print-exact print:p-0  bg-white w-[730px] print:w-[700px]', widthClassName)}>
+    <ResumeContainer className={cn('p-2 print-exact print:p-0  bg-white w-[730px] print:w-[700px]', widthClassName)}>
       <LeftSection>
         <Section
           title={resumeData.basics?.name}
-          profiles={resumeData.basics.profiles}
           titleClassname="text-xl font-bold"
         >
           <BasicIntro basics={resumeData.basics} />
         </Section>
+
+        <SectionValidator value={resumeData.basics.objective}>
+          <Section title="Career Objective">
+            <Objective objective={resumeData.basics.objective} />
+          </Section>
+        </SectionValidator>
+
         <SectionValidator value={resumeData.work}>
           <Section title="Work Experience">
             <Work work={resumeData.work} />
           </Section>
         </SectionValidator>
 
-        <SectionValidator value={involvements}>
-          <Section title="Key Projects / Involvements">
-            <Involvement data={involvements} />
-          </Section>
-        </SectionValidator>
-
-        <SectionValidator value={achievements}>
+        <SectionValidator value={resumeData.awards}>
           <Section title="Certificates and Awards">
-            <Achievements data={achievements} />
+            <Achievements data={resumeData.awards} />
           </Section>
         </SectionValidator>
       </LeftSection>
@@ -88,33 +86,24 @@ export default function ProfessionalTemplate({ widthClassName = '' }: { widthCla
           </Section>
         </SectionValidator>
 
-        <SectionValidator value={resumeData.basics.objective}>
-          <Section title="Career Objective">
-            <Objective objective={resumeData.basics.objective} />
-          </Section>
-        </SectionValidator>
-
-        <SectionValidator value={skills.languages.concat(skills.frameworks)}>
-          <Section title="Technical expertise">
-            <RatedSkills items={skills.languages.concat(skills.frameworks)} />
-          </Section>
-        </SectionValidator>
-
         <SectionValidator value={skills.technologies.concat(skills.libraries, skills.databases)}>
           <Section title="Skills / Exposure">
             <UnratedSkills items={skills.technologies.concat(skills.libraries, skills.databases)} />
           </Section>
         </SectionValidator>
+
         <SectionValidator value={skills.practices}>
           <Section title="Methodology/Approach">
             <UnratedSkills items={skills.practices} />
           </Section>
         </SectionValidator>
+
         <SectionValidator value={skills.tools}>
           <Section title="Tools">
             <UnratedSkills items={skills.tools} />
           </Section>
         </SectionValidator>
+        
         <SectionValidator value={resumeData.education}>
           <Section title="Education">
             <Education education={resumeData.education} />

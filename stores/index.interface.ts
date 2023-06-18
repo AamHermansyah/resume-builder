@@ -9,8 +9,7 @@ export interface ILocation {
 
 export interface IProfile {
   network: string;
-  username: string;
-  url: string;
+  value: string;
 }
 
 export interface IBasics {

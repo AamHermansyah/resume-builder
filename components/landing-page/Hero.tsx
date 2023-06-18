@@ -14,7 +14,7 @@ function Hero() {
         className="relative bg-gradient-to-br from-tertiary-semi to-violet-300 overflow-hidden rounded-br-[50px] lg:rounded-br-[100px] py-20"
       >
         <div className="relative min-h-[710px] flex items-center rounded-br-[100px] z-10">
-          <div className="absolute w-[350px] sm:w-[495px] aspect-[16/8] bottom-[51%] sm:bottom-4 right-4 -z-[1]">
+          <div className="absolute w-[250px] sm:w-[495px] aspect-[16/8] bottom-[35%] sm:bottom-4 -right-4 sm:right-4 -z-[1]">
             <Image
               src="/images/paper-boat.png"
               alt="paper-boat"
@@ -22,7 +22,7 @@ function Hero() {
               className="object-cover"
             />
           </div>
-          <div className="mt-14 sm:mt-20 md:mt-0 w-full flex gap-y-20 flex-col-reverse md:flex-row items-center gap-8 px-10">
+          <div className="mt-4 sm:mt-20 md:mt-0 w-full flex gap-y-20 flex-col-reverse md:flex-row items-center gap-8 px-10">
             <div className="w-full flex-1 relative flex gap-[66px]">
               <motion.div
                 initial={{ opacity: 0 }}

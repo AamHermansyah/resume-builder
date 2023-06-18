@@ -8,9 +8,11 @@ import { AwardSection } from './components/Awards';
 import { SectionValidator } from '@/helpers/common/components/ValidSectionRenderer';
 import { StateContext } from '@/components/builder/Resume/ResumePreview';
 import { useContext } from 'react';
-import { IBasicLanguage } from '@/stores/basic.interface';
+import { IBasicLanguage, IProfiles } from '@/stores/basic.interface';
 import { SectionHeading } from './atoms/SectionHeading';
 import { cn } from '@/lib/utils';
+import { IconProfiles, iconProfiles } from '@/constants/builder';
+import { Objective } from './components/Objective';
 
 export default function MordernTemplate({ widthClassName = '' }: { widthClassName?: string }) {
   const resumeData = useContext(StateContext);
@@ -24,7 +26,7 @@ export default function MordernTemplate({ widthClassName = '' }: { widthClassNam
   const formattedBasicLanguages = listFormat.format(basicLanguages);
 
   return (
-    <div className={cn('p-4 print:p-0  bg-white w-[730px] print:w-[700px]', widthClassName)}>
+    <div className={cn('p-4 print:p-0 bg-white w-[730px] print:w-[700px]', widthClassName)}>
       <BasicIntro
         name={resumeData.basics.name}
         label={resumeData.basics.label}
@@ -54,13 +56,16 @@ export default function MordernTemplate({ widthClassName = '' }: { widthClassNam
           </SectionValidator>
         </div>
 
-        <div className="">
+        <div className="my-3">
+          <SectionValidator value={resumeData.basics.objective}>
+            <Objective objective={resumeData.basics.objective} />
+          </SectionValidator>
+
           <SectionValidator value={resumeData.basics.languages}>
-            {/* <Objective objective={resumeData.basics.objective} />*/}
-            <div className="my-3">
+            <div>
               <SectionHeading title="Languages" />
               <span>{formattedBasicLanguages}</span>
-              <ul className="text-xs">
+              <ul className="text-xs flex items-center gap-4">
                 <li>3 = <span className="italic">Fluent</span></li>
                 <li>2 = <span className="italic">Intermediate</span></li>
                 <li>1 = <span className="italic">Conversation</span></li>
@@ -87,6 +92,24 @@ export default function MordernTemplate({ widthClassName = '' }: { widthClassNam
           <SectionValidator value={resumeData.education}>
             <EducationSection educations={resumeData.education} />
           </SectionValidator>
+
+          <div className="my-3 print-exact">
+            <SectionHeading title="Social Media" />
+            <div className="grid grid-cols-2">
+              {resumeData.basics.profiles.map((profile: IProfiles) => (
+                <div className={`${profile.network === 'portfolio' ? 'col-span-2' : ''} mb-1 flex gap-2 items-center`}>
+                  {profile.value && (
+                    <div className="w-max p-1 text-white rounded bg-gray-800">
+                      {iconProfiles[profile.network as keyof IconProfiles]}
+                    </div>
+                  )}
+                  <span className="text-xs font-medium">
+                    {profile.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

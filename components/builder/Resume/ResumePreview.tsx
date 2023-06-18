@@ -22,7 +22,7 @@ const resumePreview = ({ CustomTemplate }: { CustomTemplate?: React.FC<{ widthCl
 
   return (
     <StateContext.Provider value={resumeData}>
-      <div className="w-full">
+      <div className={localStorage.getItem('layout') === 'top' ? 'md:flex justify-center' : 'w-full'}>
         { CustomTemplate && <CustomTemplate />}
         {!CustomTemplate && Template && <Template />}
       </div>

@@ -34,16 +34,13 @@ function SocialIcons({ profiles }: { profiles: IProfiles[] }) {
 
         return (
           Icon &&
-          profile.url && (
-            <a
-              href={profile.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-2"
+          profile.value && (
+            <span
+              className="inline-block ml-2"
               key={profile.network}
             >
               <Icon className="h-5 w-5 bg-white" />
-            </a>
+            </span>
           )
         );
       })}
@@ -55,12 +52,10 @@ export function Section({
   title,
   children,
   titleClassname,
-  profiles,
 }: {
   title: string;
   children: React.ReactNode;
   titleClassname?: string;
-  profiles?: IProfiles[];
 }) {
   return (
     <SectionHolder className="border border-dashed border-gray-300">
@@ -73,8 +68,6 @@ export function Section({
           {title}
         </span>
       </div>
-
-      {profiles && <SocialIcons profiles={profiles} />}
 
       {children}
     </SectionHolder>
