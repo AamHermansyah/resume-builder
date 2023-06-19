@@ -24,7 +24,9 @@ function HomePage() {
   const navigate = useRouter();
 
   const handleChangeLayout = (dir: string) => {
-    Cookies.set('layout', dir);
+    Cookies.set('layout', dir, {
+      expires: 30
+    });
     setActiveChangeLayout(dir);
   }
 

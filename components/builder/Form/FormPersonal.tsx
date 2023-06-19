@@ -43,7 +43,7 @@ function FormPersonal() {
 
   return (
     <form action="" className="mt-[35px]">
-      <div className="grid grid-cols-3 gap-x-4 lg:gap-x-10 gap-y-4">
+      <div className="grid grid-cols-3 gap-x-4 gap-y-4">
         <div className="w-full col-span-2">
           <InputText
             id="name"
@@ -75,7 +75,7 @@ function FormPersonal() {
           />
         </div>
       </div>
-      <div className="grid grid-cols-4 lg:grid-cols-3 gap-x-4 lg:gap-x-10 gap-y-4 mt-4">
+      <div className="grid grid-cols-4 lg:grid-cols-3 gap-x-4 gap-y-4 mt-4">
         <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
           <InputText
             id="email"

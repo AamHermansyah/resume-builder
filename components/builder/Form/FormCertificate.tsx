@@ -59,7 +59,7 @@ function FormCertificate() {
             </>
           )}
           <div className="mt-[15px]">
-            <div className="grid grid-cols-3 gap-x-4 lg:gap-x-10 gap-y-4">
+            <div className="grid grid-cols-3 gap-x-4 gap-y-4">
               <div className="col-span-3 sm:col-span-2">
                 <InputText
                   id={`title-${index}`}
