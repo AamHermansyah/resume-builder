@@ -22,6 +22,7 @@ function HomePage() {
   const [selectedTemplate, setSelectedTemplate] = useState<ITemplateContent>(activeTemplate);
   const [activeChangeLayout, setActiveChangeLayout] = useState(Cookies.get('layout') || 'left');
   const navigate = useRouter();
+  const fullWidthMode = Cookies.get('fullWidthMode') === 'true' ? true : false;
 
   const handleChangeLayout = (dir: string) => {
     Cookies.set('layout', dir, {
@@ -78,7 +79,7 @@ function HomePage() {
       />
       <div className="relative mt-[72px] md:mt-12 min-h-screen bg-gradient-to-tr from-tertiary-semi to-violet-300 px-4 lg:px-10 overflow-hidden print:mt-0 print:px-0 print:py-0">
         <div className={`${activeChangeLayout === 'top' ? 'max-w-[700px] mx-auto' : ''} mt-10 relative flex md:flex-row gap-x-10 print:hidden`}>
-          <div className={`${activeChangeLayout !== 'left' ? 'flex-[0.7]' : 'flex-1'} flex-1 self-end`}>
+          <div className={`${activeChangeLayout !== 'left' ? 'flex-[0.7]' : ''} flex-1 self-end`}>
             <Link href="/builder" className="block text-white w-max">
               <BsArrowLeft fontSize={26} />
             </Link>
@@ -103,38 +104,40 @@ function HomePage() {
             mb-10 mt-6 relative flex gap-x-10 gap-y-4 items-start
           `}
         >
-          <div className="flex-1 print:hidden">
-            <div className="px-4 py-5 lg:px-7 bg-white rounded-[20px]">
-              <div className="mt-4 flex items-center gap-5">
-                <h1 className="text-xl font-medium text-tertiary-bold">
-                  Choose Template
-                </h1>
-                <Image
-                  src="icons/builder/edit-fill.svg"
-                  alt="edit-fill"
-                  width={25}
-                  height={25}
-                  className="object-cover"
-                />
-              </div>
-              <div className="mt-4 w-full">
-                <div className="w-full overflow-auto hidden-scollbar px-2 py-4 cursor-pointer flex justify-start gap-6">
-                  {Object.keys(AVAILABLE_TEMPLATES).map((key, index) => (
-                    <img 
-                      key={index}
-                      src={AVAILABLE_TEMPLATES[key].thumbnail}
-                      alt={`CV Preview ${AVAILABLE_TEMPLATES[key].id}`}
-                      className={`
-                        ${selectedTemplate?.id === AVAILABLE_TEMPLATES[key].id ? 'outline outline-1 outline-tertiary-semi' : ''}
-                        object-contain w-[300px] aspect-[0.73/1] border rounded`
-                      }
-                      onClick={() => setSelectedTemplate(AVAILABLE_TEMPLATES[key])}
-                    />
-                  ))}
+          <div className={`${fullWidthMode ? 'flex-auto' : 'flex-1'} w-full print:hidden overflow-auto`}>
+            <div className={`${fullWidthMode ? 'overflow-auto hidden-scollbar' : ''} bg-white px-4 py-5 lg:px-7 rounded-[20px]`}>
+              <div className="px-4 py-5 lg:px-7 bg-white rounded-[20px]">
+                <div className="mt-4 flex items-center gap-5">
+                  <h1 className="text-xl font-medium text-tertiary-bold">
+                    Choose Template
+                  </h1>
+                  <Image
+                    src="icons/builder/edit-fill.svg"
+                    alt="edit-fill"
+                    width={25}
+                    height={25}
+                    className="object-cover"
+                  />
+                </div>
+                <div className="mt-4 w-full">
+                  <div className="w-full overflow-auto hidden-scollbar px-2 py-4 cursor-pointer flex justify-start gap-6">
+                    {Object.keys(AVAILABLE_TEMPLATES).map((key, index) => (
+                      <img 
+                        key={index}
+                        src={AVAILABLE_TEMPLATES[key].thumbnail}
+                        alt={`CV Preview ${AVAILABLE_TEMPLATES[key].id}`}
+                        className={`
+                          ${selectedTemplate?.id === AVAILABLE_TEMPLATES[key].id ? 'outline outline-1 outline-tertiary-semi' : ''}
+                          object-contain w-[300px] aspect-[0.73/1] border rounded`
+                        }
+                        onClick={() => setSelectedTemplate(AVAILABLE_TEMPLATES[key])}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="px-4 py-5 lg:px-7 bg-white rounded-[20px] mt-[25px]">
+            <div className="px-4 py-5 lg:px-7 bg-white rounded-[20px] mt-4 sm:mt-10">
               <div className="mt-4 flex items-center gap-5 mb-[10px]">
                 <h1 className="text-xl font-medium text-tertiary-bold ">Layout</h1>
               </div>
@@ -155,10 +158,9 @@ function HomePage() {
                     />
                     <p className="capitalize">{direction}</p>
                   </div>
-                )
-              )}
+                ))}
+              </div>
             </div>
-          </div>
             <div className="md:hidden block my-6 text-center">
               <button className="text-sm sm:text-base px-6 py-3 font-medium bg-white rounded sm:rounded-md text-tertiary-semi active:scale-95 transition">
                 Change template
@@ -166,8 +168,9 @@ function HomePage() {
             </div>
           </div>
           <div className={`
-              ${activeChangeLayout === 'top' ? '' : 'flex-[0.7] flex flex-col items-center'}
-              w-full rounded-[20px] overflow-auto hidden-scollbar print:mt-0
+              ${activeChangeLayout === 'top' ? 'mb-10 print:mb-0' : 'flex flex-col items-center'}
+              ${fullWidthMode ? 'flex-auto overflow-auto lg:overflow-visible' : 'flex-[0.7] overflow-auto'}
+              w-full rounded-[20px] print:mt-0 hidden-scollbar
             `}
           >
             <ResumePreview CustomTemplate={selectedTemplate?.component || undefined} />

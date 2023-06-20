@@ -30,14 +30,14 @@ export default function BasicIntro({ basics }: { basics: IBasics }) {
       <div className="flex flex-col">
         {basics.profiles.map((profile) => (
           <div className={`${profile.network === 'portfolio' ? 'col-span-2' : ''} mb-1 flex gap-2 items-center`}>
+            <span className="text-xs">
+              {profile.value}
+            </span>
             {profile.value && (
               <div className="w-max p-1 text-white rounded bg-gray-800">
                 {iconProfiles[profile.network as keyof IconProfiles]}
               </div>
             )}
-            <span className="text-xs">
-              {profile.value}
-            </span>
           </div>
         ))}
       </div>

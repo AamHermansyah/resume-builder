@@ -14,6 +14,8 @@ import Work from './components/Work';
 import styled from '@emotion/styled';
 import { StateContext } from '@/components/builder/Resume/ResumePreview';
 import { cn } from '@/lib/utils';
+import { SectionHeading } from '../modern/atoms/SectionHeading';
+import { IBasicLanguage } from '@/stores/basic.interface';
 
 const ResumeContainer = styled.div`
   display: flex;
@@ -67,7 +69,7 @@ export default function ProfessionalTemplate({ widthClassName = '' }: { widthCla
         </SectionValidator>
 
         <SectionValidator value={resumeData.work}>
-          <Section title="Work Experience">
+          <Section title="Projects">
             <Work work={resumeData.work} />
           </Section>
         </SectionValidator>
@@ -84,6 +86,24 @@ export default function ProfessionalTemplate({ widthClassName = '' }: { widthCla
           <Section title="Summary">
             <AboutMe summary={resumeData.basics.summary} profileImage={resumeData.basics.image} />
           </Section>
+        </SectionValidator>
+
+        <SectionValidator value={resumeData.basics.languages}>
+          <div>
+            <SectionHeading title="Languages" />
+            <div className="flex gap-1 flex-wrap">
+              {resumeData.basics.languages.map((language: IBasicLanguage, index: number) => (
+                <span className="block border p-1 rounded" key={index}>
+                  {language.value} ({language.level})
+                </span>
+              ))}
+            </div>
+            <ul className="text-xs mt-1">
+              <li>3 = <span className="italic">Fluent</span></li>
+              <li>2 = <span className="italic">Intermediate</span></li>
+              <li>1 = <span className="italic">Conversation</span></li>
+            </ul>
+          </div>
         </SectionValidator>
 
         <SectionValidator value={skills.technologies.concat(skills.libraries, skills.databases)}>
