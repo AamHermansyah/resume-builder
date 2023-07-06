@@ -9,9 +9,6 @@
           "**/*.prisma"
         ]
       },
-      "buildEnv": {
-        "PRISMA_FORCE_NAPI": "true"
-      },
       "postbuild": "prisma generate"
     }
   ]
