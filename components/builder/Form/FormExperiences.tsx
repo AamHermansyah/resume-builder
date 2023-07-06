@@ -18,7 +18,6 @@ const initValue = {
   endDate: null,
   years: '',
   summary: '',
-  highlights: null,
   isWorkingHere: false,
 };
 
@@ -26,7 +25,7 @@ function FormExperiences() {
 
   const { updateExperience, experiences, remove, add, reset } = useExperiences();
 
-  const handleOnChangeInput = (index: number, e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
+  const handleOnChangeInput = (index: number, e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
     updateExperience(index, {
@@ -79,7 +78,7 @@ function FormExperiences() {
                 <button
                   type="button"
                   className="bg-red-500 text-white p-2 rounded hover:bg-red-600"
-                  onClick={() => handleDelete(index)}  
+                  onClick={() => handleDelete(index)}
                 >
                   <MdDelete fontSize={20} />
                 </button>

@@ -1,0 +1,131 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+}
+
+model Resume {
+  id         Int         @id @default(autoincrement())
+  name       String
+  dob        String
+  label      String
+  image      String
+  email      String
+  phone      String
+  url        String
+  summary    String
+  relExp     String
+  totalExp   String
+  objective  String
+  location   Location?   @relation(fields: [locationId], references: [id])
+  languages  Language[]
+  skills     Skill[]
+  work       Work[]
+  education  Education[]
+  activities Activity    @relation(fields: [activityId], references: [id])
+  volunteer  Volunteer[]
+  awards     Award[]
+  locationId Int?
+  activityId Int
+}
+
+model Location {
+  id          Int      @id @default(autoincrement())
+  address     String?
+  postalCode  String?
+  country     String
+  countryCode String
+  region      String?
+  resumeId    Int
+  Resume      Resume[]
+}
+
+model Language {
+  id       Int    @id @default(autoincrement())
+  value    String
+  level    Int
+  resumeId Int
+  resume   Resume @relation(fields: [resumeId], references: [id])
+}
+
+model Skill {
+  id       Int    @id @default(autoincrement())
+  name     String
+  level    Int
+  resumeId Int
+  resume   Resume @relation(fields: [resumeId], references: [id])
+}
+
+model Work {
+  id            Int     @id @default(autoincrement())
+  name          String
+  position      String
+  country       String
+  url           String?
+  startDate     String
+  isWorkingHere Boolean
+  endDate       String?
+  summary       String
+  years         String
+  resumeId      Int
+  resume        Resume  @relation(fields: [resumeId], references: [id])
+}
+
+model Education {
+  id             Int     @id @default(autoincrement())
+  institution    String
+  url            String?
+  studyType      String
+  area           String
+  startDate      String
+  isStudyingHere Boolean
+  endDate        String?
+  score          String
+  description    String?
+  resumeId       Int
+  resume         Resume  @relation(fields: [resumeId], references: [id])
+}
+
+model Activity {
+  id           Int      @id @default(autoincrement())
+  involvements String
+  achievements String
+  resumeId     Int
+  Resume       Resume[]
+}
+
+model Volunteer {
+  id                Int     @id @default(autoincrement())
+  organization      String
+  position          String
+  url               String?
+  startDate         String
+  endDate           String?
+  summary           String
+  isVolunteeringNow Boolean
+  resumeId          Int
+  resume            Resume  @relation(fields: [resumeId], references: [id])
+}
+
+model Award {
+  id       Int    @id @default(autoincrement())
+  title    String
+  date     String
+  awarder  String
+  summary  String
+  resumeId Int
+  resume   Resume @relation(fields: [resumeId], references: [id])
+}

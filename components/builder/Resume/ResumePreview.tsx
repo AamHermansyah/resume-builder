@@ -24,7 +24,7 @@ const resumePreview = ({ CustomTemplate }: { CustomTemplate?: React.FC<{ widthCl
   return (
     <StateContext.Provider value={resumeData}>
       <div className={Cookies.get('layout') === 'top' ? 'md:flex justify-center' : 'w-full'}>
-        { CustomTemplate && <CustomTemplate />}
+        {CustomTemplate && <CustomTemplate />}
         {!CustomTemplate && Template && <Template />}
       </div>
     </StateContext.Provider>

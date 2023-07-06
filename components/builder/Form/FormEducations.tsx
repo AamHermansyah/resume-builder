@@ -17,7 +17,6 @@ const initValue: IEducationItem = {
   isStudyingHere: false,
   endDate: '',
   score: '',
-  courses: null,
   id: '',
   description: ''
 }
@@ -25,7 +24,7 @@ const initValue: IEducationItem = {
 function FormEducations() {
   const { academics, add, remove, reset, updateEducation } = useEducations();
 
-  const handleOnChangeInput = (index: number, e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
+  const handleOnChangeInput = (index: number, e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
     const newData: IEducationItem = {
@@ -73,7 +72,7 @@ function FormEducations() {
                 <button
                   type="button"
                   className="bg-red-500 text-white p-2 rounded hover:bg-red-600"
-                  onClick={() => handleDelete(index)}  
+                  onClick={() => handleDelete(index)}
                 >
                   <MdDelete fontSize={20} />
                 </button>

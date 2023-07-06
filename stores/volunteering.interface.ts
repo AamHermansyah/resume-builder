@@ -6,7 +6,6 @@ export interface IVolunteeringItem {
   startDate: string | null;
   endDate: string | null;
   summary: string;
-  highlights: string[] | null;
   isVolunteeringNow: boolean;
 }
 

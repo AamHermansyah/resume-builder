@@ -1,11 +1,19 @@
 'use client';
 
-import BuilderLayout from "@/components/builder/BuilderLayout";
+import React, { useEffect } from 'react';
+import BuilderLayout from '@/components/builder/BuilderLayout';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
-function BuilderPage() {
-  return (
-    <BuilderLayout />
-  )
+export default function BuilderPage() {
+  const router = useRouter();
+  const token = Cookies.get('token');
+
+  useEffect(() => {
+    if (token === undefined) {
+      router.replace('/auth/login');
+    }
+  }, [router, token]);
+
+  return <BuilderLayout />;
 }
-
-export default BuilderPage

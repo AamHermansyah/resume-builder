@@ -96,8 +96,8 @@ export default function MordernTemplate({ widthClassName = '' }: { widthClassNam
           <div className="my-3 print-exact">
             <SectionHeading title="Social Media" />
             <div className="grid grid-cols-2">
-              {resumeData.basics.profiles.map((profile: IProfiles) => (
-                <div className={`${profile.network === 'portfolio' ? 'col-span-2' : ''} mb-1 flex gap-2 items-center`}>
+              {resumeData.basics.profiles.map((profile: IProfiles, index: number) => (
+                <div key={index} className={`${profile.network === 'portfolio' ? 'col-span-2' : ''} mb-1 flex gap-2 items-center`}>
                   {profile.value && (
                     <div className="w-max p-1 text-white rounded bg-gray-800">
                       {iconProfiles[profile.network as keyof IconProfiles]}

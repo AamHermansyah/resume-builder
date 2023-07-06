@@ -52,7 +52,6 @@ export interface IWorkIntrf {
   endDate: string;
   summary: string;
   years: string;
-  highlights: string[];
   isWorkingHere: boolean;
   website: string;
 }
@@ -67,7 +66,6 @@ export interface IEducation {
   isStudyingHere: boolean;
   endDate: string;
   score: string;
-  courses: string[];
   website: string;
   description: string
 }
@@ -80,7 +78,6 @@ export interface IVolunteer {
   startDate: string | null;
   endDate: string | null;
   summary: string;
-  highlights: string[];
   isVolunteeringNow: boolean;
 }
 

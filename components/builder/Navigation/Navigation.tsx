@@ -1,5 +1,5 @@
 import { NavigationChild as NavigationChildTypes, navigation } from '@/constants/builder'
-import React, { MouseEventHandler } from 'react'
+import React from 'react'
 import NavigationChild from './NavigationChild'
 
 import dynamic from "next/dynamic"

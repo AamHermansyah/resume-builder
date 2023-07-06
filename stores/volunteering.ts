@@ -6,32 +6,30 @@ import { IVolunteeringItem, IVolunteeringStore } from './volunteering.interface'
 
 const addVolunteering =
   (set: SetState<IVolunteeringStore>) =>
-  ({
-    organization,
-    position,
-    startDate,
-    isVolunteeringNow,
-    endDate,
-    summary,
-    id,
-    url = '',
-    highlights = [],
-  }: IVolunteeringItem) =>
-    set(
-      produce((state: IVolunteeringStore) => {
-        state.volunteeredExps.push({
-          id,
-          organization,
-          position,
-          startDate,
-          isVolunteeringNow,
-          endDate,
-          summary,
-          url,
-          highlights,
-        });
-      })
-    );
+    ({
+      organization,
+      position,
+      startDate,
+      isVolunteeringNow,
+      endDate,
+      summary,
+      id,
+      url = '',
+    }: IVolunteeringItem) =>
+      set(
+        produce((state: IVolunteeringStore) => {
+          state.volunteeredExps.push({
+            id,
+            organization,
+            position,
+            startDate,
+            isVolunteeringNow,
+            endDate,
+            summary,
+            url
+          });
+        })
+      );
 
 const removeVolunteeringExp = (set: SetState<IVolunteeringStore>) => (index: number) =>
   set((state) => ({

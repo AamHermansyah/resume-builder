@@ -17,7 +17,6 @@ const initValue = {
   startDate: null,
   endDate: null,
   summary: '',
-  highlights: null,
   isVolunteeringNow: false,
 };
 
@@ -73,7 +72,7 @@ function FormProjects() {
                 <button
                   type="button"
                   className="bg-red-500 text-white p-2 rounded hover:bg-red-600"
-                  onClick={() => handleDelete(index)}  
+                  onClick={() => handleDelete(index)}
                 >
                   <MdDelete fontSize={20} />
                 </button>
@@ -83,7 +82,7 @@ function FormProjects() {
           <div className="grid grid-cols-3 gap-x-4 gap-y-4">
             <div className="w-full col-span-2">
               <InputText
-                name="organization"                
+                name="organization"
                 id={`organization-${index}`}
                 label="Organization"
                 defaultValue={project.organization}

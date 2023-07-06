@@ -6,36 +6,34 @@ import { produce } from 'immer';
 
 const addExperience =
   (set: SetState<IExperienceStore>) =>
-  ({
-    name,
-    position,
-    country,
-    startDate,
-    isWorkingHere,
-    endDate,
-    years,
-    summary,
-    id,
-    url = '',
-    highlights = [],
-  }: IExperienceItem) =>
-    set(
-      produce((state: IExperienceStore) => {
-        state.experiences.push({
-          id,
-          name,
-          position,
-          country,
-          startDate,
-          isWorkingHere,
-          endDate,
-          summary,
-          url,
-          years,
-          highlights,
-        });
-      })
-    );
+    ({
+      name,
+      position,
+      country,
+      startDate,
+      isWorkingHere,
+      endDate,
+      years,
+      summary,
+      id,
+      url = '',
+    }: IExperienceItem) =>
+      set(
+        produce((state: IExperienceStore) => {
+          state.experiences.push({
+            id,
+            name,
+            position,
+            country,
+            startDate,
+            isWorkingHere,
+            endDate,
+            summary,
+            url,
+            years,
+          });
+        })
+      );
 
 const removeExperience = (set: SetState<IExperienceStore>) => (index: number) =>
   set((state) => ({
@@ -101,4 +99,3 @@ export const useExperiences = create(
     { name: 'experience' }
   )
 );
- 

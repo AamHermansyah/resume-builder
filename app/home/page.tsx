@@ -2,7 +2,7 @@
 
 import Navigation from "@/components/builder/Navigation/Navigation"
 import ResumePreview from "@/components/builder/Resume/ResumePreview";
-import { useState, Suspense } from "react";
+import { useState, Suspense, useEffect } from "react";
 import Image from "next/image";
 import { MdCancel, MdPrint } from "react-icons/md";
 import dynamic from "next/dynamic";
@@ -24,6 +24,15 @@ function HomePage() {
   const navigate = useRouter();
   const fullWidthMode = Cookies.get('fullWidthMode') === 'true' ? true : false;
 
+  const router = useRouter();
+  const token = Cookies.get('token');
+
+  useEffect(() => {
+    if (token === undefined) {
+      router.replace('/auth/login');
+    }
+  }, [router, token]);
+
   const handleChangeLayout = (dir: string) => {
     Cookies.set('layout', dir, {
       expires: 30
@@ -36,10 +45,10 @@ function HomePage() {
       {/* Preview Modal */}
       {isActivePreview && (
         <div
-        className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-70 backdrop-blur z-[999] print:hidden"
-        onClick={() => {
-          setIsActivePreview(false);
-        }}
+          className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-70 backdrop-blur z-[999] print:hidden"
+          onClick={() => {
+            setIsActivePreview(false);
+          }}
         >
           <Suspense>
             <ResumePreviewMode />
@@ -98,9 +107,9 @@ function HomePage() {
         </div>
 
         <div className={`
-            ${activeChangeLayout === 'left' ? 'flex-col md:flex-row' 
-              : activeChangeLayout === 'right' ? 'flex-col md:flex-row-reverse' : 'flex-col items-center'
-            }
+            ${activeChangeLayout === 'left' ? 'flex-col md:flex-row'
+            : activeChangeLayout === 'right' ? 'flex-col md:flex-row-reverse' : 'flex-col items-center'
+          }
             mb-10 mt-6 relative flex gap-x-10 gap-y-4 items-start
           `}
         >
@@ -122,7 +131,7 @@ function HomePage() {
                 <div className="mt-4 w-full">
                   <div className="w-full overflow-auto hidden-scollbar px-2 py-4 cursor-pointer flex justify-start gap-6">
                     {Object.keys(AVAILABLE_TEMPLATES).map((key, index) => (
-                      <img 
+                      <img
                         key={index}
                         src={AVAILABLE_TEMPLATES[key].thumbnail}
                         alt={`CV Preview ${AVAILABLE_TEMPLATES[key].id}`}

@@ -6,36 +6,34 @@ import { IEducationItem, IEducationStore } from './education.interface';
 
 const addEducation =
   (set: SetState<IEducationStore>) =>
-  ({
-    institution,
-    studyType,
-    area,
-    startDate,
-    isStudyingHere,
-    endDate,
-    id,
-    url,
-    score,
-    courses,
-    description
-  }: IEducationItem) =>
-    set(
-      produce((state: IEducationStore) => {
-        state.academics.push({
-          institution,
-          studyType,
-          area,
-          startDate,
-          isStudyingHere,
-          endDate,
-          id,
-          url,
-          courses,
-          score,
-          description
-        });
-      })
-    );
+    ({
+      institution,
+      studyType,
+      area,
+      startDate,
+      isStudyingHere,
+      endDate,
+      id,
+      url,
+      score,
+      description
+    }: IEducationItem) =>
+      set(
+        produce((state: IEducationStore) => {
+          state.academics.push({
+            institution,
+            studyType,
+            area,
+            startDate,
+            isStudyingHere,
+            endDate,
+            id,
+            url,
+            score,
+            description
+          });
+        })
+      );
 
 const removeEducation = (set: SetState<IEducationStore>) => (index: number) =>
   set((state) => ({
