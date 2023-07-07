@@ -9,30 +9,19 @@ import React from "react";
 function FormPersonal() {
   const { values: dataBasic, reset } = useBasicDetails();
 
-  const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
+  const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-
-    if (name !== 'country') {
-      const newData: IBasicDetailsItem = {
-        ...dataBasic,
-        [name]: value
-      }
-
-      reset(newData);
-    } else {
-      const newData: IBasicDetailsItem = {
-        ...dataBasic,
-        location: {
-          ...dataBasic.location,
-          country: value
-        }
-      }
-
-      reset(newData);
+    // @ts-ignore
+    const newData: IBasicDetailsItem = {
+      ...dataBasic,
+      [name]: value
     }
+
+    reset(newData);
   }
 
   const handleOnImageUpload = (imageBase64: string) => {
+    // @ts-ignore
     const newData: IBasicDetailsItem = {
       ...dataBasic,
       image: imageBase64
@@ -50,7 +39,7 @@ function FormPersonal() {
             name="name"
             label="Fullname"
             onChange={handleOnChangeInput}
-            defaultValue={dataBasic.name}
+            defaultValue={dataBasic!.name}
           />
         </div>
 
@@ -60,7 +49,7 @@ function FormPersonal() {
             onChange={(imageBase64) => {
               handleOnImageUpload(imageBase64);
             }}
-            value={dataBasic.image}
+            value={dataBasic!.image}
           />
         </div>
 
@@ -71,7 +60,7 @@ function FormPersonal() {
             label="Job title"
             required={false}
             onChange={handleOnChangeInput}
-            defaultValue={dataBasic.label}
+            defaultValue={dataBasic!.label}
           />
         </div>
       </div>
@@ -82,7 +71,7 @@ function FormPersonal() {
             name="email"
             label="Email"
             onChange={handleOnChangeInput}
-            defaultValue={dataBasic.email}
+            defaultValue={dataBasic!.email}
           />
         </div>
 
@@ -92,7 +81,7 @@ function FormPersonal() {
             name="phone"
             label="Phone"
             onChange={handleOnChangeInput}
-            defaultValue={dataBasic.phone}
+            defaultValue={dataBasic!.phone}
           />
         </div>
 
@@ -101,7 +90,7 @@ function FormPersonal() {
             id="dob"
             name="dob"
             label="Date of Birth"
-            defaultValue={dataBasic.dob}
+            defaultValue={dataBasic!.dob}
             onChange={handleOnChangeInput}
           />
         </div>
@@ -112,7 +101,7 @@ function FormPersonal() {
             name="country"
             label="Nationality"
             onChange={handleOnChangeInput}
-            defaultValue={dataBasic.location.country}
+            defaultValue={dataBasic!.country}
           />
         </div>
 
@@ -122,7 +111,7 @@ function FormPersonal() {
             name="url"
             label="Portfolio Website"
             onChange={handleOnChangeInput}
-            defaultValue={dataBasic.url}
+            defaultValue={dataBasic!.url}
           />
         </div>
 
@@ -132,7 +121,7 @@ function FormPersonal() {
             name="summary"
             label="About"
             onChange={handleOnChangeInput}
-            defaultValue={dataBasic.summary}
+            defaultValue={dataBasic!.summary}
           />
         </div>
       </div>

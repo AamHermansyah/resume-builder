@@ -19,7 +19,7 @@ function FormSkills() {
             onChange={data => {
               languages.reset(data);
             }}
-            data={languages.values}
+            data={languages.values!}
             allow={true}
             id="languages"
           />
@@ -35,7 +35,7 @@ function FormSkills() {
             onChange={data => {
               technologies.reset(data);
             }}
-            data={technologies.values}
+            data={technologies.values!}
             allow={true}
             id="technologies"
           />
@@ -51,13 +51,13 @@ function FormSkills() {
             onChange={data => {
               frameworks.reset(data);
             }}
-            data={frameworks.values}
+            data={frameworks.values!}
             allow={true}
             id="frameworks"
           />
         </div>
       </div>
-      
+
       <div className="mb-4">
         <label htmlFor="tools" className="text-[15px] pl-4 text-tertiary-semi font-medium">
           Add Tools
@@ -67,7 +67,7 @@ function FormSkills() {
             onChange={data => {
               tools.reset(data);
             }}
-            data={tools.values}
+            data={tools.values!}
             allow={true}
             id="tools"
           />

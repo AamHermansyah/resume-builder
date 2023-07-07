@@ -15,5 +15,7 @@ export default function BuilderPage() {
     }
   }, [router, token]);
 
+  if (token === undefined) return null;
+
   return <BuilderLayout />;
 }

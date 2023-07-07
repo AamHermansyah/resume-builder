@@ -21,7 +21,7 @@ function FormCertificate() {
     const { name, value } = e.target;
 
     const updatedAwardItem: IAwardItem = {
-      ...awards[index],
+      ...awards![index],
       [name]: value,
     };
 
@@ -42,7 +42,7 @@ function FormCertificate() {
 
   return (
     <div>
-      {awards.map((certificate, index) => (
+      {awards!.map((certificate, index) => (
         <div key={index}>
           {index > 0 && (
             <>
@@ -51,7 +51,7 @@ function FormCertificate() {
                 <button
                   type="button"
                   className="bg-red-500 text-white p-2 rounded hover:bg-red-600"
-                  onClick={() => handleDelete(index)}  
+                  onClick={() => handleDelete(index)}
                 >
                   <MdDelete fontSize={20} />
                 </button>

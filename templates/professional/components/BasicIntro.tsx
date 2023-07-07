@@ -22,14 +22,14 @@ export default function BasicIntro({ basics }: { basics: IBasics }) {
           </div>
           <div className="flex gap-2 items-center">
             <MdLocationOn fontSize={12} />
-            <span className="text-xs">{basics.location.country}</span>
+            <span className="text-xs">{basics.country}</span>
           </div>
         </div>
       </div>
 
       <div className="flex flex-col">
-        {basics.profiles.map((profile) => (
-          <div className={`${profile.network === 'portfolio' ? 'col-span-2' : ''} mb-1 flex gap-2 items-center`}>
+        {basics.profiles.map((profile, index) => (
+          <div key={index} className={`${profile.network === 'portfolio' ? 'col-span-2' : ''} mb-1 flex gap-2 items-center`}>
             <span className="text-xs">
               {profile.value}
             </span>

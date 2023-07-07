@@ -1,11 +1,4 @@
 import dayjs from 'dayjs';
-export interface ILocation {
-  address: string;
-  postalCode: string;
-  country: string;
-  countryCode: string;
-  region: string;
-}
 
 export interface IProfile {
   network: string;
@@ -21,7 +14,7 @@ export interface IBasics {
   url: string;
   summary: string;
   objective: string;
-  location: ILocation;
+  country: string;
   relExp: string;
   totalExp: string;
   profiles: IProfile[];
@@ -36,10 +29,7 @@ export interface ISkillsIntrf {
   languages: IItem[];
   frameworks: IItem[];
   technologies: IItem[];
-  libraries: IItem[];
-  databases: IItem[];
   tools: IItem[];
-  practices: IItem[];
 }
 
 export interface IWorkIntrf {
@@ -65,7 +55,6 @@ export interface IEducation {
   startDate: string;
   isStudyingHere: boolean;
   endDate: string;
-  score: string;
   website: string;
   description: string
 }

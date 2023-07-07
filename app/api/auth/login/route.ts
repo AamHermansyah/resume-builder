@@ -1,9 +1,8 @@
 import { json } from '@/utils/json';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/db';
 import { compare } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-const prisma = new PrismaClient();
 const secret = 'your-secret-key'; // Ganti dengan kunci rahasia yang sesuai
 
 export async function POST(req: Request) {

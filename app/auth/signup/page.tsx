@@ -96,7 +96,7 @@ function SignUpPage() {
   return (
     <section className="min-h-screen">
       <div className="relative container h-full px-4 lg:px-10 py-24">
-        <div className="flex md:gap-10 h-full items-center justify-center lg:justify-between">
+        <div className="flex md:gap-10 h-full items-center">
           <button
             type="button"
             className="absolute top-4 left-4 md:left-10 flex gap-2 items-center font-semibold sm:text-lg text-tertiary-bold"
@@ -120,7 +120,7 @@ function SignUpPage() {
             </div>
           </div>
           {/* Right column container with form */}
-          <div className="w-full max-w-[500px] mx-auto md:max-w-none md:basis-[50%]">
+          <div className="w-full max-w-[500px] mx-auto md:mx-0 md:basis-[50%]">
             <h1 className="font-semibold text-gray-700 text-center">
               Welcome to
               <br />

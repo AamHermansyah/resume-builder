@@ -3,14 +3,6 @@ export type IProfiles = {
   value: string;
 };
 
-type ILocation = {
-  address: string;
-  postalCode: string;
-  country: string;
-  countryCode: string;
-  region: string;
-};
-
 export type IBasicLanguage = {
   value: string;
   level: number;
@@ -25,7 +17,7 @@ export interface IBasicDetailsItem {
   phone: string;
   url: string;
   summary: string;
-  location: ILocation;
+  country: string;
   relExp: string;
   totalExp: string;
   objective: string;
@@ -34,6 +26,6 @@ export interface IBasicDetailsItem {
 }
 
 export interface IBasicDetailsStore {
-  values: IBasicDetailsItem;
+  values: IBasicDetailsItem | null;
   reset: (values: IBasicDetailsItem) => void;
 }

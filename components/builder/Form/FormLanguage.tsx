@@ -8,7 +8,7 @@ import { BiMinus } from 'react-icons/bi';
 
 export default function FormLanguage() {
   const { values: dataBasic, reset } = useBasicDetails();
-  const [languages, setLanguages] = useState<IBasicLanguage[]>(dataBasic.languages);
+  const [languages, setLanguages] = useState<IBasicLanguage[]>(dataBasic!.languages);
 
   const handleLanguageChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
     const { value } = e.target;
@@ -16,7 +16,7 @@ export default function FormLanguage() {
     updatedLanguages[index].value = value;
 
     const newData: IBasicDetailsItem = {
-      ...dataBasic,
+      ...dataBasic!,
       languages: updatedLanguages,
     };
 
@@ -29,7 +29,7 @@ export default function FormLanguage() {
     updatedLanguages[index].level = +value as 1 | 2 | 3;
 
     const newData: IBasicDetailsItem = {
-      ...dataBasic,
+      ...dataBasic!,
       languages: updatedLanguages,
     };
 
@@ -46,7 +46,7 @@ export default function FormLanguage() {
       updatedLanguages.pop();
 
       const newData: IBasicDetailsItem = {
-        ...dataBasic,
+        ...dataBasic!,
         languages: updatedLanguages,
       };
 
@@ -57,9 +57,9 @@ export default function FormLanguage() {
 
   const resetLanguages = () => {
     setLanguages([{ value: '', level: 3 }]);
-    
+
     const newData: IBasicDetailsItem = {
-      ...dataBasic,
+      ...dataBasic!,
       languages: [{ value: '', level: 3 }],
     };
     reset(newData);

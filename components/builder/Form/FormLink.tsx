@@ -4,30 +4,33 @@ import { IBasicDetailsItem } from "@/stores/basic.interface";
 
 function FormLink() {
   const { values: dataBasic, reset } = useBasicDetails();
+  // @ts-ignore
   const { profiles } = dataBasic;
 
-  const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
+  const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
     if (name !== 'portfolio') {
-      const filterProfiles = profiles.map((profile) => {
+      const filterProfiles = profiles.map((profile: any) => {
         if (profile.network === name) {
           return {
             network: name,
-            value: value,          
+            value: value,
           }
         }
-  
+
         return profile;
       });
-  
+
+      // @ts-ignore
       const newData: IBasicDetailsItem = {
         ...dataBasic,
         profiles: filterProfiles
       }
-  
+
       reset(newData);
     } else {
+      // @ts-ignore
       const newData: IBasicDetailsItem = {
         ...dataBasic,
         url: value,
@@ -72,7 +75,7 @@ function FormLink() {
             id="portfolio"
             name="portfolio"
             label="Portfolio URL"
-            defaultValue={dataBasic.url}
+            defaultValue={dataBasic!.url}
             onChange={handleOnChangeInput}
           />
         </div>

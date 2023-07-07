@@ -29,14 +29,14 @@ function FormExperiences() {
     const { name, value } = e.target;
 
     updateExperience(index, {
-      ...experiences[index],
+      ...experiences![index],
       [name]: value
     })
   }
 
   const handleRichTextEditor = (index: number, htmlOutput: string) => {
     updateExperience(index, {
-      ...experiences[index],
+      ...experiences![index],
       summary: htmlOutput
     });
   }
@@ -47,7 +47,7 @@ function FormExperiences() {
     const isChecked = !(state === 'checked');
 
     const newData: IExperienceItem = {
-      ...experiences[index],
+      ...experiences![index],
       endDate: dayjs().format('YYYY-MM-DD'),
       isWorkingHere: isChecked
     }
@@ -69,7 +69,7 @@ function FormExperiences() {
 
   return (
     <form action="" className="mt-[35px]">
-      {experiences.map((experience, index) => (
+      {experiences!.map((experience, index) => (
         <div key={experience.id}>
           {index > 0 && (
             <>

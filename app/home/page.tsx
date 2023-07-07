@@ -22,7 +22,6 @@ function HomePage() {
   const [selectedTemplate, setSelectedTemplate] = useState<ITemplateContent>(activeTemplate);
   const [activeChangeLayout, setActiveChangeLayout] = useState(Cookies.get('layout') || 'left');
   const navigate = useRouter();
-  const fullWidthMode = Cookies.get('fullWidthMode') === 'true' ? true : false;
 
   const router = useRouter();
   const token = Cookies.get('token');
@@ -88,12 +87,12 @@ function HomePage() {
       />
       <div className="relative mt-[72px] md:mt-12 min-h-screen bg-gradient-to-tr from-tertiary-semi to-violet-300 px-4 lg:px-10 overflow-hidden print:mt-0 print:px-0 print:py-0">
         <div className={`${activeChangeLayout === 'top' ? 'max-w-[700px] mx-auto' : ''} mt-10 relative flex md:flex-row gap-x-10 print:hidden`}>
-          <div className={`${activeChangeLayout !== 'left' ? 'flex-[0.7]' : ''} flex-1 self-end`}>
+          <div className="flex-1 self-end">
             <Link href="/builder" className="block text-white w-max">
               <BsArrowLeft fontSize={26} />
             </Link>
           </div>
-          <div className={`${activeChangeLayout !== 'left' ? 'flex-1' : 'flex-[0.7]'} hidden md:block text-center`}>
+          <div className="w-full max-w-[750px] hidden md:block text-center">
             <button
               className="text-sm sm:text-base px-6 py-3 font-medium bg-white rounded sm:rounded-md text-tertiary-semi active:scale-95 transition"
               onClick={(e) => {
@@ -113,8 +112,8 @@ function HomePage() {
             mb-10 mt-6 relative flex gap-x-10 gap-y-4 items-start
           `}
         >
-          <div className={`${fullWidthMode ? 'flex-auto' : 'flex-1'} w-full print:hidden overflow-auto`}>
-            <div className={`${fullWidthMode ? 'overflow-auto hidden-scollbar' : ''} bg-white px-4 py-5 lg:px-7 rounded-[20px]`}>
+          <div className="flex-auto md:max-w-[550px] w-full print:hidden overflow-auto">
+            <div className="overflow-auto hidden-scollbar bg-white px-4 py-5 lg:px-7 rounded-[20px]">
               <div className="px-4 py-5 lg:px-7 bg-white rounded-[20px]">
                 <div className="mt-4 flex items-center gap-5">
                   <h1 className="text-xl font-medium text-tertiary-bold">
@@ -178,8 +177,7 @@ function HomePage() {
           </div>
           <div className={`
               ${activeChangeLayout === 'top' ? 'mb-10 print:mb-0' : 'flex flex-col items-center'}
-              ${fullWidthMode ? 'flex-auto overflow-auto lg:overflow-visible' : 'flex-[0.7] overflow-auto'}
-              w-full rounded-[20px] print:mt-0 hidden-scollbar
+              flex-auto overflow-auto w-full print:mt-0 hidden-scollbar
             `}
           >
             <ResumePreview CustomTemplate={selectedTemplate?.component || undefined} />

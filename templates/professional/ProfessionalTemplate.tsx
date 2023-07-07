@@ -106,15 +106,15 @@ export default function ProfessionalTemplate({ widthClassName = '' }: { widthCla
           </div>
         </SectionValidator>
 
-        <SectionValidator value={skills.technologies.concat(skills.libraries, skills.databases)}>
+        <SectionValidator value={skills.technologies}>
           <Section title="Skills / Exposure">
-            <UnratedSkills items={skills.technologies.concat(skills.libraries, skills.databases)} />
+            <UnratedSkills items={skills.technologies} />
           </Section>
         </SectionValidator>
 
-        <SectionValidator value={skills.practices}>
-          <Section title="Methodology/Approach">
-            <UnratedSkills items={skills.practices} />
+        <SectionValidator value={skills.languages}>
+          <Section title="Programming Languages">
+            <UnratedSkills items={skills.languages} />
           </Section>
         </SectionValidator>
 
@@ -123,7 +123,7 @@ export default function ProfessionalTemplate({ widthClassName = '' }: { widthCla
             <UnratedSkills items={skills.tools} />
           </Section>
         </SectionValidator>
-        
+
         <SectionValidator value={resumeData.education}>
           <Section title="Education">
             <Education education={resumeData.education} />

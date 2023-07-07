@@ -6,9 +6,10 @@ import { IBasicDetailsItem } from "@/stores/basic.interface";
 function FormExtracurricular() {
   const { values: dataBasic, reset } = useBasicDetails();
 
-  const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
+  const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { value } = e.target;
 
+    // @ts-ignore
     const newData: IBasicDetailsItem = {
       ...dataBasic,
       objective: value,
@@ -24,7 +25,7 @@ function FormExtracurricular() {
           id="objective"
           name="objective"
           label="Description"
-          defaultValue={dataBasic.objective}
+          defaultValue={dataBasic!.objective}
           onChange={handleOnChangeInput}
         />
       </div>

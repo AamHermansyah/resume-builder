@@ -12,7 +12,7 @@ export interface IExperienceItem {
 }
 
 export interface IExperienceStore {
-  experiences: IExperienceItem[];
+  experiences: IExperienceItem[] | null;
   add: (newExperience: IExperienceItem) => void;
   get: (index: number) => IExperienceItem;
   remove: (index: number) => void;

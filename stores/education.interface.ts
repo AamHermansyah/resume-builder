@@ -1,18 +1,16 @@
 export interface IEducationItem {
   institution: string;
-  url: string;
   studyType: string;
   area: string;
   startDate: string | null;
   isStudyingHere: boolean;
   endDate: string | null;
-  score: string;
   id: string;
   description: string
 }
 
 export interface IEducationStore {
-  academics: IEducationItem[];
+  academics: IEducationItem[] | null;
   add: (newEducation: IEducationItem) => void;
   get: (index: number) => void;
   remove: (index: number) => void;

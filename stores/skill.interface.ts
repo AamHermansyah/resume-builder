@@ -6,7 +6,7 @@ export interface ISkillItem {
 export interface ISkillState {
   title: string;
   hasLevel: boolean;
-  values: ISkillItem[];
+  values: ISkillItem[] | null;
   isEnabled: boolean;
 
   add: ({ name, level }: { name: string; level: number }) => void;

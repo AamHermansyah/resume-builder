@@ -10,13 +10,11 @@ import { MdDelete } from "react-icons/md"
 
 const initValue: IEducationItem = {
   institution: '',
-  url: '',
   studyType: '',
   area: '',
   startDate: '',
   isStudyingHere: false,
   endDate: '',
-  score: '',
   id: '',
   description: ''
 }
@@ -28,7 +26,7 @@ function FormEducations() {
     const { name, value } = e.target;
 
     const newData: IEducationItem = {
-      ...academics[index],
+      ...academics![index],
       [name]: value
     }
 
@@ -41,7 +39,7 @@ function FormEducations() {
     const isChecked = !(state === 'checked');
 
     const newData: IEducationItem = {
-      ...academics[index],
+      ...academics![index],
       endDate: dayjs().format('YYYY-MM-DD'),
       isStudyingHere: isChecked
     }
@@ -63,7 +61,7 @@ function FormEducations() {
 
   return (
     <form action="" className="mt-[35px]">
-      {academics.map((academic, index) => (
+      {academics!.map((academic, index) => (
         <div key={academic.id}>
           {index > 0 && (
             <>
