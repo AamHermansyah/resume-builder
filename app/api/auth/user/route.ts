@@ -5,8 +5,16 @@ import jwt from 'jsonwebtoken';
 
 const secret = 'your-secret-key'; // Ganti dengan kunci rahasia yang sesuai
 
-export async function POST(req: Request) {
-  const { name, email, password } = await req.json();
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const email = searchParams.get('email');
+
+  if (!email) {
+    return new Response(json({
+      message: 'Email query is not exist',
+      status: 400,
+    }));
+  }
 
   try {
     // Cek apakah email sudah terdaftar
@@ -17,36 +25,20 @@ export async function POST(req: Request) {
 
       await prisma.$disconnect();
       return new Response(json({
-        message: 'Email has already been registered',
-        status: 400,
+        status: 200,
         token,
         user: existingUser
       }));
     }
 
-    const hashedPassword = await hash(password, 10);
-
-    const user = await prisma.user.create({
-      data: {
-        name,
-        email,
-        password: hashedPassword,
-      },
-    });
-
-    // Buat token JWT
-    const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '1h' });
-
     // Lakukan tindakan setelah berhasil sign up, misalnya mengirim respon dengan token JWT
     await prisma.$disconnect();
     return new Response(json({
-      message: 'User signup successfully',
-      status: 201,
-      user,
-      token
+      message: 'User not found',
+      status: 404,
     }));
   } catch (error) {
-    console.error('Error signing up user:', error);
+    console.error('Error to get user:', error);
     await prisma.$disconnect();
     return new Response(json({ message: 'Internal server error', status: 500 }));
   }

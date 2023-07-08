@@ -13,7 +13,7 @@ export function Navigation() {
   const headerRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
-    const listener = function() {
+    const listener = function () {
       if (headerRef.current) {
         headerRef.current.classList.toggle('nav-active', window.scrollY > 0);
       }
@@ -73,7 +73,7 @@ export function Navigation() {
             <FiMenu fontSize={24} />
           </button>
         </div>
-        <nav className="hidden md:block">
+        <nav className="w-full hidden md:block">
           <ul className="w-full flex gap-7 justify-end items-center py-6 px-10 lg:px-20 lg:text-lg">
             {navigation.map((nav) => (
               <li key={nav.id}>
@@ -86,6 +86,12 @@ export function Navigation() {
                 </Link>
               </li>
             ))}
+            <Link
+              href="/auth/signup"
+              className="w-max text-white bg-tertiary hover:bg-tertiary-bold focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center"
+            >
+              Sign up
+            </Link>
           </ul>
         </nav>
       </div>
