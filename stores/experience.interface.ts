@@ -1,5 +1,5 @@
 export interface IExperienceItem {
-  id: string;
+  id?: string;
   name: string;
   position: string;
   country: string;

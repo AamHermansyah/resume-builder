@@ -105,7 +105,7 @@ function FormCertificate() {
       <div className="mt-4 flex items-center justify-start gap-5">
         <button
           type="button"
-          className="px-4 py-2 text-sm font-medium text-white bg-orange-400 border border-orange-400 rounded hover:bg-orange-500"
+          className="px-4 py-2 text-sm font-medium text-white bg-tertiary border border-tertiary rounded hover:bg-tertiary-bold"
           onClick={handleReset}
         >
           Reset

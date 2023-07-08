@@ -7,7 +7,7 @@ export interface IAwardItem {
   awarder: string;
   date: string | null;
   summary: string;
-  id: string;
+  id?: string;
 }
 
 export interface IAwardsStore {

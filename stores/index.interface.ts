@@ -33,7 +33,7 @@ export interface ISkillsIntrf {
 }
 
 export interface IWorkIntrf {
-  id: string;
+  id?: string;
   name: string;
   position: string;
   country: string;
@@ -47,7 +47,7 @@ export interface IWorkIntrf {
 }
 
 export interface IEducation {
-  id: string;
+  id?: string;
   institution: string;
   url: string;
   studyType: string;
@@ -60,7 +60,7 @@ export interface IEducation {
 }
 
 export interface IVolunteer {
-  id: string;
+  id?: string;
   organization: string;
   position: string;
   url: string;
@@ -71,7 +71,7 @@ export interface IVolunteer {
 }
 
 export interface IAwards {
-  id: string;
+  id?: string;
   title: string;
   awarder: string;
   date: dayjs.Dayjs;

@@ -5,7 +5,7 @@ export interface IEducationItem {
   startDate: string | null;
   isStudyingHere: boolean;
   endDate: string | null;
-  id: string;
+  id?: string;
   description: string
 }
 

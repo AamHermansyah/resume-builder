@@ -113,7 +113,6 @@
   },
   "work": [
     {
-      "id": "1",
       "name": "Company 1",
       "position": "Senior Software Developer",
       "country": "Canada",
@@ -125,7 +124,6 @@
       "years": ""
     },
     {
-      "id": "2",
       "name": "Company 2",
       "position": "Software Developer",
       "country": "USA",
@@ -139,7 +137,6 @@
   ],
   "education": [
     {
-      "id": "2",
       "institution": "NMAMIT, Nitte",
       "studyType": "B.Tech (VTU)",
       "area": "Computer Science",
@@ -149,7 +146,6 @@
       "description": "This is description"
     },
     {
-      "id": "1",
       "institution": "MIT, University",
       "studyType": "MS",
       "area": "Cloud technology",
@@ -161,7 +157,6 @@
   ],
   "volunteer": [
     {
-      "id": "1",
       "organization": "Company XYZ",
       "position": "Organizer",
       "url": "https://xyx.com/",
@@ -176,15 +171,13 @@
       "title": "Certificate of exceptional bug finder",
       "date": "2014-11-01",
       "awarder": "XYZ client",
-      "summary": "Recognition zero defect delivery",
-      "id": "1"
+      "summary": "Recognition zero defect delivery"
     },
     {
       "title": "Certificate of best frontend developer",
       "date": "2016-11-01",
       "awarder": "XYZ client",
-      "summary": "Awarded for exceptional improvements made to improve user experience",
-      "id": "1"
+      "summary": "Awarded for exceptional improvements made to improve user experience"
     }
   ]
 }

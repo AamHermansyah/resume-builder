@@ -3,7 +3,7 @@ export interface IAwardItem {
   awarder: string;
   date: string | null;
   summary: string;
-  id: string;
+  id?: string;
 }
 
 export interface IAwardsStore {
@@ -16,4 +16,3 @@ export interface IAwardsStore {
   onmovedown: (index: number) => void;
   updateAward: (index: number, updatedInfo: IAwardItem) => void;
 }
-  

@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     // Membuat data Resume
     const createdResume = await prisma.resume.create({
       data: {
-        user: { connect: { id: Number(userId) } },
+        user: { connect: { id: userId } },
         basics: {
           create: {
             name: resume.basics.name,
@@ -162,7 +162,7 @@ export async function GET(req: Request) {
 
     const resume = await prisma.resume.findFirst({
       where: {
-        userId: Number(id),
+        userId: id,
       },
       include: {
         basics: {
@@ -211,7 +211,7 @@ export async function PUT(req: Request) {
     // Replace data Resume
     await prisma.resume.update({
       where: {
-        id: Number(id),
+        id: id!,
       },
       data: {
         basics: {
