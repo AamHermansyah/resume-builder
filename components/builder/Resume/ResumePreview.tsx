@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Context, createContext } from 'react';
-import { useResumeStore } from '@/stores/useResumeStore';
+import { getResumeStore, useResumeStore } from '@/stores/useResumeStore';
 import { useTemplates } from '@/stores/useTemplate';
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
 import Cookies from 'js-cookie';
@@ -8,25 +8,18 @@ import Cookies from 'js-cookie';
 type propTypes = {
   CustomTemplate?: React.FC<{ widthClassName?: string | undefined; }> | undefined;
   token?: string;
-  resumeData?: any;
-  errorMessage?: string | null;
-  loading?: boolean,
 }
-
-// Pindahkan fetch
 
 // TODO: need to define types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export let StateContext: Context<any> = createContext(null);
 
-const resumePreview = ({ CustomTemplate, token, resumeData, loading, errorMessage = null }: propTypes) => {
-
+const resumePreview = ({ CustomTemplate, token }: propTypes) => {
   const templateId = useTemplates((state) => state.activeTemplate.id);
   const Template = AVAILABLE_TEMPLATES[templateId].component;
+  const resumeData = getResumeStore();
 
-  if (loading && errorMessage !== null) {
-    StateContext = createContext(resumeData);
-  }
+  StateContext = createContext(resumeData);
 
   useEffect(() => {
     if (token) {

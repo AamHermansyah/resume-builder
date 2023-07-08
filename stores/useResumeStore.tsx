@@ -15,6 +15,22 @@ import { useVoluteeringStore } from './volunteering';
 import { useEffect, useState } from 'react';
 import ResumeData from '@/helpers/constants/resume-data.json';
 
+export const getResumeStore = () => {
+  return {
+    basics: useBasicDetails((state) => state.values),
+    work: useExperiences((state) => state.experiences),
+    education: useEducations((state) => state.academics),
+    awards: useAwards((state) => state.awards),
+    volunteer: useVoluteeringStore((state) => state.volunteeredExps),
+    skills: {
+      languages: useLanguages((state) => state.get()),
+      frameworks: useFrameworks((state) => state.get()),
+      technologies: useTechnologies((state) => state.get()),
+      tools: useTools((state) => state.get()),
+    },
+  }
+};
+
 export const resetResumeStore = (data?: any) => {
   useBasicDetails.getState().reset(data?.basics || null);
   useLanguages.getState().reset(data?.skills.languages || null);

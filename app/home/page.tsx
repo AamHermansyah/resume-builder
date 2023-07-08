@@ -86,13 +86,22 @@ function HomePage() {
         }}
       />
       <div className="relative mt-[72px] md:mt-12 min-h-screen bg-gradient-to-tr from-tertiary-semi to-violet-300 px-4 lg:px-10 overflow-hidden print:mt-0 print:px-0 print:py-0">
-        <div className={`${activeChangeLayout === 'top' ? 'max-w-[700px] mx-auto' : ''} mt-10 relative flex md:flex-row gap-x-10 print:hidden`}>
-          <div className="flex-1 self-end">
+        <div className={`
+          ${activeChangeLayout === 'top' ? 'max-w-[700px] mx-auto' : ''} 
+          mt-10 relative flex md:flex-row gap-x-10 print:hidden
+        `}>
+          <div className={`
+            ${activeChangeLayout === 'right' ? 'max-w-[730px] w-full' : ''} 
+            flex-1 self-end
+          `}>
             <Link href="/builder" className="block text-white w-max">
               <BsArrowLeft fontSize={26} />
             </Link>
           </div>
-          <div className="w-full max-w-[750px] hidden md:block text-center">
+          <div className={`
+            ${activeChangeLayout === 'left' ? 'max-w-[735px] w-full' : 'mx-auto'}
+            hidden md:block text-center
+          `}>
             <button
               className="text-sm sm:text-base px-6 py-3 font-medium bg-white rounded sm:rounded-md text-tertiary-semi active:scale-95 transition"
               onClick={(e) => {
@@ -180,7 +189,9 @@ function HomePage() {
               flex-auto overflow-auto w-full print:mt-0 hidden-scollbar
             `}
           >
-            <ResumePreview CustomTemplate={selectedTemplate?.component || undefined} />
+            <ResumePreview
+              CustomTemplate={selectedTemplate?.component || undefined}
+            />
           </div>
         </div>
       </div>
