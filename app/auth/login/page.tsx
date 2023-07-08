@@ -88,7 +88,7 @@ function LoginPage() {
   };
 
   if (token) {
-    navigate.push('builder');
+    navigate.push('/builder');
     return null;
   }
 

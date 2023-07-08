@@ -204,18 +204,25 @@ export async function GET(req: Request) {
 export async function PUT(req: Request) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get('id');
+  const userId = searchParams.get('userId');
 
   const { data: resume } = await req.json();
 
   try {
-    // Replace data Resume
-    await prisma.resume.update({
+    // Delete existing Resume
+    await prisma.resume.delete({
       where: {
         id: id!,
       },
+    });
+
+    // Create new Resume
+    const createdResume = await prisma.resume.create({
       data: {
+        id: id!,
+        user: { connect: { id: userId! } },
         basics: {
-          update: {
+          create: {
             name: resume.basics.name,
             dob: resume.basics.dob,
             label: resume.basics.label,
@@ -230,127 +237,97 @@ export async function PUT(req: Request) {
             objective: resume.basics.objective,
             languages: {
               // @ts-ignore
-              updateMany: resume.basics.languages.map((language) => ({
-                where: { id: language.id },
-                data: {
-                  value: language.value,
-                  level: language.level,
-                },
+              create: resume.basics.languages.map((language) => ({
+                value: language.value,
+                level: language.level,
               })),
             },
             profiles: {
               // @ts-ignore
-              updateMany: resume.basics.profiles.map((profile) => ({
-                where: { id: profile.id },
-                data: {
-                  network: profile.network,
-                  value: profile.value,
-                },
+              create: resume.basics.profiles.map((profile) => ({
+                network: profile.network,
+                value: profile.value,
               })),
             },
           },
         },
         skills: {
-          update: {
+          create: {
             languages: {
               // @ts-ignore
-              updateMany: resume.skills.languages.map((language) => ({
-                where: { id: language.id },
-                data: {
-                  name: language.name,
-                  level: language.level,
-                },
+              create: resume.skills.languages.map((language) => ({
+                name: language.name,
+                level: language.level,
               })),
             },
             frameworks: {
               // @ts-ignore
-              updateMany: resume.skills.frameworks.map((framework) => ({
-                where: { id: framework.id },
-                data: {
-                  name: framework.name,
-                  level: framework.level,
-                },
+              create: resume.skills.frameworks.map((framework) => ({
+                name: framework.name,
+                level: framework.level,
               })),
             },
             technologies: {
               // @ts-ignore
-              updateMany: resume.skills.technologies.map((technology) => ({
-                where: { id: technology.id },
-                data: {
-                  name: technology.name,
-                  level: technology.level,
-                },
+              create: resume.skills.technologies.map((technology) => ({
+                name: technology.name,
+                level: technology.level,
               })),
             },
             tools: {
               // @ts-ignore
-              updateMany: resume.skills.tools.map((tool) => ({
-                where: { id: tool.id },
-                data: {
-                  name: tool.name,
-                  level: tool.level,
-                },
+              create: resume.skills.tools.map((tool) => ({
+                name: tool.name,
+                level: tool.level,
               })),
             },
           },
         },
         work: {
           // @ts-ignore
-          updateMany: resume.work.map((work) => ({
-            where: { id: work.id },
-            data: {
-              name: work.name,
-              position: work.position,
-              country: work.country,
-              url: work.url,
-              startDate: work.startDate,
-              isWorkingHere: work.isWorkingHere,
-              endDate: work.endDate,
-              summary: work.summary,
-              years: work.years,
-            },
+          create: resume.work.map((work) => ({
+            name: work.name,
+            position: work.position,
+            country: work.country,
+            url: work.url,
+            startDate: work.startDate,
+            isWorkingHere: work.isWorkingHere,
+            endDate: work.endDate,
+            summary: work.summary,
+            years: work.years,
           })),
         },
         education: {
           // @ts-ignore
-          updateMany: resume.education.map((education) => ({
-            where: { id: education.id },
-            data: {
-              institution: education.institution,
-              studyType: education.studyType,
-              area: education.area,
-              startDate: education.startDate,
-              isStudyingHere: education.isStudyingHere,
-              endDate: education.endDate,
-              description: education.description,
-            },
+          create: resume.education.map((education) => ({
+            institution: education.institution,
+            studyType: education.studyType,
+            area: education.area,
+            startDate: education.startDate,
+            isStudyingHere: education.isStudyingHere,
+            endDate: education.endDate,
+            description: education.description,
           })),
         },
         awards: {
           // @ts-ignore
-          updateMany: resume.awards.map((award) => ({
-            where: { id: award.id },
-            data: {
-              title: award.title,
-              date: award.date,
-              awarder: award.awarder,
-              summary: award.summary,
-            },
+          create: resume.awards.map((award) => ({
+            title: award.title,
+            date: award.date,
+            awarder: award.awarder,
+            summary: award.summary,
           })),
         },
         volunteer: {
           // @ts-ignore
-          updateMany: resume.volunteer.map((volunteer) => ({
-            where: { id: volunteer.id },
-            data: {
-              organization: volunteer.organization,
-              position: volunteer.position,
-              url: volunteer.url,
-              startDate: volunteer.startDate,
-              endDate: volunteer.endDate,
-              summary: volunteer.summary,
-              isVolunteeringNow: volunteer.isVolunteeringNow,
-            },
+          create: resume.volunteer.map((volunteer) => ({
+            organization: volunteer.organization,
+            position: volunteer.position,
+            url: volunteer.url,
+            startDate: volunteer.startDate,
+            endDate: volunteer.endDate,
+            summary: volunteer.summary,
+            isVolunteeringNow: volunteer.isVolunteeringNow,
           })),
         },
       },
@@ -358,7 +335,8 @@ export async function PUT(req: Request) {
 
     return new Response(json({
       message: 'Data successfully replaced',
-      status: 200
+      status: 200,
+      data: createdResume
     }));
   } catch (error) {
     console.error('Error replacing resume:', error);

@@ -26,11 +26,13 @@ function BuilderLayout() {
   const user = JSON.parse(localStorage.getItem('user')!);
   const { resumeData, loading, errorMessage } = useResumeStore(user?.id);
 
+  console.log(resumeData?.basics?.languages);
+
   const fetchUpdateData = async () => {
     setUpdating(true);
     const id = localStorage.getItem('resumeId');
     try {
-      const response = await fetch(`/api/builder?id=${id}`, {
+      const response = await fetch(`/api/builder?id=${id}&userId=${user?.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -39,7 +41,9 @@ function BuilderLayout() {
       });
 
       if (response.ok) {
-        await response.json();
+        const data = await response.json();
+        console.log(data);
+        localStorage.setItem('resumeId', data.data.id);
         alert('Data successfully updated!');
       } else {
         alert('Failed to update data. Try again later');

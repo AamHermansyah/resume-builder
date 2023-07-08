@@ -97,7 +97,7 @@ function SignUpPage() {
   };
 
   if (token) {
-    navigate.push('builder');
+    navigate.push('/builder');
     return null;
   }
 
