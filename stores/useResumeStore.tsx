@@ -67,6 +67,7 @@ export const useResumeStore = (userId: number) => {
     try {
       const response = await fetch(`/api/builder?id=${userId}`);
       const data = await response.json();
+      console.log({ getBuilder: data });
       if (data?.status === 200) {
         localStorage.setItem('resumeId', data.data.id);
         resetResumeStore(data.data);
@@ -82,6 +83,7 @@ export const useResumeStore = (userId: number) => {
         })
           .then((res) => res.json())
           .then((res) => {
+            console.log({ postBuilder: data });
             if (res?.status === 201) {
               localStorage.setItem('resumeId', res.data.id);
               resetResumeStore(res.data);
