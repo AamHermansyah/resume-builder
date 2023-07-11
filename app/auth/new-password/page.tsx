@@ -23,6 +23,7 @@ function NewPasswordPage() {
   const [loadingFetch, setLoadingFetch] = useState(false);
   const { data, status } = useSession();
   const navigate = useRouter();
+  const token = Cookies.get('token');
 
   const handleSignup = async (e: FormEvent) => {
     e.preventDefault();
@@ -64,7 +65,7 @@ function NewPasswordPage() {
         // Tindakan setelah berhasil sign up, misalnya alihkan ke halaman lain
         Cookies.set('token', response.token);
         localStorage.setItem('user', json(response.user));
-        signOut();
+        navigate.push('/builder');
       } else {
         setErrorMessage((prevState) => ({
           ...prevState,
@@ -98,19 +99,18 @@ function NewPasswordPage() {
           if (response?.token && response?.status === 200) {
             Cookies.set('token', response.token);
             localStorage.setItem('user', json(response.user));
-            signOut();
+            navigate.push('/builder');
           } else {
             setLoadingFetch(false);
           }
         } catch (error) {
           alert(`Error: ${(error as Error)?.message}`);
-          signOut();
         }
       }
 
       fetchData();
     }
-  }, [status])
+  }, [status, token])
 
   if (status === 'loading' || loadingFetch) return <Loading />
 

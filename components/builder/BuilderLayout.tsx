@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { resetResumeStore, useResumeStore } from "@/stores/useResumeStore";
 import { Loading } from "../ui/loading";
 import { createContext } from "vm";
+import { signOut } from "next-auth/react";
 
 const ResumePreviewMode = dynamic(() => import('@/components/builder/Resume/ResumePreviewMode'));
 const Navigation = dynamic(() => import('@/components/builder/Navigation/Navigation'));
@@ -22,7 +23,6 @@ function BuilderLayout() {
   const [updating, setUpdating] = useState(false);
 
   const dirLayout = Cookies.get('layout') || 'left';
-  const navigate = useRouter();
   const token = Cookies.get('token');
   const user = JSON.parse(localStorage.getItem('user')!);
   const { resumeData, loading, errorMessage } = useResumeStore(user?.id);
@@ -56,12 +56,12 @@ function BuilderLayout() {
   };
 
   const handleLogout = () => {
-    navigate.push('/auth/login');
     setLogouting(true);
     Cookies.remove('token');
     localStorage.removeItem('user');
     localStorage.removeItem('resumeId');
     resetResumeStore();
+    signOut();
   }
 
   if (loading || errorMessage !== null || logouting) return <Loading />
