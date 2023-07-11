@@ -9,7 +9,6 @@ import { FormEvent, useEffect, useState } from 'react';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import Cookies from 'js-cookie';
 import { json } from '@/utils/json';
-import { signOut } from 'next-auth/react';
 
 const defaultInvalidValue = {
   name: null,

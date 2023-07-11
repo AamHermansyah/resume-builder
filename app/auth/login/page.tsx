@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useState, useEffect } from 'react'
 import { BiArrowBack } from 'react-icons/bi'
 import { InvalidInputMessage, FormDataAuth } from '../index.interface';
 import { useRouter } from 'next/navigation';
@@ -87,10 +87,13 @@ function LoginPage() {
     }
   };
 
-  if (token) {
-    navigate.push('/builder');
-    return null;
-  }
+  useEffect(() => {
+    if (token) {
+      navigate.push('/builder');
+    }
+  }, [navigate, token]);
+
+  if (token) return null;
 
   return (
     <section className="min-h-screen">

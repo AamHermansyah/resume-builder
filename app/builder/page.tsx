@@ -11,7 +11,7 @@ export default function BuilderPage() {
 
   useEffect(() => {
     if (token === undefined) {
-      router.replace('/auth/login');
+      router.push('/auth/login');
     }
   }, [router, token]);
 
