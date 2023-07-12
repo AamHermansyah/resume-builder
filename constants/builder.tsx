@@ -15,11 +15,12 @@ const FormLink = dynamic(() => import('@/components/builder/Form/FormLink'));
 
 export type NavigationChild = {
   id: string,
-  iconUrl: string,
-  iconSize: number,
-  alt: string,
+  iconUrl?: string,
+  iconSize?: number,
+  alt?: string,
   href: string,
-  title?: string
+  title?: string,
+  className?: string;
 }
 
 type Navigation = {
@@ -42,7 +43,7 @@ export const navigation: Navigation = {
       iconSize: 20,
       iconUrl: '/icons/builder/back-icon.svg',
       alt: 'back',
-      href: '/',
+      href: '/builder',
     },
     {
       id: 'nav-left-2',
@@ -93,6 +94,12 @@ export const navigation: Navigation = {
       alt: 'print',
       href: '/',
       title: 'Print'
+    },
+    {
+      id: 'nav-right-4',
+      href: '/',
+      title: 'Logout',
+      className: 'w-max px-4 py-2 rounded bg-white text-gray-700'
     },
   ]
 }

@@ -44,7 +44,7 @@ const SelectCustomInput: React.FC<propTypes> = ({ data, allow, onChange, id }) =
             name={id}
             id={id}
             placeholder="Example: react or algorithm,next,html"
-            className="w-full bg-gray-100 border border-gray-200 py-2 px-4 block focus:outline-none text-gray-700 rounded-[20px]"
+            className="w-full bg-gray-100 border border-gray-200 py-2 px-4 block focus:outline-none text-gray-700 rounded"
           />
           <div className="flex gap-x-2 gap-y-2 items-center">
             <button

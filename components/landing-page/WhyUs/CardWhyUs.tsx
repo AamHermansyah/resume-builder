@@ -9,13 +9,13 @@ type propTypes = Pick<WhyUs, 'title' | 'alt' | 'imageUrl'> & {
   reverse?: boolean
 }
 
-function CardWhyUs({ imageUrl, title, children, alt, reverse } : propTypes) {
+function CardWhyUs({ imageUrl, title, children, alt, reverse }: propTypes) {
   return (
     <div className={
       `${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}
         flex-col mt-[78px] flex gap-10 items-center box-border`
     }>
-      <div className="relative bg-gradient-to-br from-tertiary-semi to-violet-300 w-full flex-[0.8] aspect-video rounded-[20px] overflow-hidden border">
+      <div className="relative bg-gradient-to-br from-tertiary-semi to-violet-300 w-full flex-[0.8] aspect-video rounded overflow-hidden border">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-[35%] aspect-square">
             <Image

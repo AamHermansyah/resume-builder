@@ -97,7 +97,7 @@ function LoginPage() {
 
   return (
     <section className="min-h-screen">
-      <div className="relative container h-full px-4 lg:px-10 py-24">
+      <div className="relative container h-full px-4 lg:px-6 py-24">
         <div className="flex md:gap-10 h-full items-center">
           <button
             type="button"

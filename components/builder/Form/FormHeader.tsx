@@ -13,7 +13,7 @@ function FormHeader({ onClickButton, isActiveButton }: propTypes) {
       {form.map((item) => (
         <button
           key={item.id}
-          className={`${isActiveButton === item.id ? '' : 'group active:scale-95 transition'} mx-2.5 sm:mx-5 py-4 cursor-pointer`}
+          className={`${isActiveButton === item.id ? '' : 'group active:scale-95 transition'} mx-2 sm:mx-3 py-4 cursor-pointer`}
           onClick={() => onClickButton(item.id)}
         >
           <Image

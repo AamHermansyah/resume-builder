@@ -20,7 +20,7 @@ const InputTextArea = forwardRef<HTMLTextAreaElement, InputTextAreaProps>(
         <Textarea
           id={id}
           name={id}
-          className="w-full py-2 rounded-[20px] bg-gray-200 border-none h-[200px] resize-none"
+          className="w-full py-2 rounded bg-gray-200 border-none h-[200px] resize-none"
           ref={ref}
           {...props}
         />

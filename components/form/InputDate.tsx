@@ -24,7 +24,7 @@ const InputDate = forwardRef<HTMLInputElement, InputDateProps>(
           id={id}
           name={id}
           className={cn(
-            'py-6 rounded-[20px] bg-gray-200 border-none text-[15px] font-medium text-tertiary-semi uppercase',
+            'py-6 rounded bg-gray-200 border-none text-[15px] font-medium text-tertiary-semi uppercase',
             className
           )}
           ref={ref}

@@ -13,10 +13,10 @@ type InputTextProps = {
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
-  required = true, 
-  label, 
-  id, 
-  className, 
+  required = true,
+  label,
+  id,
+  className,
   onChange,
   ...props
 }, ref) => {
@@ -31,7 +31,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
       <Input
         type="text"
         id={id}
-        className={cn('py-6 rounded-[20px] bg-gray-200 border-none', className)}
+        className={cn('py-6 rounded bg-gray-200 border-none', className)}
         onChange={onChange}
         ref={ref}
         {...props}

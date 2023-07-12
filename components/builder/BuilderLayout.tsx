@@ -109,22 +109,19 @@ function BuilderLayout() {
 
       <Suspense>
         <Navigation
-          onClickPreview={() => {
-            setIsActivePreview(true);
-          }}
+          onClickPreview={() => setIsActivePreview(true)}
+          onClickLogout={handleLogout}
         />
       </Suspense>
 
-      <div className="relative mt-[72px] md:mt-12 min-h-screen bg-gradient-to-tr from-tertiary-semi to-violet-300 px-4 lg:px-10 overflow-hidden print:mt-0 print:px-0 print:py-0">
+      <div className="relative mt-[72px] md:mt-12 min-h-screen bg-gradient-to-tr from-tertiary-semi to-violet-300 px-4 lg:px-6 overflow-hidden print:mt-0 print:px-0 print:py-0">
         <div className={`
-            ${dirLayout === 'left' ? 'flex-col md:flex-row'
-            : dirLayout === 'right' ? 'flex-col-reverse md:flex-row-reverse' : 'flex-col items-center'
-          }
-            relative mt-10 flex gap-x-10 items-stretch print:hidden
-          `}
+          ${dirLayout === 'left' ? 'flex-col md:flex-row mb-10'
+            : dirLayout === 'right' ? 'flex-col md:flex-row-reverse mb-10' : 'flex-col items-center'}
+          relative max-w-[1500px] mx-auto flex gap-x-6 gap-y-4 items-start`}
         >
-          <div className="flex-1">
-            <div className="w-full text-center bg-white rounded-lg overflow-x-auto hidden-scollbar">
+          <div className="flex-auto w-full print:hidden overflow-auto my-4 md:my-10">
+            <div className="w-full text-center bg-white rounded-lg overflow-x-auto custom-scrollbar mb-4 px-4">
               <div className="whitespace-nowrap ">
                 <FormHeader
                   onClickButton={(id) => {
@@ -134,16 +131,7 @@ function BuilderLayout() {
                 />
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className={`
-          ${dirLayout === 'left' ? 'flex-col md:flex-row mb-10'
-            : dirLayout === 'right' ? 'flex-col md:flex-row-reverse mb-10' : 'flex-col items-center'}
-          relative flex gap-x-10 gap-y-4 items-start`}
-        >
-          <div className="flex-auto w-full print:hidden overflow-auto my-4 md:my-10">
-            <div className="overflow-auto hidden-scollbar bg-white px-4 py-5 lg:px-7 rounded-[20px]">
+            <div className="overflow-auto hidden-scrollbar bg-white px-4 py-5 lg:px-7 rounded">
               {form.map((item) => {
                 if (item.id === isActiveFormId && resumeData?.basics !== null) {
                   return (
@@ -185,17 +173,10 @@ function BuilderLayout() {
                 }
               })}
             </div>
-            <button
-              className="hidden md:block w-full mt-6 py-2 px-4 text-lg font-semibold bg-red-600 text-white rounded hover:bg-red-700 active:scale-95 transition-all duration-200 disabled:opacity-50"
-              onClick={(e) => handleLogout()}
-              disabled={logouting}
-            >
-              {logouting ? 'Logouting...' : 'Logout'}
-            </button>
           </div>
           <div className={`
               ${dirLayout === 'top' ? 'mb-10 print:mb-0' : 'md:mt-[42px] flex flex-col items-center'}
-              flex-auto overflow-auto lg:overflow-visible w-full rounded-[20px] print:mt-0 hidden-scollbar
+              flex-auto overflow-auto lg:overflow-visible w-full rounded print:mt-0 hidden-scrollbar
             `}
           >
             {resumeData?.basics !== null && (
@@ -203,13 +184,6 @@ function BuilderLayout() {
                 token={token}
               />
             )}
-            <button
-              className="block md:hidden w-full mt-6 py-2 px-4 text-lg font-semibold bg-red-600 text-white rounded mb-4 hover:bg-red-700 active:scale-95 transition-all duration-200 disabled:opacity-50"
-              onClick={(e) => handleLogout()}
-              disabled={logouting}
-            >
-              {logouting ? 'Logouting...' : 'Logout'}
-            </button>
           </div>
         </div>
       </div>

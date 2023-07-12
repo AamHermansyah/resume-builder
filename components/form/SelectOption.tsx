@@ -28,7 +28,7 @@ function SelectOption({ id, label, options, onChange, value }: propTypes) {
         id={id}
         defaultValue={value}
         onChange={onChange}
-        className="block w-full py-[13px] px-2 rounded-[20px] bg-gray-200 border-none outline-gray-400"
+        className="block w-full py-[13px] px-2 rounded bg-gray-200 border-none outline-gray-400"
       >
         {options.map((option, index) => (
           <option

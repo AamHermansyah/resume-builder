@@ -120,7 +120,7 @@ function NewPasswordPage() {
 
   return (
     <section>
-      <div className="relative container flex items-center w-full h-full px-4 lg:px-10 py-24 min-h-screen">
+      <div className="relative container flex items-center w-full h-full px-4 lg:px-6 py-24 min-h-screen">
         <div className="w-full flex md:gap-10 h-full">
           <button
             type="button"

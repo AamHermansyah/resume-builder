@@ -33,10 +33,11 @@ const NavigationMenuLink = dynamic(() =>
 )
 
 type propTypes = {
-  onClickPreview: () => void
+  onClickPreview: () => void,
+  onClickLogout: () => void
 }
 
-function Navigation({ onClickPreview }: propTypes) {
+function Navigation({ onClickPreview, onClickLogout }: propTypes) {
   return (
     <header id="nav-builder" className="fixed w-full top-0 z-50 print:hidden">
       <div className="px-5 py-4 bg-tertiary-semi text-white">
@@ -75,6 +76,12 @@ function Navigation({ onClickPreview }: propTypes) {
                                 onClickPreview();
                                 return
                               }
+
+                              if (nav.title === 'Logout') {
+                                e.preventDefault();
+                                onClickLogout();
+                                return
+                              }
                             }}
                             {...nav}
                             className="hover:underline underline-offset-4"
@@ -109,6 +116,12 @@ function Navigation({ onClickPreview }: propTypes) {
                   if (nav.title === 'Preview') {
                     e.preventDefault();
                     onClickPreview();
+                    return
+                  }
+
+                  if (nav.title === 'Logout') {
+                    e.preventDefault();
+                    onClickLogout();
                     return
                   }
                 }}
@@ -148,13 +161,15 @@ const ListItem = React.forwardRef<
         >
           <div className="flex gap-4 items-center justify-between text-sm font-medium leading-none">
             {title}
-            <Image
-              src={iconUrl}
-              alt={alt}
-              width={iconSize}
-              height={iconSize}
-              className="object-cover group-hover:scale-110 transition invert"
-            />
+            {iconSize && iconUrl && alt && (
+              <Image
+                src={iconUrl}
+                alt={alt}
+                width={iconSize}
+                height={iconSize}
+                className="object-cover group-hover:scale-110 transition invert"
+              />
+            )}
           </div>
         </Link>
       </NavigationMenuLink>
