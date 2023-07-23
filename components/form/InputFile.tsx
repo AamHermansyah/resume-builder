@@ -14,16 +14,16 @@ const InputFile = forwardRef<HTMLInputElement, propTypes>(({ id, onChange, value
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]; // Add null check using the optional chaining operator
-  
+
     if (file) {
       const reader = new FileReader();
-  
+
       reader.onloadend = () => {
         const imageBase64 = reader.result as string;
         setSrcImage(imageBase64);
         onChange(imageBase64);
       };
-  
+
       reader.readAsDataURL(file);
     }
   };
@@ -42,7 +42,7 @@ const InputFile = forwardRef<HTMLInputElement, propTypes>(({ id, onChange, value
             className={srcImage ? 'object-cover' : 'object-contain'}
           />
         </div>
-        <div className="absolute bottom-1 right-[10%] w-5 lg:w-10 aspect-square">
+        <div className="absolute bottom-1 right-[10%] w-6 aspect-square">
           <Image
             src="/icons/builder/file-edit-icon.svg"
             alt="file-edit-upload"
@@ -50,14 +50,14 @@ const InputFile = forwardRef<HTMLInputElement, propTypes>(({ id, onChange, value
             className="bg-white object-contain z-10"
           />
         </div>
-        <input 
-          id={id} 
-          name={id} 
-          accept="image/*" 
-          type="file" 
-          className="hidden" 
-          onChange={handleImageUpload} 
-          ref={ref} 
+        <input
+          id={id}
+          name={id}
+          accept="image/*"
+          type="file"
+          className="hidden"
+          onChange={handleImageUpload}
+          ref={ref}
           {...props}
         />
       </label>

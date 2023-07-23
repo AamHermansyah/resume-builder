@@ -20,16 +20,9 @@ export interface IBasics {
   profiles: IProfile[];
 }
 
-export interface IItem {
+export interface ISkillsIntrf {
   name: string;
   level: number;
-}
-
-export interface ISkillsIntrf {
-  languages: IItem[];
-  frameworks: IItem[];
-  technologies: IItem[];
-  tools: IItem[];
 }
 
 export interface IWorkIntrf {
@@ -80,7 +73,7 @@ export interface IAwards {
 
 export interface IResume {
   basics: IBasics;
-  skills: ISkillsIntrf;
+  skills: ISkillsIntrf[];
   work: IWorkIntrf[];
   education: IEducation[];
 }

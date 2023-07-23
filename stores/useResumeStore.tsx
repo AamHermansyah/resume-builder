@@ -1,11 +1,6 @@
 'use client';
 
-import {
-  useFrameworks,
-  useLanguages,
-  useTechnologies,
-  useTools,
-} from '@/stores/skills';
+import { useSkills } from '@/stores/skills';
 
 import { useAwards } from './awards';
 import { useBasicDetails } from './basic';
@@ -22,21 +17,13 @@ export const getResumeStore = () => {
     education: useEducations((state) => state.academics),
     awards: useAwards((state) => state.awards),
     volunteer: useVoluteeringStore((state) => state.volunteeredExps),
-    skills: {
-      languages: useLanguages((state) => state.get()),
-      frameworks: useFrameworks((state) => state.get()),
-      technologies: useTechnologies((state) => state.get()),
-      tools: useTools((state) => state.get()),
-    },
+    skills: useSkills((state) => state.values),
   }
 };
 
 export const resetResumeStore = (data?: any) => {
   useBasicDetails.getState().reset(data?.basics || null);
-  useLanguages.getState().reset(data?.skills.languages || null);
-  useFrameworks.getState().reset(data?.skills.frameworks || null);
-  useTechnologies.getState().reset(data?.skills.technologies || null);
-  useTools.getState().reset(data?.skills.tools || null);
+  useSkills.getState().reset(data?.skills || null);
   useExperiences.getState().reset(data?.work || null);
   useEducations.getState().reset(data?.education || null);
   useVoluteeringStore.getState().reset(data?.volunteer || null);
@@ -50,12 +37,7 @@ export const useResumeStore = (userId: number) => {
     education: useEducations((state) => state.academics),
     awards: useAwards((state) => state.awards),
     volunteer: useVoluteeringStore((state) => state.volunteeredExps),
-    skills: {
-      languages: useLanguages((state) => state.get()),
-      frameworks: useFrameworks((state) => state.get()),
-      technologies: useTechnologies((state) => state.get()),
-      tools: useTools((state) => state.get()),
-    },
+    skills: useSkills((state) => state.get()),
   }
 
   const [loading, setLoading] = useState(false);

@@ -73,20 +73,8 @@ export default function MordernTemplate({ widthClassName = '' }: { widthClassNam
             </div>
           </SectionValidator>
 
-          <SectionValidator value={resumeData.skills.languages}>
-            <SkillsSection title="Programming Languages" list={resumeData.skills.languages} />
-          </SectionValidator>
-
-          <SectionValidator value={resumeData.skills.technologies}>
-            <SkillsSection title="Technologies" list={resumeData.skills.technologies} />
-          </SectionValidator>
-
-          <SectionValidator value={resumeData.skills.frameworks}>
-            <SkillsSection title="Frameworks" list={resumeData.skills.frameworks} />
-          </SectionValidator>
-
-          <SectionValidator value={resumeData.skills.tools}>
-            <SkillsSection title="Tools" list={resumeData.skills.tools} />
+          <SectionValidator value={resumeData.skills}>
+            <SkillsSection title="Skills" list={resumeData.skills} />
           </SectionValidator>
 
           <SectionValidator value={resumeData.education}>

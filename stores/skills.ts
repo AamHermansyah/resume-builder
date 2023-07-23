@@ -2,6 +2,7 @@ import create, { GetState, SetState } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { produce } from 'immer';
 import { ISkillItem, ISkillState } from './skill.interface';
+import resumeData from '@/helpers/constants/resume-data.json';
 
 const addSkill =
   (set: SetState<ISkillState>) =>
@@ -21,75 +22,24 @@ const removeSkill = (set: SetState<ISkillState>) => (index: number) =>
 
 const setSkills = (set: SetState<ISkillState>) => (values: ISkillItem[]) => set(() => ({ values }));
 
-const getSkills = (get: GetState<ISkillState>) => () => get().isEnabled ? get().values : [];
-
-const setIsEnabled = (set: SetState<ISkillState>) => (isEnabled: boolean) =>
-  set(() => ({ isEnabled }));
+const getSkills = (get: GetState<ISkillState>) => () => get().values;
 
 const getMethods = (set: SetState<ISkillState>, get: GetState<ISkillState>) => ({
   get: getSkills(get),
   add: addSkill(set),
   remove: removeSkill(set),
   reset: setSkills(set),
-  setIsEnabled: setIsEnabled(set),
 });
 
-export const useLanguages = create<ISkillState>(
+export const useSkills = create<ISkillState>(
   // @ts-ignore
   persist(
     (set, get) => ({
-      title: 'Languages',
-      hasLevel: true,
-      values: null,
-      isEnabled: true,
+      title: 'Skills',
+      values: resumeData.skills,
 
       ...getMethods(set, get),
     }),
-    { name: 'languages' }
-  )
-);
-
-export const useFrameworks = create<ISkillState>(
-  // @ts-ignore
-  persist(
-    (set, get) => ({
-      title: 'Frameworks',
-      hasLevel: true,
-      values: null,
-      isEnabled: true,
-
-      ...getMethods(set, get),
-    }),
-    { name: 'frameworks' }
-  )
-);
-
-export const useTechnologies = create<ISkillState>(
-  // @ts-ignore
-  persist(
-    (set, get) => ({
-      title: 'Technologies',
-      hasLevel: false,
-      values: null,
-      isEnabled: true,
-
-      ...getMethods(set, get),
-    }),
-    { name: 'technologies' }
-  )
-);
-
-export const useTools = create<ISkillState>(
-  // @ts-ignore
-  persist(
-    (set, get) => ({
-      title: 'Tools',
-      hasLevel: false,
-      values: null,
-      isEnabled: true,
-
-      ...getMethods(set, get),
-    }),
-    { name: 'tools' }
+    { name: 'skills' }
   )
 );

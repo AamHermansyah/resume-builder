@@ -40,36 +40,11 @@ export async function POST(req: Request) {
           },
         },
         skills: {
-          create: {
-            languages: {
-              // @ts-ignore
-              create: resume.skills.languages.map((language) => ({
-                name: language.name,
-                level: language.level,
-              })),
-            },
-            frameworks: {
-              // @ts-ignore
-              create: resume.skills.frameworks.map((framework) => ({
-                name: framework.name,
-                level: framework.level,
-              })),
-            },
-            technologies: {
-              // @ts-ignore
-              create: resume.skills.technologies.map((technology) => ({
-                name: technology.name,
-                level: technology.level,
-              })),
-            },
-            tools: {
-              // @ts-ignore
-              create: resume.skills.tools.map((tool) => ({
-                name: tool.name,
-                level: tool.level,
-              })),
-            },
-          },
+          // @ts-ignore
+          create: resume.skills.map((skill) => ({
+            name: skill.name,
+            level: skill.level,
+          })),
         },
         work: {
           // @ts-ignore
@@ -126,14 +101,7 @@ export async function POST(req: Request) {
             profiles: true,
           },
         },
-        skills: {
-          include: {
-            languages: true,
-            frameworks: true,
-            technologies: true,
-            tools: true,
-          },
-        },
+        skills: true,
         work: true,
         education: true,
         awards: true,
@@ -171,14 +139,7 @@ export async function GET(req: Request) {
             profiles: true,
           },
         },
-        skills: {
-          include: {
-            languages: true,
-            frameworks: true,
-            technologies: true,
-            tools: true,
-          },
-        },
+        skills: true,
         work: true,
         education: true,
         awards: true,
@@ -252,36 +213,11 @@ export async function PUT(req: Request) {
           },
         },
         skills: {
-          create: {
-            languages: {
-              // @ts-ignore
-              create: resume.skills.languages.map((language) => ({
-                name: language.name,
-                level: language.level,
-              })),
-            },
-            frameworks: {
-              // @ts-ignore
-              create: resume.skills.frameworks.map((framework) => ({
-                name: framework.name,
-                level: framework.level,
-              })),
-            },
-            technologies: {
-              // @ts-ignore
-              create: resume.skills.technologies.map((technology) => ({
-                name: technology.name,
-                level: technology.level,
-              })),
-            },
-            tools: {
-              // @ts-ignore
-              create: resume.skills.tools.map((tool) => ({
-                name: tool.name,
-                level: tool.level,
-              })),
-            },
-          },
+          // @ts-ignore
+          create: resume.skills.map((skill) => ({
+            name: skill.name,
+            level: skill.level,
+          })),
         },
         work: {
           // @ts-ignore

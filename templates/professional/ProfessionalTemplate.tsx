@@ -50,8 +50,6 @@ export default function ProfessionalTemplate({ widthClassName = '' }: { widthCla
 
   if (resumeData === null) return null;
 
-  const skills = resumeData.skills;
-
   return (
     <ResumeContainer className={cn('p-2 print-exact print:p-0  bg-white w-[730px] print:w-[700px]', widthClassName)}>
       <LeftSection>
@@ -106,21 +104,9 @@ export default function ProfessionalTemplate({ widthClassName = '' }: { widthCla
           </div>
         </SectionValidator>
 
-        <SectionValidator value={skills.technologies}>
+        <SectionValidator value={resumeData.skills}>
           <Section title="Skills / Exposure">
-            <UnratedSkills items={skills.technologies} />
-          </Section>
-        </SectionValidator>
-
-        <SectionValidator value={skills.languages}>
-          <Section title="Programming Languages">
-            <UnratedSkills items={skills.languages} />
-          </Section>
-        </SectionValidator>
-
-        <SectionValidator value={skills.tools}>
-          <Section title="Tools">
-            <UnratedSkills items={skills.tools} />
+            <UnratedSkills items={resumeData.skills} />
           </Section>
         </SectionValidator>
 
