@@ -44,6 +44,60 @@ export const AVAILABLE_TEMPLATES: ITemplate = {
       ssr: false,
     }),
   },
+  simple: {
+    id: 'simple',
+    name: 'Simple Resume',
+    thumbnail: '/images/templates/simple.png',
+    // @ts-ignore
+    component: dynamic(() => import('@/templates/simple/SimpleTemplate'), {
+      ssr: false,
+    }),
+  },
+  basic: {
+    id: 'basic',
+    name: 'Basic Resume',
+    thumbnail: '/images/templates/basic.png',
+    // @ts-ignore
+    component: dynamic(() => import('@/templates/basic/BasicTemplate'), {
+      ssr: false,
+    }),
+  },
+  gray: {
+    id: 'gray',
+    name: 'Gray Resume',
+    thumbnail: '/images/templates/gray.png',
+    // @ts-ignore
+    component: dynamic(() => import('@/templates/Gray/GrayTemplate'), {
+      ssr: false,
+    }),
+  },
+  semidark: {
+    id: 'semidark',
+    name: 'Semi Dark Resume',
+    thumbnail: '/images/templates/semidark.png',
+    // @ts-ignore
+    component: dynamic(() => import('@/templates/semidark/SemiDarkTemplate'), {
+      ssr: false,
+    }),
+  },
+  flat: {
+    id: 'flat',
+    name: 'Flat Resume',
+    thumbnail: '/images/templates/flat.png',
+    // @ts-ignore
+    component: dynamic(() => import('@/templates/flat/FlatTemplate'), {
+      ssr: false,
+    }),
+  },
+  minimalist: {
+    id: 'minimalist',
+    name: 'Minimalist Resume',
+    thumbnail: '/images/templates/minimalist.png',
+    // @ts-ignore
+    component: dynamic(() => import('@/templates/minimalist/MinimalistTemplate'), {
+      ssr: false,
+    }),
+  },
 };
 
 export const CUSTOM_THEME_COLOR: IThemeColor = {

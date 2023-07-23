@@ -8,7 +8,7 @@ import { InvalidInputMessage } from '../index.interface';
 import { FormEvent, useEffect, useState } from 'react';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import Cookies from 'js-cookie';
-import { json } from '@/utils/json';
+import { json } from '@/lib/json';
 
 const defaultInvalidValue = {
   name: null,

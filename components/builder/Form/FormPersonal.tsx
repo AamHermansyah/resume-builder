@@ -58,7 +58,6 @@ function FormPersonal() {
             id="label"
             name="label"
             label="Job title"
-            required={false}
             onChange={handleOnChangeInput}
             defaultValue={dataBasic!.label}
           />

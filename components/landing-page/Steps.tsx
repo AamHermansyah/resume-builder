@@ -1,5 +1,5 @@
 import { steps } from "@/constants/landing-page"
-import { childVariants, splashVariants } from "@/utils/motion"
+import { childVariants, splashVariants } from "@/lib/motion"
 import { motion } from "framer-motion"
 
 function Steps() {

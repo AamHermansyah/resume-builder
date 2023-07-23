@@ -1,4 +1,4 @@
-import { json } from '@/utils/json';
+import { json } from '@/lib/json';
 import { prisma } from '@/db';
 
 export async function POST(req: Request) {

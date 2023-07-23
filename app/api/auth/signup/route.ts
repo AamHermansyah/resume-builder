@@ -1,4 +1,4 @@
-import { json } from '@/utils/json';
+import { json } from '@/lib/json';
 import { prisma } from '@/db';
 import { hash } from 'bcrypt';
 import jwt from 'jsonwebtoken';

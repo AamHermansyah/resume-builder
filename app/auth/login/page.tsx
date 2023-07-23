@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
-import { json } from '@/utils/json';
+import { json } from '@/lib/json';
 import { signIn, useSession } from 'next-auth/react';
 
 const defaultInvalidValue = {

@@ -1,13 +1,13 @@
 import { whyUs } from "@/constants/landing-page";
 import CardWhyUs from "./CardWhyUs";
 import { motion } from "framer-motion";
-import { slideInVariants } from "@/utils/motion";
+import { slideInVariants } from "@/lib/motion";
 
 function Why() {
   return (
     <section id="contribute" className="py-10 px-8 md:px-20 overflow-hidden">
       <h1 className="text-center text-tertiary-bold text-4xl font-semibold">
-        Why you should use our resume maker 
+        Why you should use our resume maker
       </h1>
 
       {whyUs.map((data, index) => (

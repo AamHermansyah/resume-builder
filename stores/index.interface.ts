@@ -5,6 +5,11 @@ export interface IProfile {
   value: string;
 }
 
+export type IBasicLanguage = {
+  value: string;
+  level: number;
+}
+
 export interface IBasics {
   name: string;
   label: string;
@@ -18,6 +23,7 @@ export interface IBasics {
   relExp: string;
   totalExp: string;
   profiles: IProfile[];
+  languages: IBasicLanguage[];
 }
 
 export interface ISkillsIntrf {
@@ -76,4 +82,6 @@ export interface IResume {
   skills: ISkillsIntrf[];
   work: IWorkIntrf[];
   education: IEducation[];
+  volunteer: IVolunteer[];
+  awards: IAwards[];
 }
