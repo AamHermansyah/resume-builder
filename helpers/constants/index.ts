@@ -67,7 +67,7 @@ export const AVAILABLE_TEMPLATES: ITemplate = {
     name: 'Gray Resume',
     thumbnail: '/images/templates/gray.png',
     // @ts-ignore
-    component: dynamic(() => import('@/templates/Gray/GrayTemplate'), {
+    component: dynamic(() => import('@/templates/gray/GrayTemplate'), {
       ssr: false,
     }),
   },
