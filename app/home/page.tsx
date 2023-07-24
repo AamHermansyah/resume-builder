@@ -105,7 +105,7 @@ function HomePage() {
             ${activeChangeLayout === 'left' ? 'flex-col md:flex-row'
             : activeChangeLayout === 'right' ? 'flex-col md:flex-row-reverse' : 'flex-col items-center'
           }
-            mb-10 mt-10 relative flex gap-x-6 gap-y-4 items-start
+            max-w-[1500px] mx-auto mb-10 mt-10 relative flex gap-x-6 gap-y-4 items-start
           `}
         >
           <div className="flex-auto md:max-w-[550px] w-full print:hidden overflow-auto">

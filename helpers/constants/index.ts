@@ -98,6 +98,42 @@ export const AVAILABLE_TEMPLATES: ITemplate = {
       ssr: false,
     }),
   },
+  cool: {
+    id: 'cool',
+    name: 'Cool Resume',
+    thumbnail: '/images/templates/cool.png',
+    // @ts-ignore
+    component: dynamic(() => import('@/templates/cool/CoolTemplate'), {
+      ssr: false,
+    }),
+  },
+  nice: {
+    id: 'nice',
+    name: 'Nice Resume',
+    thumbnail: '/images/templates/nice.png',
+    // @ts-ignore
+    component: dynamic(() => import('@/templates/nice/NiceTemplate'), {
+      ssr: false,
+    }),
+  },
+  awesome: {
+    id: 'awesome',
+    name: 'Awesome Resume',
+    thumbnail: '/images/templates/awesome.png',
+    // @ts-ignore
+    component: dynamic(() => import('@/templates/awesome/AwesomeTemplate'), {
+      ssr: false,
+    }),
+  },
+  amazing: {
+    id: 'amazing',
+    name: 'Amazing Resume',
+    thumbnail: '/images/templates/amazing.png',
+    // @ts-ignore
+    component: dynamic(() => import('@/templates/amazing/AmazingTemplate'), {
+      ssr: false,
+    }),
+  },
 };
 
 export const CUSTOM_THEME_COLOR: IThemeColor = {
