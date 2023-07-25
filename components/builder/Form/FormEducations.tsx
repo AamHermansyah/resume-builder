@@ -2,6 +2,7 @@ import CustomCheckbox from "@/components/form/Checkbox"
 import InputDate from "@/components/form/InputDate"
 import InputText from "@/components/form/InputText"
 import InputTextArea from "@/components/form/InputTextArea"
+import { IInputDisplay } from "@/helpers/constants/index.interface"
 import { useEducations } from "@/stores/education"
 import { IEducationItem } from "@/stores/education.interface"
 import dayjs from "dayjs"
@@ -19,7 +20,11 @@ const initValue: IEducationItem = {
   description: ''
 }
 
-function FormEducations() {
+type typeProps = {
+  validator: IInputDisplay;
+}
+
+function FormEducations({ validator }: typeProps) {
   const { academics, add, remove, reset, updateEducation } = useEducations();
 
   const handleOnChangeInput = (index: number, e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -105,47 +110,55 @@ function FormEducations() {
                 onChange={(e) => handleOnChangeInput(index, e)}
               />
             </div>
-            <div className="w-full col-span-2 sm:col-span-1">
-              <InputDate
-                name="startDate"
-                id={`startDate-${index}`}
-                label="Start Date"
-                defaultValue={academic.startDate || ''}
-                onChange={(e) => handleOnChangeInput(index, e)}
-              />
-            </div>
-            <div className="w-full col-span-2 sm:col-span-2">
-              <InputDate
-                name="endDate"
-                id={`endDate-${index}`}
-                label="End Date"
-                disabled={academic.isStudyingHere}
-                defaultValue={academic.endDate || ''}
-                onChange={(e) => handleOnChangeInput(index, e)}
-              />
-            </div>
-            <div className="w-full sm:self-center col-span-4 sm:col-span-1">
-              <div className="w-full sm:mt-5">
-                <CustomCheckbox
-                  name="present"
-                  id={`present-${index}`}
-                  label="Present"
-                  checked={academic.isStudyingHere}
-                  onClick={(e) => {
-                    handlePresentCheckbox(index, e);
-                  }}
+            {validator?.date && (
+              <div className="w-full col-span-2 sm:col-span-1">
+                <InputDate
+                  name="startDate"
+                  id={`startDate-${index}`}
+                  label="Start Date"
+                  defaultValue={academic.startDate || ''}
+                  onChange={(e) => handleOnChangeInput(index, e)}
                 />
               </div>
-            </div>
-            <div className="w-full col-span-4 lg:col-span-3">
-              <InputTextArea
-                name="description"
-                id={`description-${index}`}
-                label="Description"
-                defaultValue={academic.description || ''}
-                onChange={(e) => handleOnChangeInput(index, e)}
-              />
-            </div>
+            )}
+            {validator?.date && (
+              <div className="w-full col-span-2 sm:col-span-2">
+                <InputDate
+                  name="endDate"
+                  id={`endDate-${index}`}
+                  label="End Date"
+                  disabled={academic.isStudyingHere}
+                  defaultValue={academic.endDate || ''}
+                  onChange={(e) => handleOnChangeInput(index, e)}
+                />
+              </div>
+            )}
+            {validator?.date && (
+              <div className="w-full sm:self-center col-span-4 sm:col-span-1">
+                <div className="w-full sm:mt-5">
+                  <CustomCheckbox
+                    name="present"
+                    id={`present-${index}`}
+                    label="Present"
+                    checked={academic.isStudyingHere}
+                    onClick={(e) => {
+                      handlePresentCheckbox(index, e);
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+            {validator?.description && (
+              <div className="w-full col-span-4 lg:col-span-3">
+                <InputTextArea
+                  name="description"
+                  id={`description-${index}`}
+                  label="Description"
+                  defaultValue={academic.description || ''}
+                  onChange={(e) => handleOnChangeInput(index, e)}
+                />
+              </div>
+            )}
           </div>
         </div>
       ))}

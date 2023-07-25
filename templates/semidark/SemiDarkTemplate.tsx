@@ -4,6 +4,7 @@ import { dateParser } from '@/helpers/utils';
 import { cn } from '@/lib/utils';
 import { IResume } from '@/stores/index.interface';
 import React, { useContext } from 'react';
+import { GiAutoRepair } from 'react-icons/gi';
 
 export default function SemiDarkTemplate({ widthClassName = '' }: { widthClassName?: string }) {
   const resumeData: IResume = useContext(StateContext);
@@ -145,21 +146,23 @@ export default function SemiDarkTemplate({ widthClassName = '' }: { widthClassNa
           </div>
         </div>
         <div className="flex flex-col w-1/3 bg-[#2d343c] h-auto rounded-lg ml-2 mt-2 p-2 pb-8">
-          <div className="flex items-center gap-1 mt-3">
-            <img
-              src="https://i.ibb.co/bszWb8T/creative-thinking-1.png"
-              alt="Icon"
-              className="m-2 w-6 h-6"
-            />
-            <h2 className="text-white font-semibold text-lg">SKILLS</h2>
-          </div>
-          <div className="ml-3">
-            {resumeData.skills.map((item) => (
-              <div className="inline-block bg-gray-400 p-1 m-2 rounded-md mt-2">
-                <span className="font-medium text-base">{item.name}</span>
+          {resumeData.skills.length > 0 && (
+            <div>
+              <div className="flex items-center gap-1 mt-3 pl-2">
+                <div className="text-white">
+                  <GiAutoRepair fontSize={24} />
+                </div>
+                <h2 className="text-white font-semibold text-lg">SKILLS</h2>
               </div>
-            ))}
-          </div>
+              <div className="ml-3">
+                {resumeData.skills.map((item) => (
+                  <div className="inline-block bg-gray-400 p-1 m-2 rounded-md mt-2">
+                    <span className="font-medium text-base">{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
           <div>
             <div className="flex items-center gap-1 mt-3">
               <img
@@ -170,7 +173,7 @@ export default function SemiDarkTemplate({ widthClassName = '' }: { widthClassNa
               <h2 className="text-white font-semibold text-lg">CERTIFICATES</h2>
             </div>
             {resumeData.awards.map((item) => (
-              <div className="flex flex-col w-full pl-6 py-2" key={item.id}>
+              <div className="flex flex-col w-full pl-4 pr-1 py-2" key={item.id}>
                 <h3 className="font-semibold text-white text-sm">
                   {item.title}
                 </h3>

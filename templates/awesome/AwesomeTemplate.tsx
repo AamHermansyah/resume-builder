@@ -110,14 +110,16 @@ export default function AwesomeTemplate({ widthClassName = '' }: { widthClassNam
               </div>
             </div>
 
-            <div className="mt-4 mb-10">
-              <h1 className="text-2xl font-semibold text-[#54b2e6] mb-4">Skills</h1>
-              <ul className="list-disc list-inside text-white">
-                {resumeData.skills.map((item, index) => (
-                  <li key={index}>{item.name}</li>
-                ))}
-              </ul>
-            </div>
+            {resumeData.skills.length > 0 && (
+              <div className="mt-4 mb-10">
+                <h1 className="text-2xl font-semibold text-[#54b2e6] mb-4">Skills</h1>
+                <ul className="list-disc list-inside text-white">
+                  {resumeData.skills.map((item, index) => (
+                    <li key={index}>{item.name}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
         {/* End Left Panel*/}

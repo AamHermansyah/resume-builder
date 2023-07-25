@@ -56,7 +56,7 @@ export default function MordernTemplate({ widthClassName = '' }: { widthClassNam
           </SectionValidator>
         </div>
 
-        <div className="my-3">
+        <div className="my-3 basis-[40%]">
           <SectionValidator value={resumeData.basics.objective}>
             <Objective objective={resumeData.basics.objective} />
           </SectionValidator>

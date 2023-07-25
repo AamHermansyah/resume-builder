@@ -4,6 +4,7 @@ import { dateParser } from '@/helpers/utils';
 import { cn } from '@/lib/utils';
 import { IResume } from '@/stores/index.interface';
 import React, { useContext } from 'react';
+import { FaLinkedinIn } from 'react-icons/fa';
 
 export default function GrayTemplate({ widthClassName = '' }: { widthClassName?: string }) {
   const resumeData: IResume = useContext(StateContext);
@@ -23,7 +24,7 @@ export default function GrayTemplate({ widthClassName = '' }: { widthClassName?:
             <img
               src={resumeData.basics.image}
               alt="Profil"
-              className="w-[100px] h-[100px] object-cover rounded-md border-4 border-[#f3b943]"
+              className="w-[100px] h-[100px] object-cover border-4 border-[#f3b943]"
             />
           </div>
           <div className="flex flex-col mt-4 ml-2">
@@ -65,11 +66,9 @@ export default function GrayTemplate({ widthClassName = '' }: { widthClassName?:
               <p className="ml-2">{resumeData.basics.country}</p>
             </div>
             <div className="flex items-center">
-              <img
-                src="https://i.ibb.co/GtfGQpJ/linkedin-logo-Copy.png"
-                alt="Logo"
-                className="mt-1 w-5 h-5"
-              />
+              <div className="mt-1 bg-[#ECB543] w-5 aspect-square flex items-center justify-center rounded-full">
+                <FaLinkedinIn fontSize={13} color="#1D3344" />
+              </div>
               <p className="ml-2">
                 linkedin.com/in/{socialMedia[0].value}
               </p>
@@ -88,25 +87,27 @@ export default function GrayTemplate({ widthClassName = '' }: { widthClassName?:
       <div className="flex pl-3">
         <div className="flex flex-col w-2/3 bg-white h-auto pb-8">
           <div className="mt-3 pl-2">
-            <div>
-              <div className="pl-2 flex items-center gap-3 mt-3">
-                <img
-                  src="https://i.ibb.co/zsKcYfp/creative-thinking.png"
-                  alt="Icon"
-                  className="w-6 h-6"
-                />
-                <h2 className="text-[#1d3344] font-semibold text-lg">SKILLS</h2>
+            {resumeData.skills.length > 0 && (
+              <div>
+                <div className="pl-2 flex items-center gap-3 mt-3">
+                  <img
+                    src="https://i.ibb.co/zsKcYfp/creative-thinking.png"
+                    alt="Icon"
+                    className="w-6 h-6"
+                  />
+                  <h2 className="text-[#1d3344] font-semibold text-lg">SKILLS</h2>
+                </div>
+                <p className="col-span-2 text-lg">
+                  {resumeData.skills
+                    .map((skill, index, arr) => {
+                      if (index === arr.length - 1) return `and ${skill.name}`;
+                      return `${skill.name},`
+                    })
+                    .join(' ')
+                  }
+                </p>
               </div>
-              <p className="col-span-2 text-lg">
-                {resumeData.skills
-                  .map((skill, index, arr) => {
-                    if (index === arr.length - 1) return `and ${skill.name}`;
-                    return `${skill.name},`
-                  })
-                  .join(' ')
-                }
-              </p>
-            </div>
+            )}
             <div className="flex items-center gap-1 mt-3">
               <img
                 src="https://i.ibb.co/RvX0wDg/briefcase.png"
@@ -132,8 +133,9 @@ export default function GrayTemplate({ widthClassName = '' }: { widthClassName?:
                         {item.endDate !== '' && !item.isWorkingHere && dateParser(item.endDate)}
                       </p>
                     </div>
-                    <p className="text-base text-yellow-500 italic">Achivement</p>
-                    <HTMLRenderer htmlString={item.summary} className="text-sm" />
+                    <div className="pl-2">
+                      <HTMLRenderer htmlString={item.summary} className="text-sm" />
+                    </div>
                   </div>
                 </div>
               ))}

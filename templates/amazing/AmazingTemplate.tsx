@@ -14,11 +14,6 @@ export default function AmazingTemplate({ widthClassName = '' }: { widthClassNam
 
   if (resumeData === null) return null;
 
-  const socialMedia = resumeData
-    .basics
-    .profiles
-    .filter((item) => item.value && item.network === 'linkedin');
-
   return (
     <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName, poppins.className)}>
       <div className="flex">
@@ -98,21 +93,23 @@ export default function AmazingTemplate({ widthClassName = '' }: { widthClassNam
               {resumeData.basics.summary}
             </p>
           </div>
-          <div className="px-4 mt-10">
-            <p className="text-2xl">SKILLS</p>
-            {/* Divider*/}
-            <div className="mx-auto border-t-[3px] border-gray-400 w-full rounded-sm mb-4"></div>
-            <ul className="list-disc list-inside">
-              {resumeData.skills.map((item, index) => (
-                <li key={index}>{item.name}</li>
-              ))}
-            </ul>
-          </div>
+          {resumeData.skills.length > 0 && (
+            <div className="px-4 mt-10">
+              <p className="text-2xl">SKILLS</p>
+              {/* Divider*/}
+              <div className="mx-auto border-t-[3px] border-gray-400 w-full rounded-sm mb-4"></div>
+              <ul className="list-disc list-inside">
+                {resumeData.skills.map((item, index) => (
+                  <li key={index}>{item.name}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         {/* End Left Panel*/}
         {/* Right Panel */}
         <div className="w-full px-10">
-          <div className="mt-[80px] ">
+          <div className="mt-10 ">
             <div>
               {/* Work Experience*/}
               <div className="flex justify-start items-start">

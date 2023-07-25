@@ -31,7 +31,7 @@ export default function FlatTemplate({ widthClassName = '' }: { widthClassName?:
             </p>
           </div>
         </div>
-        <div className="contact">
+        <div className="contact mb-6">
           <div className="flex justify-evenly items-center w-[full] h-[45px] bg-[#374457] text-white text-sm">
             <div className="flex items-center">
               <img
@@ -67,16 +67,18 @@ export default function FlatTemplate({ widthClassName = '' }: { widthClassName?:
             </div>
           </div>
         </div>
-        <div className="skills">
-          <div className="flex flex-col pl-8 my-6">
-            <h1 className="text-2xl text-[#374457] font-semibold">SKILLS</h1>
-            <div className="grid grid-cols-4 gap-4 text-sm mt-2">
-              {resumeData.skills.map((item, index) => (
-                <span className="block" key={index}>{item.name}</span>
-              ))}
+        {resumeData.skills.length > 0 && (
+          <div className="skills">
+            <div className="flex flex-col pl-8 mb-6">
+              <h1 className="text-2xl text-[#374457] font-semibold">SKILLS</h1>
+              <div className="grid grid-cols-4 gap-4 text-sm mt-2">
+                {resumeData.skills.map((item, index) => (
+                  <span className="block" key={index}>{item.name}</span>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
         <div className="pl-8">
           <div className="workExperience">
             <h1 className="text-2xl text-[#374457] font-semibold mb-2">
@@ -84,10 +86,13 @@ export default function FlatTemplate({ widthClassName = '' }: { widthClassName?:
             </h1>
             {resumeData.work.map((item) => (
               <div key={item.id} className="mb-2">
-                <h1 className="font-bold text-xl">
-                  {item.position}
-                </h1>
-                <h1 className="font-semibold text-xl">
+                <div className="relative">
+                  <span className="w-4 h-1 bg-gray-300 rounded absolute top-3 -left-5" />
+                  <h1 className="font-bold text-xl">
+                    {item.position}
+                  </h1>
+                </div>
+                <h1 className="font-semibold text-lg -mt-1">
                   {item.name}
                 </h1>
                 <div className="flex justify-between italic text-xs text-gray-500 pr-8 gap-8">

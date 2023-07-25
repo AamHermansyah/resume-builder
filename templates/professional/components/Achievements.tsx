@@ -10,9 +10,11 @@ export default function Achievements({ data }: { data: IAwards[] }) {
           <div key={index} className="pb-2">
             <div className="flex justify-between awards-center">
               {award.awarder}
-              <div>
-                <p className="text-xs">{dateParser(award.date)}</p>
-              </div>
+              {award.date && (
+                <div>
+                  <p className="text-xs">{dateParser(award.date)}</p>
+                </div>
+              )}
             </div>
             <HTMLRenderer htmlString={award.summary} />
           </div>

@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic';
 import { Suspense, ReactNode } from 'react';
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
-import { TbWorldWww } from 'react-icons/tb';
 
 const FormEducations = dynamic(() => import('@/components/builder/Form/FormEducations'));
 const FormExperiences = dynamic(() => import('@/components/builder/Form/FormExperiences'));
@@ -108,97 +107,97 @@ export type Form = {
   id: string,
   title: string,
   iconUrl: string,
-  component: React.ReactNode
+  component: (inputValidator?: any) => React.ReactNode
 }
 
 export const form: Form[] = [
   {
-    id: 'form-header-1',
+    id: 'personal',
     title: 'Professional Experience',
     iconUrl: '/icons/builder/profile-icon.svg',
-    component: (
+    component: (inputValidator) => (
       <Suspense>
-        <FormPersonal />
+        <FormPersonal validator={inputValidator} />
       </Suspense>
     )
   },
   {
-    id: 'form-header-2',
+    id: 'educations',
     title: 'Educations',
     iconUrl: '/icons/builder/education-outline.svg',
-    component: (
+    component: (inputValidator: any) => (
       <Suspense>
-        <FormEducations />
+        <FormEducations validator={inputValidator} />
       </Suspense>
     )
   },
   {
-    id: 'form-header-3',
+    id: 'works',
     title: 'Experiences',
     iconUrl: '/icons/builder/briefcase.svg',
-    component: (
+    component: (inputValidator: any) => (
       <Suspense>
-        <FormExperiences />
+        <FormExperiences validator={inputValidator} />
       </Suspense>
     )
   },
   {
-    id: 'form-header-4',
+    id: 'projects',
     title: 'Projects',
     iconUrl: '/icons/builder/new-team-project.svg',
-    component: (
+    component: (inputValidator: any) => (
       <Suspense>
-        <FormProjects />
+        <FormProjects validator={inputValidator} />
       </Suspense>
     )
   },
   {
-    id: 'form-header-5',
+    id: 'skills',
     title: 'Skills',
     iconUrl: '/icons/builder/brain-icon.svg',
-    component: (
+    component: () => (
       <Suspense>
         <FormSkills />
       </Suspense>
     )
   },
   {
-    id: 'form-header-6',
+    id: 'languages',
     title: 'Languages',
     iconUrl: '/icons/builder/language-icon.svg',
-    component: (
+    component: () => (
       <Suspense>
         <FormLanguage />
       </Suspense>
     )
   },
   {
-    id: 'form-header-7',
+    id: 'objective',
     title: 'Objectives',
     iconUrl: '/icons/builder/mask-icon.svg',
-    component: (
+    component: () => (
       <Suspense>
         <FormObjectives />
       </Suspense>
     )
   },
   {
-    id: 'form-header-8',
+    id: 'awards',
     title: 'Certifications',
     iconUrl: '/icons/builder/news-paper.svg',
-    component: (
+    component: (inputValidator: any) => (
       <Suspense>
-        <FormCertificate />
+        <FormCertificate validator={inputValidator} />
       </Suspense>
     )
   },
   {
-    id: 'form-header-9',
+    id: 'links',
     title: 'Links',
     iconUrl: '/icons/builder/links-fill.svg',
-    component: (
+    component: (inputValidator: any) => (
       <Suspense>
-        <FormLink />
+        <FormLink validator={inputValidator} />
       </Suspense>
     )
   },

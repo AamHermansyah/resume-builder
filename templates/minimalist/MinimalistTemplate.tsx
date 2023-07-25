@@ -83,23 +83,27 @@ export default function MinimalistTemplate({ widthClassName = '' }: { widthClass
               <div className="px-10">
                 <div className="w-full border-b-[6px] border-gray-400 border-dotted mx-auto" />
               </div>
-              <div className="Skill">
-                <h1 className="font-bold text-lg text-[#555555] mt-4 tracking-wide pl-10">
-                  SKILLS
-                </h1>
-                <div className="flex justify-start pl-10 px-4 my-6">
-                  <div className="flex flex-col justify-center items-start gap-4 text-sm text-[#555555]">
-                    {resumeData.skills.map((item, index) => (
-                      <p key={index}>
-                        {item.name}
-                      </p>
-                    ))}
+              {resumeData.skills.length > 0 && (
+                <>
+                  <div className="Skill">
+                    <h1 className="font-bold text-lg text-[#555555] mt-4 tracking-wide pl-10">
+                      SKILLS
+                    </h1>
+                    <div className="flex justify-start pl-10 px-4 my-6">
+                      <div className="flex flex-col justify-center items-start gap-4 text-sm text-[#555555]">
+                        {resumeData.skills.map((item, index) => (
+                          <p key={index}>
+                            {item.name}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="px-10">
-                <div className="w-full border-b-[6px] border-gray-400 border-dotted mx-auto" />
-              </div>
+                  <div className="px-10">
+                    <div className="w-full border-b-[6px] border-gray-400 border-dotted mx-auto" />
+                  </div>
+                </>
+              )}
               <div className="education">
                 <h1 className="font-bold text-lg text-[#555555] mt-4 tracking-wide pl-10">
                   EDUCATION

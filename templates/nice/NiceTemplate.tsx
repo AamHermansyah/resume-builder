@@ -19,7 +19,7 @@ export default function NiceTemplate({ widthClassName = '' }: { widthClassName?:
 
   return (
     <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName, monserrat.className)}>
-      <div className="flex flex-col w-[700px] mx-auto px-4">
+      <div className="flex flex-col w-[700px] mx-auto px-4 pb-10">
         <header>
           <div className="flex justify-between">
             <div className="flex flex-col justify-start items-start w-[800px] h-auto mt-[60px]">
@@ -143,26 +143,28 @@ export default function NiceTemplate({ widthClassName = '' }: { widthClassName?:
             </div>
           </div>
         </section>
-        <section>
-          <div className="flex flex-col mt-6 mb-10">
-            <div>
-              <h2 className="text-[#8f7e1e] font-semibold text-lg">SKILLS</h2>
+        {resumeData.skills.length > 0 && (
+          <section>
+            <div className="flex flex-col mt-6">
+              <div>
+                <h2 className="text-[#8f7e1e] font-semibold text-lg">SKILLS</h2>
+              </div>
+              <div className="h-[1px] w-full bg-gray-400 my-2" />
+              <div className="grid grid-cols-2">
+                <ul className="list-disc list-inside">
+                  {evenSkills.map((item: ISkillsIntrf, index) => (
+                    <li key={index}>{item.name}</li>
+                  ))}
+                </ul>
+                <ul className="list-disc list-inside">
+                  {oddSkills.map((item: ISkillsIntrf, index) => (
+                    <li key={index}>{item.name}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className="h-[1px] w-full bg-gray-400 my-2" />
-            <div className="grid grid-cols-2">
-              <ul className="list-disc list-inside">
-                {evenSkills.map((item: ISkillsIntrf, index) => (
-                  <li key={index}>{item.name}</li>
-                ))}
-              </ul>
-              <ul className="list-disc list-inside">
-                {oddSkills.map((item: ISkillsIntrf, index) => (
-                  <li key={index}>{item.name}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
+          </section>
+        )}
       </div>
     </div>
   );

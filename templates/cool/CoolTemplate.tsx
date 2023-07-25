@@ -83,28 +83,30 @@ export default function MinimalistTemplate({ widthClassName = '' }: { widthClass
               </div>
             </div>
             <div className="skill">
-              <div className="flex justify-center items-center">
-                <div className="flex flex-col justify-center items-start gap-2">
-                  <div className="flex flex-col pt-8 pb-4">
-                    <h2 className="text-xl font-semibold">SKILLS</h2>
-                    <ul
-                      style={{ listStyle: "disc" }}
-                      className="flex flex-col gap-2 pl-5 w-[200px] pt-3"
-                    >
-                      {resumeData.skills.map((item) => (
-                        <li>{item.name}</li>
-                      ))}
-                    </ul>
+              {resumeData.skills.length > 0 && (
+                <div className="flex justify-center items-center">
+                  <div className="flex flex-col justify-center items-start gap-2">
+                    <div className="flex flex-col pt-8 pb-4">
+                      <h2 className="text-xl font-semibold">SKILLS</h2>
+                      <ul
+                        style={{ listStyle: "disc" }}
+                        className="flex flex-col gap-2 pl-5 w-[200px] pt-3"
+                      >
+                        {resumeData.skills.map((item) => (
+                          <li>{item.name}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="reference">
-                <div className="flex">
-                  <div className="flex flex-col items-start gap-2">
-                    <div className="flex flex-col pt-8 pb-4 gap-1">
-                      <h2 className="text-xl font-semibold">OBJECTIVE</h2>
-                      <p>{resumeData.basics.objective}</p>
-                    </div>
+              )}
+            </div>
+            <div className="reference">
+              <div className="flex">
+                <div className="flex flex-col items-start gap-2">
+                  <div className="flex flex-col pt-8 pb-4 gap-1">
+                    <h2 className="text-xl font-semibold">OBJECTIVE</h2>
+                    <p>{resumeData.basics.objective}</p>
                   </div>
                 </div>
               </div>

@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import CustomCheckbox from '@/components/form/Checkbox';
 import { IoMdAdd } from 'react-icons/io';
 import { MdDelete } from 'react-icons/md';
+import { IInputDisplay } from '@/helpers/constants/index.interface';
 
 const initValue = {
   id: crypto.randomUUID(),
@@ -20,7 +21,11 @@ const initValue = {
   isVolunteeringNow: false,
 };
 
-function FormProjects() {
+type typeProps = {
+  validator: IInputDisplay;
+}
+
+function FormProjects({ validator }: typeProps) {
   const { volunteeredExps, updatedVolunteeringExp, remove, add, reset } = useVoluteeringStore();
 
   const handleOnChangeInput = (
@@ -98,48 +103,54 @@ function FormProjects() {
                 onChange={(e) => handleOnChangeInput(index, e)}
               />
             </div>
-            <div className="w-full">
-              <InputDate
-                name="startDate"
-                id={`startDate-${index}`}
-                label="Start Date"
-                defaultValue={project.startDate || ""}
-                onChange={(e) => handleOnChangeInput(index, e)}
-              />
-            </div>
-            <div className="w-full flex items-center gap-[25px] ">
-              <InputDate
-                name="endDate"
-                id={`endDate-${index}`}
-                label="End Date"
-                disabled={project.isVolunteeringNow}
-                defaultValue={project.endDate || ""}
-                onChange={(e) => handleOnChangeInput(index, e)}
-              />
-              <div className="flex items-center justify-center mt-[25px]">
-                <CustomCheckbox
-                  name="present"
-                  id={`present-${index}`}
-                  label="Present"
-                  checked={project.isVolunteeringNow}
-                  onClick={(e) => handlePresentCheckbox(index, e)}
+            {validator?.date && (
+              <div className="w-full">
+                <InputDate
+                  name="startDate"
+                  id={`startDate-${index}`}
+                  label="Start Date"
+                  defaultValue={project.startDate || ""}
+                  onChange={(e) => handleOnChangeInput(index, e)}
                 />
               </div>
-            </div>
-            <div className="w-full col-span-3">
-              <RichtextEditor
-                label="Summary"
-                name="summary"
-                id={`project-${index}`}
-                value={project.summary}
-                onChange={(htmlOutput) => {
-                  updatedVolunteeringExp(index, {
-                    ...project,
-                    summary: htmlOutput,
-                  });
-                }}
-              />
-            </div>
+            )}
+            {validator?.date && (
+              <div className="w-full flex items-center gap-[25px] ">
+                <InputDate
+                  name="endDate"
+                  id={`endDate-${index}`}
+                  label="End Date"
+                  disabled={project.isVolunteeringNow}
+                  defaultValue={project.endDate || ""}
+                  onChange={(e) => handleOnChangeInput(index, e)}
+                />
+                <div className="flex items-center justify-center mt-[25px]">
+                  <CustomCheckbox
+                    name="present"
+                    id={`present-${index}`}
+                    label="Present"
+                    checked={project.isVolunteeringNow}
+                    onClick={(e) => handlePresentCheckbox(index, e)}
+                  />
+                </div>
+              </div>
+            )}
+            {validator?.summary && (
+              <div className="w-full col-span-3">
+                <RichtextEditor
+                  label="summary"
+                  name="summary"
+                  id={`project-${index}`}
+                  value={project.summary}
+                  onChange={(htmlOutput) => {
+                    updatedVolunteeringExp(index, {
+                      ...project,
+                      summary: htmlOutput,
+                    });
+                  }}
+                />
+              </div>
+            )}
           </div>
         </div>
       ))}

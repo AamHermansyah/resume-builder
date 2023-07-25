@@ -5,6 +5,7 @@ import InputTextArea from "@/components/form/InputTextArea";
 import { useAwards, IAwardItem } from "@/stores/awards";
 import { IoMdAdd } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
+import { IInputDisplay } from "@/helpers/constants/index.interface";
 
 const initValue = {
   title: '',
@@ -14,7 +15,11 @@ const initValue = {
   id: crypto.randomUUID(),
 }
 
-function FormCertificate() {
+type typeProps = {
+  validator: IInputDisplay;
+}
+
+function FormCertificate({ validator }: typeProps) {
   const { awards, updateAward, add, remove, reset } = useAwards();
 
   const handleOnChangeInput = (index: number, e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -79,26 +84,30 @@ function FormCertificate() {
                   name="awarder"
                 />
               </div>
-              <div className="col-span-2">
-                <InputDate
-                  id={`date-${index}`}
-                  label="Certified Date"
-                  value={certificate.date || ''}
-                  onChange={(e) => handleOnChangeInput(index, e)}
-                  name="date"
-                />
-              </div>
+              {validator?.date && (
+                <div className="col-span-2">
+                  <InputDate
+                    id={`date-${index}`}
+                    label="Certified Date"
+                    value={certificate.date || ''}
+                    onChange={(e) => handleOnChangeInput(index, e)}
+                    name="date"
+                  />
+                </div>
+              )}
             </div>
 
-            <div className="mt-4">
-              <InputTextArea
-                id={`summary-${index}`}
-                label="Description"
-                value={certificate.summary}
-                onChange={(e) => handleOnChangeInput(index, e)}
-                name="summary"
-              />
-            </div>
+            {validator?.summary && (
+              <div className="mt-4">
+                <InputTextArea
+                  id={`summary-${index}`}
+                  label="Description"
+                  value={certificate.summary}
+                  onChange={(e) => handleOnChangeInput(index, e)}
+                  name="summary"
+                />
+              </div>
+            )}
           </div>
         </div>
       ))}

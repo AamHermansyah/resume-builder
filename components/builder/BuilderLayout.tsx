@@ -1,5 +1,5 @@
 import FormHeader from "@/components/builder/Form/FormHeader";
-import ResumePreview, { StateContext } from "@/components/builder/Resume/ResumePreview";
+import ResumePreview from "@/components/builder/Resume/ResumePreview";
 import { form } from "@/constants/builder";
 import { useState, Suspense } from "react";
 import Image from "next/image";
@@ -7,11 +7,11 @@ import Button from "../landing-page/Button";
 import { MdCancel, MdPrint } from "react-icons/md";
 import dynamic from "next/dynamic";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
 import { resetResumeStore, useResumeStore } from "@/stores/useResumeStore";
 import { Loading } from "../ui/loading";
-import { createContext } from "vm";
 import { signOut } from "next-auth/react";
+import { useTemplates } from "@/stores/useTemplate";
+import { AVAILABLE_TEMPLATES } from "@/helpers/constants";
 
 const ResumePreviewMode = dynamic(() => import('@/components/builder/Resume/ResumePreviewMode'));
 const Navigation = dynamic(() => import('@/components/builder/Navigation/Navigation'));
@@ -21,6 +21,9 @@ function BuilderLayout() {
   const [isActivePreview, setIsActivePreview] = useState(false);
   const [logouting, setLogouting] = useState(false);
   const [updating, setUpdating] = useState(false);
+
+  const templateId = useTemplates((state) => state.activeTemplate.id);
+  const inputDisplay = AVAILABLE_TEMPLATES[templateId].inputDisplay;
 
   const dirLayout = Cookies.get('layout') || 'left';
   const token = Cookies.get('token');
@@ -128,6 +131,7 @@ function BuilderLayout() {
                     setIsActiveFormId(id);
                   }}
                   isActiveButton={isActiveFormId}
+                  inputDisplay={inputDisplay}
                 />
               </div>
             </div>
@@ -151,7 +155,8 @@ function BuilderLayout() {
                           className="object-cover"
                         />
                       </div>
-                      {item.component}
+                      {/* @ts-ignore */}
+                      {item.component(inputDisplay[item.id])}
                       <div className="w-full col-span-4 lg:col-span-3 flex justify-end mt-4">
                         <Button
                           href="/"

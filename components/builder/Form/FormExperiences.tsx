@@ -2,6 +2,7 @@ import CustomCheckbox from "@/components/form/Checkbox"
 import InputDate from "@/components/form/InputDate"
 import InputText from "@/components/form/InputText"
 import { RichtextEditor } from "@/helpers/common/components/richtext"
+import { IInputDisplay } from "@/helpers/constants/index.interface"
 import { useExperiences } from "@/stores/experience"
 import { IExperienceItem } from "@/stores/experience.interface"
 import dayjs from "dayjs"
@@ -21,8 +22,11 @@ const initValue = {
   isWorkingHere: false,
 };
 
-function FormExperiences() {
+type typeProps = {
+  validator: IInputDisplay;
+}
 
+function FormExperiences({ validator }: typeProps) {
   const { updateExperience, experiences, remove, add, reset } = useExperiences();
 
   const handleOnChangeInput = (index: number, e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -104,58 +108,68 @@ function FormExperiences() {
                 onChange={(e) => handleOnChangeInput(index, e)}
               />
             </div>
-            <div className="w-full col-span-2 sm:col-span-1">
-              <InputText
-                name="country"
-                id={`country-${index}`}
-                label="Country"
-                defaultValue={experience.country}
-                onChange={(e) => handleOnChangeInput(index, e)}
-              />
-            </div>
-            <div className="w-full col-span-2 sm:col-span-1">
-              <InputDate
-                name="startDate"
-                id={`startDate-${index}`}
-                label="Start Date"
-                defaultValue={experience.startDate || ''}
-                onChange={(e) => handleOnChangeInput(index, e)}
-              />
-            </div>
-            <div className="w-full col-span-2 sm:col-span-1">
-              <InputDate
-                name="endDate"
-                id={`endDate-${index}`}
-                label="End Date"
-                disabled={experience.isWorkingHere}
-                defaultValue={experience.endDate || ''}
-                onChange={(e) => handleOnChangeInput(index, e)}
-              />
-            </div>
-            <div className="w-full self-center col-span-4 sm:col-span-1">
-              <div className="w-full">
-                <CustomCheckbox
-                  name="present"
-                  id={`present-${index}`}
-                  label="Present"
-                  checked={experience.isWorkingHere}
-                  onClick={(e) => handlePresentCheckbox(index, e)}
+            {validator?.country && (
+              <div className="w-full col-span-2 sm:col-span-1">
+                <InputText
+                  name="country"
+                  id={`country-${index}`}
+                  label="Country"
+                  defaultValue={experience.country}
+                  onChange={(e) => handleOnChangeInput(index, e)}
                 />
               </div>
-            </div>
-            <div className="w-full col-span-4 sm:col-span-3">
-              <div className="w-full col-span-4 lg:col-span-3">
-                <RichtextEditor
-                  label="Summary"
-                  id={`experience-${index + 1}`}
-                  value={experience.summary}
-                  onChange={(htmlOuput) => {
-                    handleRichTextEditor(index, htmlOuput)
-                  }}
-                  name="summary"
+            )}
+            {validator?.date && (
+              <div className="w-full col-span-2 sm:col-span-1">
+                <InputDate
+                  name="startDate"
+                  id={`startDate-${index}`}
+                  label="Start Date"
+                  defaultValue={experience.startDate || ''}
+                  onChange={(e) => handleOnChangeInput(index, e)}
                 />
               </div>
-            </div>
+            )}
+            {validator?.date && (
+              <div className="w-full col-span-2 sm:col-span-1">
+                <InputDate
+                  name="endDate"
+                  id={`endDate-${index}`}
+                  label="End Date"
+                  disabled={experience.isWorkingHere}
+                  defaultValue={experience.endDate || ''}
+                  onChange={(e) => handleOnChangeInput(index, e)}
+                />
+              </div>
+            )}
+            {validator?.date && (
+              <div className="w-full self-center col-span-4 sm:col-span-1">
+                <div className="w-full">
+                  <CustomCheckbox
+                    name="present"
+                    id={`present-${index}`}
+                    label="Present"
+                    checked={experience.isWorkingHere}
+                    onClick={(e) => handlePresentCheckbox(index, e)}
+                  />
+                </div>
+              </div>
+            )}
+            {validator?.summary && (
+              <div className="w-full col-span-4 sm:col-span-3">
+                <div className="w-full col-span-4 lg:col-span-3">
+                  <RichtextEditor
+                    label="summary"
+                    id={`experience-${index + 1}`}
+                    value={experience.summary}
+                    onChange={(htmlOuput) => {
+                      handleRichTextEditor(index, htmlOuput)
+                    }}
+                    name="summary"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       ))}

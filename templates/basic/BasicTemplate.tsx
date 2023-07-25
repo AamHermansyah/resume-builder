@@ -4,6 +4,10 @@ import { dateParser } from '@/helpers/utils';
 import { cn } from '@/lib/utils';
 import { IResume } from '@/stores/index.interface';
 import React, { useContext } from 'react';
+import { Lora } from 'next/font/google'
+
+const lora = Lora({ subsets: ['latin'], weight: ["400", "500", "600", "700"] });
+
 
 export default function BasicTemplate({ widthClassName = '' }: { widthClassName?: string }) {
   const resumeData: IResume = useContext(StateContext);
@@ -11,7 +15,7 @@ export default function BasicTemplate({ widthClassName = '' }: { widthClassName?
   if (resumeData === null) return null;
 
   return (
-    <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName)}>
+    <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName, lora.className)}>
       <div>
         <div className="flex w-full h-[120px] bg-[#3c5769] justify-center items-center">
           <h1 className="font-bold text-white text-4xl">
@@ -24,10 +28,10 @@ export default function BasicTemplate({ widthClassName = '' }: { widthClassName?
         <div className="grid grid-cols-7 w-full">
           <div className="bg-gray-200 px-8 col-span-3">
             <div className="flex flex-col items-start">
-              <h1 className="font-bold text-gray-800 text-xl mt-[60px]">
+              <h1 className="font-bold text-gray-800 text-xl mt-[30px]">
                 CONTACT
               </h1>
-              <ul>
+              <ul className="pl-4 mt-1">
                 <li>
                   <b className="font-bold">Address:</b>
                   <br />
@@ -35,8 +39,8 @@ export default function BasicTemplate({ widthClassName = '' }: { widthClassName?
                 </li>
                 <li>
                   <b className="font-bold">Phone:</b>
-                  {resumeData.basics.phone}
                   <br />
+                  {resumeData.basics.phone}
                 </li>
                 <li>
                   <b className="font-bold">Email:</b>
@@ -45,16 +49,18 @@ export default function BasicTemplate({ widthClassName = '' }: { widthClassName?
                 </li>
               </ul>
             </div>
-            <div className="flex flex-col items-start mt-[20px]">
-              <h1 className="font-bold text-gray-800 text-xl">
-                SKILLS
-              </h1>
-              <ul style={{ listStyleType: "disc" }} className="list-inside">
-                {resumeData.skills.map((item, index) => (
-                  <li key={index}>{item.name}</li>
-                ))}
-              </ul>
-            </div>
+            {resumeData.skills.length > 0 && (
+              <div className="flex flex-col items-start mt-[20px]">
+                <h1 className="font-bold text-gray-800 text-xl">
+                  SKILLS
+                </h1>
+                <ul style={{ listStyleType: "disc" }} className="list-inside">
+                  {resumeData.skills.map((item, index) => (
+                    <li key={index}>{item.name}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <div className="pb-10">
               <div className="font-bold text-md mt-[20px]">
                 <div>
@@ -91,7 +97,7 @@ export default function BasicTemplate({ widthClassName = '' }: { widthClassName?
             </div>
           </div>
           <div className="col-span-4 bg-white h-full px-6">
-            <div className="font-bold text-md mt-[60px]">
+            <div className="font-bold text-md mt-[30px]">
               <div>
                 <h1 className="font-bold text-gray-800 text-xl">
                   PROFESSIONAL SUMMARY

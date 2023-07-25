@@ -17,9 +17,11 @@ export const AwardSection = ({ awardsReceived }: { awardsReceived: IAwards[] }) 
             <SectionTitle label={award.title} />
             <div className="flex justify-between awards-center">
               <SectionSubtitle label={award.awarder} />
-              <div>
-                <p className="text-xs">{dateParser(award.date)}</p>
-              </div>
+              {award.date && (
+                <div>
+                  <p className="text-xs">{dateParser(award.date)}</p>
+                </div>
+              )}
             </div>
             <SectionList>
               <HTMLRenderer htmlString={award.summary} />

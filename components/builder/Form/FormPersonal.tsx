@@ -2,11 +2,16 @@ import InputDate from "@/components/form/InputDate";
 import InputFile from "@/components/form/InputFile";
 import InputText from "@/components/form/InputText";
 import InputTextArea from "@/components/form/InputTextArea";
+import { IInputDisplay } from "@/helpers/constants/index.interface";
 import { useBasicDetails } from "@/stores/basic";
 import { IBasicDetailsItem } from "@/stores/basic.interface";
 import React from "react";
 
-function FormPersonal() {
+type typeProps = {
+  validator: IInputDisplay;
+}
+
+function FormPersonal({ validator }: typeProps) {
   const { values: dataBasic, reset } = useBasicDetails();
 
   const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -43,25 +48,29 @@ function FormPersonal() {
           />
         </div>
 
-        <div className="w-full row-span-2">
-          <InputFile
-            id="dropzone-file"
-            onChange={(imageBase64) => {
-              handleOnImageUpload(imageBase64);
-            }}
-            value={dataBasic!.image}
-          />
-        </div>
+        {validator?.image && (
+          <div className="w-full row-span-2">
+            <InputFile
+              id="dropzone-file"
+              onChange={(imageBase64) => {
+                handleOnImageUpload(imageBase64);
+              }}
+              value={dataBasic!.image}
+            />
+          </div>
+        )}
 
-        <div className="w-full col-span-2">
-          <InputText
-            id="label"
-            name="label"
-            label="Job title"
-            onChange={handleOnChangeInput}
-            defaultValue={dataBasic!.label}
-          />
-        </div>
+        {validator?.label && (
+          <div className="w-full col-span-2">
+            <InputText
+              id="label"
+              name="label"
+              label="Job title"
+              onChange={handleOnChangeInput}
+              defaultValue={dataBasic!.label}
+            />
+          </div>
+        )}
       </div>
       <div className="grid grid-cols-4 lg:grid-cols-3 gap-x-4 gap-y-4 mt-4">
         <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
@@ -74,45 +83,53 @@ function FormPersonal() {
           />
         </div>
 
-        <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
-          <InputText
-            id="phone"
-            name="phone"
-            label="Phone"
-            onChange={handleOnChangeInput}
-            defaultValue={dataBasic!.phone}
-          />
-        </div>
+        {validator?.phone && (
+          <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
+            <InputText
+              id="phone"
+              name="phone"
+              label="Phone"
+              onChange={handleOnChangeInput}
+              defaultValue={dataBasic!.phone}
+            />
+          </div>
+        )}
 
-        <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
-          <InputDate
-            id="dob"
-            name="dob"
-            label="Date of Birth"
-            defaultValue={dataBasic!.dob}
-            onChange={handleOnChangeInput}
-          />
-        </div>
+        {validator?.dob && (
+          <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
+            <InputDate
+              id="dob"
+              name="dob"
+              label="Date of Birth"
+              defaultValue={dataBasic!.dob}
+              onChange={handleOnChangeInput}
+            />
+          </div>
+        )}
 
-        <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
-          <InputText
-            id="country"
-            name="country"
-            label="Nationality"
-            onChange={handleOnChangeInput}
-            defaultValue={dataBasic!.country}
-          />
-        </div>
+        {validator?.country && (
+          <div className="w-full col-span-4 sm:col-span-2 lg:col-span-1">
+            <InputText
+              id="country"
+              name="country"
+              label="Nationality"
+              onChange={handleOnChangeInput}
+              defaultValue={dataBasic!.country}
+            />
+          </div>
+        )}
 
-        <div className="w-full col-span-4 lg:col-span-2">
-          <InputText
-            id="url"
-            name="url"
-            label="Portfolio Website"
-            onChange={handleOnChangeInput}
-            defaultValue={dataBasic!.url}
-          />
-        </div>
+        {validator?.url && (
+          <div className="w-full col-span-4 lg:col-span-2">
+            <InputText
+              id="url"
+              name="url"
+              label="Portfolio Website"
+              onChange={handleOnChangeInput}
+              defaultValue={dataBasic!.url}
+            />
+          </div>
+        )}
 
         <div className="w-full col-span-4 lg:col-span-3">
           <InputTextArea
