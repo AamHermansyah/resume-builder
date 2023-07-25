@@ -17,7 +17,7 @@ export default function MinimalistTemplate({ widthClassName = '' }: { widthClass
   return (
     <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName, monserrat.className)}>
       <div className="flex flex-col">
-        <div className="Header mb-4">
+        <div className="Header">
           <div className="flex flex-col w-full h-auto bg-[#ffffff] justify-center items-center">
             <h1 className="font-light text-4xl text-[#555555] pt-[55px] tracking-widest text-center">
               {resumeData.basics.name}
@@ -25,8 +25,8 @@ export default function MinimalistTemplate({ widthClassName = '' }: { widthClass
             <h1 className="font-light text-xl text-[#555555] mt-4 tracking-wide text-center">
               {resumeData.basics.label}
             </h1>
+            <div className="w-[80%] mt-2 mx-auto border-b-[4px] border-gray-300" />
           </div>
-          <div className="mx-auto border-bottom" />
         </div>
         <section>
           <div className="flex justify-between">

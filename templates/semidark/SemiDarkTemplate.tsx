@@ -22,7 +22,7 @@ export default function SemiDarkTemplate({ widthClassName = '' }: { widthClassNa
           <div className="mt-4 ml-4">
             <div className="flex items-center justify-center border-2 border-[#1d3344] rounded-md w-[130px] h-[130px] ">
               <img
-                src="https://i.ibb.co/GvRmG4f/jonas-kakaroto-KIPqvv-TOC1s-unsplash-removebg-preview.jpg"
+                src={resumeData.basics.image}
                 alt="Profil"
                 className="w-[120px] h-[120px] rounded-md"
               />

@@ -28,7 +28,7 @@ export default function AwesomeTemplate({ widthClassName = '' }: { widthClassNam
             <div className="flex items-center justify-center h-[300px] pt-[60px]">
               <div className="flex items-center justify-center border-2 border-[#54b2e6] rounded-full w-[200px] h-[200px] ">
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80"
+                  src={resumeData.basics.image}
                   alt="Profil"
                   className="w-[170px] h-[170px] rounded-full object-cover"
                 />
