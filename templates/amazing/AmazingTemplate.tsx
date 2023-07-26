@@ -18,10 +18,10 @@ export default function AmazingTemplate({ widthClassName = '' }: { widthClassNam
     <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName, poppins.className)}>
       <div className="flex">
         {/* Left Panel */}
-        <div className="w-[300px] bg-gray-100 h-[1150px]">
+        <div className="w-[300px] bg-gray-100 min-h-[1150px] pb-10">
           <div className="px-4">
             {/* Profil Picture */}
-            <div className="flex items-center justify-center h-[300px] pt-[100px]">
+            <div className="flex items-center justify-center h-[300px] mt-14">
               <img
                 src={resumeData.basics.image}
                 alt="Profil"

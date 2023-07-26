@@ -26,7 +26,7 @@ export default function MordernTemplate({ widthClassName = '' }: { widthClassNam
   const formattedBasicLanguages = listFormat.format(basicLanguages);
 
   return (
-    <div className={cn('p-4 print:p-0 bg-white w-[730px] print:w-[700px]', widthClassName)}>
+    <div className={cn('p-4 print:p-0 bg-white w-[730px] min-w-[730px] print:w-[700px]', widthClassName)}>
       <BasicIntro
         name={resumeData.basics.name}
         label={resumeData.basics.label}

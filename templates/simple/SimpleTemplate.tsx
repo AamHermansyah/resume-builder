@@ -18,7 +18,7 @@ export default function SimpleTemplate({ widthClassName = '' }: { widthClassName
 
   return (
     <div className={cn('p-2 print-exact print:p-0  bg-white w-[730px] print:w-[700px]', widthClassName, aleo.className)}>
-      <div className="flex flex-col py-14 px-20">
+      <div className="w-[730px] flex flex-col py-14 px-20">
         <div className="w-full text-center">
           <h1 className="text-3xl font-bold text-green-800 mb-4">{resumeData.basics.name}</h1>
           <p>{resumeData.basics.phone} - {resumeData.basics.country}</p>

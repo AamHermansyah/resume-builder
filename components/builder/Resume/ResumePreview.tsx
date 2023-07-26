@@ -31,7 +31,7 @@ const resumePreview = ({ CustomTemplate, token }: propTypes) => {
 
   return (
     <StateContext.Provider value={resumeData}>
-      <div className={Cookies.get('layout') === 'top' ? 'md:flex justify-center' : 'w-full flex justify-center'}>
+      <div className={Cookies.get('layout') === 'top' ? 'md:flex justify-center' : ''}>
         {CustomTemplate && <CustomTemplate />}
         {!CustomTemplate && Template && <Template />}
       </div>

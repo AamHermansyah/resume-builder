@@ -51,7 +51,7 @@ export default function ProfessionalTemplate({ widthClassName = '' }: { widthCla
   if (resumeData === null) return null;
 
   return (
-    <ResumeContainer className={cn('p-2 print-exact print:p-0  bg-white w-[730px] print:w-[700px]', widthClassName)}>
+    <ResumeContainer className={cn('p-2 print-exact print:p-0  bg-white w-[730px] min-w-[730px] print:w-[700px]', widthClassName)}>
       <LeftSection>
         <Section
           title={resumeData.basics?.name}

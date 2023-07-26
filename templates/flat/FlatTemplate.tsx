@@ -17,7 +17,7 @@ export default function FlatTemplate({ widthClassName = '' }: { widthClassName?:
 
   return (
     <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName)}>
-      <div className="flex flex-col">
+      <div className="w-[730px] flex flex-col">
         <div className="profile">
           <div className="flex flex-col justify-start pl-8 my-6 gap-1">
             <h1 className="text-semibold text-2xl">

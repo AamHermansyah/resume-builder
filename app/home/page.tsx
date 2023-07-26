@@ -105,54 +105,52 @@ function HomePage() {
             ${activeChangeLayout === 'left' ? 'flex-col md:flex-row'
             : activeChangeLayout === 'right' ? 'flex-col md:flex-row-reverse' : 'flex-col items-center'
           }
-            max-w-[1500px] mx-auto mb-10 mt-10 relative flex gap-x-6 gap-y-4 items-start
+            max-w-[1500px] mx-auto mb-10 mt-10 relative flex justify-center gap-x-6 gap-y-4 items-start
           `}
         >
-          <div className="flex-auto md:max-w-[550px] w-full print:hidden overflow-auto">
-            <div className="overflow-auto hidden-scrollbar bg-white px-4 py-5 lg:px-7 rounded">
-              <div className="px-4 py-5 lg:px-7 bg-white rounded">
-                <div className="mt-4 flex items-center gap-5">
-                  <h1 className="text-xl font-medium text-tertiary-bold">
-                    Choose Template
-                  </h1>
-                  <Image
-                    src="icons/builder/edit-fill.svg"
-                    alt="edit-fill"
-                    width={25}
-                    height={25}
-                    className="object-cover"
-                  />
-                </div>
-                <div className="mt-4 w-full">
-                  <div className="w-full overflow-auto hidden-scrollbar px-2 py-4 cursor-pointer flex justify-start gap-6">
-                    {Object.keys(AVAILABLE_TEMPLATES).map((key, index) => (
-                      <img
-                        key={index}
-                        src={AVAILABLE_TEMPLATES[key].thumbnail}
-                        alt={`CV Preview ${AVAILABLE_TEMPLATES[key].id}`}
-                        className={`
-                          ${selectedTemplate?.id === AVAILABLE_TEMPLATES[key].id ? 'outline outline-1 outline-tertiary-semi' : ''}
-                          object-contain w-[300px] aspect-[0.73/1] border rounded`
-                        }
-                        onClick={() => setSelectedTemplate(AVAILABLE_TEMPLATES[key])}
-                      />
-                    ))}
-                  </div>
-                </div>
+          <div className="flex-auto md:max-w-[550px] w-full print:hidden overflow-auto bg-white px-4 py-2 lg:px-7 rounded">
+            <div className="overflow-auto hidden-scrollbar">
+              <div className="mt-4 flex items-center gap-5">
+                <h1 className="text-xl font-medium text-tertiary-bold">
+                  Choose Template
+                </h1>
+                <Image
+                  src="icons/builder/edit-fill.svg"
+                  alt="edit-fill"
+                  width={25}
+                  height={25}
+                  className="object-cover"
+                />
               </div>
-              <div className="text-center">
-                <button
-                  className="text-sm sm:text-base my-4 px-6 py-3 font-medium bg-tertiary rounded sm:rounded-md text-white active:scale-95 transition"
-                  onClick={(e) => {
-                    selectedTemplate && setTemplate(selectedTemplate);
-                    navigate.push('/builder');
-                  }}
-                >
-                  Change template
-                </button>
+              <div className="mt-4 px-1 w-full">
+                <div className="max-h-[300px] md:max-h-[400px] overscroll-y-auto grid grid-cols-2 py-4 cursor-pointer gap-6">
+                  {Object.keys(AVAILABLE_TEMPLATES).map((key, index) => (
+                    <img
+                      key={index}
+                      src={AVAILABLE_TEMPLATES[key].thumbnail}
+                      alt={`CV Preview ${AVAILABLE_TEMPLATES[key].id}`}
+                      className={`
+                          ${selectedTemplate?.id === AVAILABLE_TEMPLATES[key].id ? 'outline outline-1 outline-tertiary-semi' : ''}
+                          object-contain w-full aspect-[0.73/1] border rounded`
+                      }
+                      onClick={() => setSelectedTemplate(AVAILABLE_TEMPLATES[key])}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-            <div className="mt-6 px-4 py-5 lg:px-7 bg-white rounded">
+            <div className="text-center">
+              <button
+                className="text-sm sm:text-base my-4 px-6 py-3 font-medium bg-tertiary rounded sm:rounded-md text-white active:scale-95 transition"
+                onClick={(e) => {
+                  selectedTemplate && setTemplate(selectedTemplate);
+                  navigate.push('/builder');
+                }}
+              >
+                Change template
+              </button>
+            </div>
+            {/* <div className="mt-6 px-4 py-5 lg:px-7 bg-white rounded">
               <div className="mt-4 flex items-center gap-5 mb-[10px]">
                 <h1 className="text-xl font-medium text-tertiary-bold ">Layout</h1>
               </div>
@@ -175,11 +173,11 @@ function HomePage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
           <div className={`
-              ${activeChangeLayout === 'top' ? 'mb-10 print:mb-0' : 'flex flex-col items-center'}
-              flex-auto overflow-auto w-full print:mt-0 hidden-scrollbar
+              ${activeChangeLayout === 'top' ? 'mb-10 print:mb-0' : ''}
+              overflow-auto w-full md:w-[730px] bg-red-500 print:mt-0 hidden-scrollbar
             `}
           >
             <ResumePreview

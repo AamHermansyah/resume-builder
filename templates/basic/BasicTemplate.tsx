@@ -16,15 +16,15 @@ export default function BasicTemplate({ widthClassName = '' }: { widthClassName?
 
   return (
     <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName, lora.className)}>
-      <div>
-        <div className="flex w-full h-[120px] bg-[#3c5769] justify-center items-center">
-          <h1 className="font-bold text-white text-4xl">
-            {resumeData.basics.name}
-          </h1>
+      <section className="w-[730px]">
+        <div>
+          <div className="flex w-full h-[120px] bg-[#3c5769] justify-center items-center">
+            <h1 className="font-bold text-white text-4xl">
+              {resumeData.basics.name}
+            </h1>
+          </div>
+          <div className="flex w-full h-[5px] bg-[#3c5769] mt-1" />
         </div>
-        <div className="flex w-full h-[5px] bg-[#3c5769] mt-1" />
-      </div>
-      <section>
         <div className="grid grid-cols-7 w-full">
           <div className="bg-gray-200 px-8 col-span-3">
             <div className="flex flex-col items-start">
