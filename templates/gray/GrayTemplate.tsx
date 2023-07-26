@@ -17,24 +17,24 @@ export default function GrayTemplate({ widthClassName = '' }: { widthClassName?:
     .filter((item) => item.value && item.network === 'linkedin' || item.network === 'github');
 
   return (
-    <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName)}>
+    <div className={cn('print-exact bg-white w-[730px] print:w-[700px] mx-auto mt-2', widthClassName)}>
       <div className="flex">
-        <div className="flex w-2/3 bg-gray-200 border-l-8 border-[#1d3344] rounded-lg h-[200px]">
-          <div className="mt-4 ml-4">
+        <div className="px-4 gap-4 grid grid-cols-12 w-2/3 bg-gray-200 border-l-8 border-[#1d3344] rounded-lg h-[200px]">
+          <div className="mt-6 col-span-3">
             <img
               src={resumeData.basics.image}
               alt="Profil"
-              className="w-[100px] h-[100px] object-cover border-4 border-[#f3b943]"
+              className="w-full aspect-square object-cover border-4 border-[#f3b943]"
             />
           </div>
-          <div className="flex flex-col mt-4 ml-2">
+          <div className="col-span-9 flex flex-col mt-4">
             <h1 className="text-[#1d3344] text-2xl font-normal tracking-wide">
               {resumeData.basics.name}
             </h1>
             <h3 className="text-[#f3b943] text-sm font-normal">
               {resumeData.basics.label}
             </h3>
-            <p className="text-xs font-normal w-[370px]">
+            <p className="text-xs font-normal w-full">
               {resumeData.basics.summary}
             </p>
           </div>
@@ -177,7 +177,7 @@ export default function GrayTemplate({ widthClassName = '' }: { widthClassName?:
           </div>
           <div className="pl-2">
             {resumeData.awards.map((item) => (
-              <div className="flex flex-col w-[200px] py-2" key={item.id}>
+              <div className="flex flex-col w-full py-2" key={item.id}>
                 <h3 className="font-semibold text-sm">
                   {item.title} ({dateParser(item.date)})
                 </h3>

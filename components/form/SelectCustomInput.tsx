@@ -18,10 +18,10 @@ const SelectCustomInput: React.FC<propTypes> = ({ data, allow, onChange, id }) =
     if (inputRef.current) {
       const input = inputRef.current.value.trim();
 
-      if (/^([a-zA-Z]+.?[a-zA-Z]+)(,([a-zA-Z]+.?[a-zA-Z]+))*$/gi.test(input)) {
+      if (/^([a-zA-Z]+.?[\sa-zA-Z]+)(,([a-zA-Z]+.?[\sa-zA-Z]+))*$/gi.test(input)) {
         setIsError(false);
         let arrayInput = input.split(",");
-        const newData = arrayInput.map((item) => ({ name: item, level: 100 }));
+        const newData = arrayInput.map((item) => ({ name: item.trim(), level: 100 }));
         onChange(Array.from(new Set([...data, ...newData])) as ISkillItem[]);
         inputRef.current.value = "";
       } else {
