@@ -25,7 +25,7 @@ export default function SimpleTemplate({ widthClassName = '' }: { widthClassName
           <p>{resumeData.basics.email} {resumeData.basics.url ? `- ${resumeData.basics.url}` : ''}</p>
         </div>
 
-        <span className="block border-t-2 border-gray-800 border-dashed mt-4 mb-2" />
+        <span className="block border-t-[3px] border-green-800 mt-4 mb-2" />
 
         <div>
           <h1 className="text-md font-bold mt-2 text-green-800">PROFESIONAL SUMMARY</h1>
@@ -34,7 +34,7 @@ export default function SimpleTemplate({ widthClassName = '' }: { widthClassName
           </p>
         </div>
 
-        <span className="block border-t-2 border-gray-800 border-dashed mt-4 mb-2" />
+        <span className="block border-t-[3px] border-green-800 mt-4 mb-2" />
 
         {resumeData.skills.length > 0 && (
           <>
@@ -62,7 +62,7 @@ export default function SimpleTemplate({ widthClassName = '' }: { widthClassName
               </div>
             </div>
 
-            <span className="block border-t-2 border-gray-800 border-dashed mt-4 mb-2" />
+            <span className="block border-t-[3px] border-green-800 mt-4 mb-2" />
           </>
         )}
 
@@ -90,7 +90,7 @@ export default function SimpleTemplate({ widthClassName = '' }: { widthClassName
           ))}
         </div>
 
-        <span className="block border-t-2 border-gray-800 border-dashed mt-4 mb-2" />
+        <span className="block border-t-[3px] border-green-800 mt-4 mb-2" />
 
         <div>
           <div className="text-md mt-4 mb-2">

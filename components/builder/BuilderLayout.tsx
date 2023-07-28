@@ -180,7 +180,7 @@ function BuilderLayout() {
             </div>
           </div>
           <div className={`
-              ${dirLayout === 'top' ? 'mb-10 print:mb-0' : 'md:mt-[42px] flex flex-col items-center'}
+              ${dirLayout === 'top' ? 'mb-10 print:mb-0' : 'md:mt-[42px] flex flex-col lg:items-center'}
               flex-auto overflow-auto lg:overflow-visible w-full rounded print:mt-0 hidden-scrollbar
             `}
           >

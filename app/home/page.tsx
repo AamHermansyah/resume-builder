@@ -177,7 +177,7 @@ function HomePage() {
           </div>
           <div className={`
               ${activeChangeLayout === 'top' ? 'mb-10 print:mb-0' : ''}
-              overflow-auto w-full md:w-[730px] bg-red-500 print:mt-0 hidden-scrollbar
+              overflow-auto w-full md:w-[730px] print:mt-0 hidden-scrollbar
             `}
           >
             <ResumePreview

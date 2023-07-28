@@ -21,10 +21,10 @@ export default function AwesomeTemplate({ widthClassName = '' }: { widthClassNam
 
   return (
     <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName, poppins.className)}>
-      <div className="flex">
+      <div className="w-full flex">
         {/* Left Panel */}
-        <div className="flex justify-center w-[300px] bg-[#313642] h-auto px-6">
-          <div className="flex flex-col w-[250px]">
+        <div className="flex justify-center w-full bg-[#313642] h-auto px-6">
+          <div className="flex flex-col w-full">
             <div className="flex items-center justify-center h-[300px] pt-[60px]">
               <div className="flex items-center justify-center border-2 border-[#54b2e6] rounded-full w-[200px] h-[200px] ">
                 <img
@@ -125,11 +125,11 @@ export default function AwesomeTemplate({ widthClassName = '' }: { widthClassNam
         {/* End Left Panel*/}
         {/* Right Panel */}
         <div className="w-full flex items-center justify-center bg-white h-full pb-16 flex-col text-[#3e3e3e] pl-6 pr-10">
-          <div className="flex flex-col w-[420px] justify-center h-full mt-16 gap-2">
-            <h1 className="font-bold text-5xl tracking-widest leading-[60px]">
+          <div className="flex flex-col w-full justify-center h-full mt-16 gap-2">
+            <h1 className="font-bold text-4xl tracking-widest leading-[50px]">
               {resumeData.basics.name}
             </h1>
-            <h1 className="font-normal text-4xl tracking-widest">
+            <h1 className="font-normal text-2xl tracking-widest">
               {resumeData.basics.label}
             </h1>
             <p className="text-lg font-light tracking-widest">
@@ -138,7 +138,7 @@ export default function AwesomeTemplate({ widthClassName = '' }: { widthClassNam
           </div>
 
           <div>
-            <div className="flex items-center justify-between w-[420px] mt-10">
+            <div className="flex items-center justify-between w-full mt-10">
               <div className="text-lg font-semibold">
                 <h1>Work Experience</h1>
               </div>
@@ -147,7 +147,7 @@ export default function AwesomeTemplate({ widthClassName = '' }: { widthClassNam
             <div>
               {resumeData.work.map((item) => (
                 <div key={item.id}>
-                  <div className="flex items-center justify-between w-[420px] mt-4">
+                  <div className="flex items-center justify-between w-full mt-4">
                     <div className="text-base w-1/2">
                       <h1>{item.position}</h1>
                     </div>
@@ -160,7 +160,7 @@ export default function AwesomeTemplate({ widthClassName = '' }: { widthClassNam
                       </p>
                     </div>
                   </div>
-                  <div className="flex flex-col justify-start w-[420px] mt-1">
+                  <div className="flex flex-col justify-start w-full mt-1">
                     <div className="text-base font-semibold">
                       <h1>{item.name} | {item.country}</h1>
                       <HTMLRenderer htmlString={item.summary} className="text-sm font-normal text-justify mt-1" />
@@ -172,7 +172,7 @@ export default function AwesomeTemplate({ widthClassName = '' }: { widthClassNam
           </div>
 
           <div>
-            <div className="flex items-center justify-between w-[420px] mt-10">
+            <div className="flex items-center justify-between w-full mt-10">
               <div className="text-lg font-semibold">
                 <h1>Certificate</h1>
               </div>
@@ -185,7 +185,7 @@ export default function AwesomeTemplate({ widthClassName = '' }: { widthClassNam
                     <h1 className="text-xs uppercase">{item.awarder}</h1>
                     <p className="text-right text-sm">{dateParser(item.date)}</p>
                   </div>
-                  <div className="flex flex-col justify-start w-[420px]">
+                  <div className="flex flex-col justify-start w-full">
                     <div className="text-base font-semibold">
                       <h1>{item.title}</h1>
                       <HTMLRenderer htmlString={item.summary} className="text-sm font-normal text-justify" />
