@@ -15,8 +15,8 @@ export default function AmazingTemplate({ widthClassName = '' }: { widthClassNam
   if (resumeData === null) return null;
 
   return (
-    <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName, poppins.className)}>
-      <div className="flex">
+    <div className={cn('print-exact bg-white w-[730px] print:w-[720px] mx-auto', widthClassName, poppins.className)}>
+      <div className="w-full flex">
         {/* Left Panel */}
         <div className="w-[300px] bg-gray-100 min-h-[1150px] pb-10">
           <div className="px-4">

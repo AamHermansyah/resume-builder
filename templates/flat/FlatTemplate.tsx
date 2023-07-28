@@ -16,8 +16,8 @@ export default function FlatTemplate({ widthClassName = '' }: { widthClassName?:
     .filter((item) => item.value && item.network === 'linkedin');
 
   return (
-    <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName)}>
-      <div className="w-[730px] flex flex-col">
+    <div className={cn('print-exact bg-white w-[730px] print:w-[720px] mx-auto', widthClassName)}>
+      <div className="w-full min-w-[730px] flex flex-col">
         <div className="profile">
           <div className="flex flex-col justify-start pl-8 my-6 gap-1">
             <h1 className="text-semibold text-2xl">

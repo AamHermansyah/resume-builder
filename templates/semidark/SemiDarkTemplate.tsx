@@ -17,8 +17,8 @@ export default function SemiDarkTemplate({ widthClassName = '' }: { widthClassNa
     .filter((item) => item.value && item.network === 'linkedin');
 
   return (
-    <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName)}>
-      <div className="flex">
+    <div className={cn('print-exact bg-white w-[730px] print:w-[700px] mx-auto', widthClassName)}>
+      <div className="w-full min-w-[730px] print:min-w-[700px] flex">
         <div className="flex w-2/3 rounded-lg min-h-[200px]">
           <div className="mt-4 ml-4">
             <div className="flex items-center justify-center border-2 border-[#1d3344] rounded-md w-[130px] h-[130px] ">
@@ -80,7 +80,7 @@ export default function SemiDarkTemplate({ widthClassName = '' }: { widthClassNa
           </div>
         </div>
       </div>
-      <div className="flex">
+      <div className="w-full min-w-[730px] print:min-w-[700px] flex">
         <div className="flex flex-col w-2/3 bg-white h-auto pb-8">
           <div className="mt-3 pl-2">
             <div>

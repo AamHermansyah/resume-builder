@@ -16,7 +16,7 @@ export default function BasicTemplate({ widthClassName = '' }: { widthClassName?
 
   return (
     <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName, lora.className)}>
-      <section className="w-[730px]">
+      <section className="min-w-[730px]">
         <div>
           <div className="flex w-full h-[120px] bg-[#3c5769] justify-center items-center">
             <h1 className="font-bold text-white text-4xl">

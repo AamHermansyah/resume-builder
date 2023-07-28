@@ -20,12 +20,12 @@ export default function AwesomeTemplate({ widthClassName = '' }: { widthClassNam
     .filter((item) => item.value && item.network === 'linkedin');
 
   return (
-    <div className={cn('print-exact bg-white w-[730px] print:w-[700px]', widthClassName, poppins.className)}>
+    <div className={cn('print-exact bg-white w-[730px] print:w-[720px] mx-auto', widthClassName, poppins.className)}>
       <div className="w-full flex">
         {/* Left Panel */}
         <div className="flex justify-center w-full bg-[#313642] h-auto px-6">
           <div className="flex flex-col w-full">
-            <div className="flex items-center justify-center h-[300px] pt-[60px]">
+            <div className="flex items-center justify-center h-[300px] pt-10">
               <div className="flex items-center justify-center border-2 border-[#54b2e6] rounded-full w-[200px] h-[200px] ">
                 <img
                   src={resumeData.basics.image}
@@ -124,25 +124,25 @@ export default function AwesomeTemplate({ widthClassName = '' }: { widthClassNam
         </div>
         {/* End Left Panel*/}
         {/* Right Panel */}
-        <div className="w-full flex items-center justify-center bg-white h-full pb-16 flex-col text-[#3e3e3e] pl-6 pr-10">
-          <div className="flex flex-col w-full justify-center h-full mt-16 gap-2">
+        <div className="w-full flex items-center justify-center bg-white h-full pb-16 flex-col text-[#3e3e3e] pl-6 pr-6 print:pr-0">
+          <div className="flex flex-col w-full justify-center h-full mt-10 gap-2">
             <h1 className="font-bold text-4xl tracking-widest leading-[50px]">
               {resumeData.basics.name}
             </h1>
             <h1 className="font-normal text-2xl tracking-widest">
               {resumeData.basics.label}
             </h1>
-            <p className="text-lg font-light tracking-widest">
+            <p className="font-light tracking-widest text-justify">
               {resumeData.basics.summary}
             </p>
           </div>
 
           <div>
-            <div className="flex items-center justify-between w-full mt-10">
-              <div className="text-lg font-semibold">
+            <div className="flex items-center gap-4 justify-between w-full mt-10">
+              <div className="text-lg font-semibold whitespace-nowrap">
                 <h1>Work Experience</h1>
               </div>
-              <div className="w-[250px] h-1 bg-[#54b2e6]" />
+              <div className="w-full h-1 bg-[#54b2e6]" />
             </div>
             <div>
               {resumeData.work.map((item) => (
@@ -172,11 +172,11 @@ export default function AwesomeTemplate({ widthClassName = '' }: { widthClassNam
           </div>
 
           <div>
-            <div className="flex items-center justify-between w-full mt-10">
-              <div className="text-lg font-semibold">
+            <div className="flex items-center gap-4 justify-between w-full mt-10">
+              <div className="text-lg font-semibold whitespace-nowrap">
                 <h1>Certificate</h1>
               </div>
-              <div className="w-[250px] h-1 bg-[#54b2e6]" />
+              <div className="w-full h-1 bg-[#54b2e6]" />
             </div>
             <div className="mt-4">
               {resumeData.awards.map((item) => (

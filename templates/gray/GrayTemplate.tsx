@@ -17,8 +17,8 @@ export default function GrayTemplate({ widthClassName = '' }: { widthClassName?:
     .filter((item) => item.value && item.network === 'linkedin' || item.network === 'github');
 
   return (
-    <div className={cn('print-exact bg-white w-[730px] print:w-[700px] mt-2', widthClassName)}>
-      <div className="w-[730px] flex">
+    <div className={cn('print-exact bg-white w-[730px] print:w-[700px] mx-auto mt-2', widthClassName)}>
+      <div className="w-full min-w-[730px] print:min-w-[700px] flex">
         <div className="px-4 gap-4 grid grid-cols-12 w-2/3 bg-gray-200 border-l-8 border-[#1d3344] rounded-lg h-[200px]">
           <div className="mt-6 col-span-3">
             <img
@@ -84,7 +84,7 @@ export default function GrayTemplate({ widthClassName = '' }: { widthClassName?:
           </div>
         </div>
       </div>
-      <div className="flex">
+      <div className="w-full min-w-[730px] print:min-w-[700px] flex">
         <div className="flex flex-col w-2/3 bg-white h-auto pb-8">
           <div className="mt-3 pl-2">
             {resumeData.skills.length > 0 && (

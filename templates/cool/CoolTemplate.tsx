@@ -104,7 +104,7 @@ export default function MinimalistTemplate({ widthClassName = '' }: { widthClass
             <div className="reference">
               <div className="flex">
                 <div className="flex flex-col items-start gap-2">
-                  <div className="flex flex-col pt-8 pb-4 gap-1">
+                  <div className="flex flex-col pt-6 pb-4 gap-1">
                     <h2 className="text-xl font-semibold">OBJECTIVE</h2>
                     <p>{resumeData.basics.objective}</p>
                   </div>
@@ -121,7 +121,7 @@ export default function MinimalistTemplate({ widthClassName = '' }: { widthClass
               <p className="text-xl tracking-wider">
                 {resumeData.basics.label}
               </p>
-              <p className="mt-10 text-base tracking-wide">
+              <p className="mt-6 text-base tracking-wide">
                 {resumeData.basics.summary}
               </p>
             </div>
